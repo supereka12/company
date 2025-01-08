@@ -8,7 +8,7 @@ export default function Navbar() {
             </div>
             <ul className="flex gap-x-8">
                 <li>
-                    <Link className="text-[--primary-color] hover:text-[--primary-color] transition duration-100">Beranda</Link>
+                    <Link className="text-[--primary-color] hover:text-[--primary-color] transition duration-100" href="/">Beranda</Link>
                 </li>
                 <li>
                     <Link className="hover:text-[--primary-color] transition duration-100">Tentang Kami</Link>
@@ -17,7 +17,7 @@ export default function Navbar() {
                     <Link className="hover:text-[--primary-color] transition duration-100">Fasilitas</Link>
                 </li>
                 <li>
-                    <Link className="hover:text-[--primary-color] transition duration-100">Artikel</Link>
+                    <Link className="hover:text-[--primary-color] transition duration-100" href="#">Artikel</Link>
                 </li>
             </ul>
             <button class="px-7 py-2 bg-gradient-to-r bg-green-500 text-white font-bold rounded-full transition-transform transform-gpu hover:shadow-lg">Contact</button>
