@@ -11,16 +11,16 @@ export default function Navbar() {
                     <Link className="text-[--primary-color] hover:text-[--primary-color] transition duration-100" href="/">Beranda</Link>
                 </li>
                 <li>
-                    <Link className="hover:text-[--primary-color] transition duration-100">Tentang Kami</Link>
+                    <Link className="hover:text-[--primary-color] transition duration-100" href="/about">Tentang Kami</Link>
                 </li>
                 <li>
                     <Link className="hover:text-[--primary-color] transition duration-100">Fasilitas</Link>
                 </li>
                 <li>
-                    <Link className="hover:text-[--primary-color] transition duration-100" href="#">Artikel</Link>
+                    <Link className="hover:text-[--primary-color] transition duration-100" href="/artikel">Artikel</Link>
                 </li>
             </ul>
-            <button class="px-7 py-2 bg-gradient-to-r bg-green-500 text-white font-bold rounded-full transition-transform transform-gpu hover:shadow-lg">Contact</button>
+            <button class="px-7 py-2 bg-gradient-to-r bg-teal-700 text-white font-bold rounded-full transition-transform transform-gpu hover:shadow-lg">Contact</button>
         </nav>
     )
 }
