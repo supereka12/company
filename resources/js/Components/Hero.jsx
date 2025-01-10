@@ -32,7 +32,8 @@ export default function Hero(props) {
                         <li>
                             <button onClick={() => handleImg(2)} className="w-20 h-20 bg-center rounded-lg" style={{ backgroundImage: `url(${props.url[2]})`, backgroundSize: 'cover' }}></button>
                         </li>
-                    </ul>                </div>
+                    </ul>
+                </div>
             </div>
         </>
     )

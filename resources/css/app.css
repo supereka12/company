@@ -3,5 +3,24 @@
 @tailwind utilities;
 
 :root {
-    --primary-color: red;
+    --primary-color: #006666;
+    --secondary-color: #00B8B8;
 }
+
+.poppins-bold {
+    font-family: "Poppins";
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  .poppins-light {
+    font-family: "Poppins";
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  .open-sans {
+    font-family: "Open Sans";
+    font-weight: 300;
+    font-style: normal;
+  }
