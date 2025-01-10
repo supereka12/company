@@ -2,6 +2,6 @@ export default function PrimaryButton({
     title
 }) {
     return (
-        <button class="px-7 py-2 bg-gradient-to-r bg-teal-700 text-white font-bold rounded-full transition-transform transform-gpu hover:shadow-lg hover:bg-gradient-to-br hover:from-[--secondary-color] hover:to-[--primary-color]">{title}</button>
+        <button className="px-7 py-2 bg-gradient-to-r bg-teal-700 text-white font-bold rounded-full transition-transform transform-gpu hover:shadow-lg hover:bg-gradient-to-br hover:from-[--secondary-color] hover:to-[--primary-color]">{title}</button>
     );
 }

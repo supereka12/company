@@ -5,6 +5,7 @@
 :root {
     --primary-color: #006666;
     --secondary-color: #00B8B8;
+    --third-color: #F2F2F2;
 }
 
 .poppins-bold {
@@ -15,7 +16,7 @@
 
   .poppins-light {
     font-family: "Poppins";
-    font-weight: 300;
+    font-weight: 400;
     font-style: normal;
   }
 

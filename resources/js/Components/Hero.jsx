@@ -15,11 +15,11 @@ export default function Hero(props) {
         <>
             <div className={`w-full h-full absolute top-0 left-0 bg-center bg-[--primary-color]`} style={{ backgroundImage: `url(${props.url[beforeImg]})`, backgroundSize: 'cover' }}>
                 <div className="w-full h-full px-20 py-32 bg-black/70 relative">
-                    <div className="w-[55%] h-full flex flex-col">
-                        <TextHead title={"Tempat Tinggal Modern dengan Fasilitas Lengkap"} color={"text-white"} />
-                        <p className="open-sans mt-2 text-2xl text-white opacity-70">Rasakan gaya hidup yang memadukan yang terbaik dari kedua dunia—kenyamanan dengan kemewahan.</p>
+                    <div className="w-[53%] h-full flex flex-col">
+                        <TextHead title={"Modern Residence with Complete Facilities"} color={"text-white"} />
+                        <p className="open-sans mt-2 text-2xl text-white opacity-70">Experience a lifestyle that combines the best of both worlds—comfort with luxury.</p>
                         <span className="w-40 mt-6">
-                            <PrimaryButton title={"Hubungi Kami"} />
+                            <PrimaryButton title={"Contact"} />
                         </span>
                     </div>
                     <ul className="flex flex-col gap-y-3 absolute top-7 right-7" >

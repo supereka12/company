@@ -4,6 +4,8 @@ import TextHead from "@/Components/TextHead";
 import { useState } from "react";
 import { FaCheck } from "react-icons/fa6";
 import { FaSwimmingPool } from "react-icons/fa";
+import PrimaryButton from "@/Components/PrimaryButton";
+import Footer from "@/Components/Footer";
 
 export default function BerandaPage() {
     const [urlImage, setUrlImage] = useState(["/images/pexels-expect-best-79873-323705.jpg", "/images/pexels-quark-studio-1159039-3201921.jpg", "/images/bondepart.jpg"])
@@ -59,42 +61,48 @@ export default function BerandaPage() {
                         </ul>
                     </div>
                 </section>
-                <section className="w-full min-h-screen h-auto p-20 flex gap-x-5 bg-white">
-                    <div className="w-[50%] h-screen">
+                <section className="w-full min-h-screen h-auto p-20 flex justify-between gap-x-8 bg-white">
+                    <div className="w-[60%] h-screen">
                         <TextHead title={"Fasilitas Unggulan"} color={"text-black"} />
                         <p className="open-sans mt-2 text-2xl text-blalck opacity-70">
                             Setiap apartemen dilengkapi dengan semua yang Anda butuhkan untuk pengalaman menginap yang tak terlupakan.                        </p>
                         <ul className="w-full mt-2">
                             <li className="w-full mt-3 flex gap-x-3">
                                 <FaSwimmingPool className="text-5xl opacity-80 text-[--primary-color]" />
-                                <div className="w-[70%] mt-3">
+                                <div className="w-[80%] mt-3">
                                     <h2 className="text-2xl poppins-bold opacity-80 text-[--primary-color]">Kolan Renang</h2>
                                     <p className="open-sans mt-2 text-2xl text-blalck opacity-70">Nikmati sensasi berenang dengan pemandangan menakjubkan di kolam renang kami.</p>
                                 </div>
                             </li>
                             <li className="w-full mt-3 flex gap-x-3">
                                 <FaSwimmingPool className="text-5xl opacity-80 text-[--primary-color]" />
-                                <div className="w-[70%] mt-3">
+                                <div className="w-[80%] mt-3">
                                     <h2 className="text-2xl poppins-bold opacity-80 text-[--primary-color]">Kolan Renang</h2>
                                     <p className="open-sans mt-2 text-2xl text-blalck opacity-70">Nikmati sensasi berenang dengan pemandangan menakjubkan di kolam renang kami.</p>
                                 </div>
                             </li>
                             <li className="w-full mt-3 flex gap-x-3">
                                 <FaSwimmingPool className="text-5xl opacity-80 text-[--primary-color]" />
-                                <div className="w-[70%] mt-3">
+                                <div className="w-[80%] mt-3">
                                     <h2 className="text-2xl poppins-bold opacity-80 text-[--primary-color]">Kolan Renang</h2>
                                     <p className="open-sans mt-2 text-2xl text-blalck opacity-70">Nikmati sensasi berenang dengan pemandangan menakjubkan di kolam renang kami.</p>
                                 </div>
                             </li>
                         </ul>
                     </div>
-                    <div className="w-[50%] h-screen">
-                        <figure>
-                            <img src="/images/RuangTamu.jpg" alt="image fasilitas" />
-                        </figure>
+                    <figure className="w-[40%] h-full relative flex justify-end">
+                        <img src="/images/RuangTamu.jpg" alt="Example" className="w-[478px] h-[603px] rounded-lg shadow-lg" />
+                    </figure>
+                </section>
+                <section className="w-full bg-[--third-color] flex flex-col items-center text-center p-20">
+                    <TextHead title={"Apartemen Impian Anda Menanti!"} color={"text-black"} />
+                    <p className="w-[70%] open-sans mt-2 text-2xl text-blalck opacity-70">Jangan menunggu lebih lama lagi—temukan kemewahan dan kenyamanan Apartemen Bondepart sekarang.</p>
+                    <div className="mt-5">
+                        <PrimaryButton title={"Contact"} />
                     </div>
                 </section>
             </main>
+            <Footer />
         </>
     )
 }

@@ -2,29 +2,31 @@ import { Link } from "@inertiajs/react";
 
 export default function Footer() {
     return (
-        <footer>
-
-        <div class="bg-black">
-            <div class="max-w-screen-lg px-4 sm:px-6 text-white sm:grid md:grid-cols-4 sm:grid-cols-2 mx-auto ">
-                <div class="p-5">
-                    <h3 class="font-bold text-xl text-green-500">Bondepart</h3>
-                    <p className="text-gray-400 my-3">© 2025 Bondepart. Semua hak dilindungi undang-undang.</p>
+        <footer className="shadow bg-gray-900">
+            <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+                <div className="sm:flex sm:items-center sm:justify-between">
+                    <h1 className="text-3xl text-white opacity-80 poppins-bold">Bondepart</h1>
+                    <ul className="flex flex-wrap items-center mb-6 text-sm font-medium sm:mb-0 text-gray-400">
+                        <li>
+                            <a href="#" className="hover:underline me-4 md:me-6">Home</a>
+                        </li>
+                        <li>
+                            <a href="#" className="hover:underline me-4 md:me-6">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#" className="hover:underline me-4 md:me-6">Blog</a>
+                        </li>
+                        <li>
+                            <a href="#" className="hover:underline md:me-6">Galery</a>
+                        </li>
+                        <li>
+                            <a href="#" className="hover:underline">Contact</a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="p-5">
-                    <div class="text-sm uppercase text-white font-bold">Pelajari Lainnya</div>
-                    <a class="my-1 block" href="/#">Beranda <span class="text-white text-xs p-1"></span></a><a
-                        class="my-1 block" href="/#">Tentang Kami <span class="text-white text-xs p-1"></span></a><a
-                        class="my-1 block" href="/#">Fasilitas <span class="text-white text-xs p-1"></span></a><a
-                        class="my-1 block" href="/#">Galery<span class="text-white text-xs p-1"></span></a>
-                </div>
-                <div class="p-5">
-                    <div class="text-sm uppercase text-white font-bold">Hubungi Kami</div>
-                    <a class="my-1 block" href="/#">0843-3434-5323
-                        <span class="text-teal-600 text-xs p-1"></span></a><a class=" block" href="/#">Bondepart@gmail.com
-                        <span class="text-teal-600 text-xs p-1"></span></a>
-                </div>
+                <hr className="my-6 sm:mx-auto border-gray-700 lg:my-8" />
+                <span className="block text-sm sm:text-center text-gray-400">© 2025 Bondepart. All Rights Reserved.</span>
             </div>
-        </div>
-    </footer>
+        </footer>
     )
 }
