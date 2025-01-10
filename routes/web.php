@@ -22,6 +22,10 @@ Route::get('/artikel', function () {
     return Inertia::render('Artikel');
 });
 
+Route::get('/galery', function () {
+    return Inertia::render('Galery');
+});
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

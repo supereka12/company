@@ -17,11 +17,12 @@ export default function BerandaPage() {
                             <h1 className="text-white text-4xl font-bold drop-shadow-lg mb-3">
                                 Tempat Tinggal Modern
                             </h1>
-                            <h1 className="text-white text-4xl font-bold drop-shadow-lg mb-5">
+                            <h1 className="text-white text-4xl font-bold drop-shadow-lg mb-4">
                                 Dengan Fasilitas Lengkap
                             </h1>
-                            <p>Rasakan gaya hidup yang memadukan yang terbaik dari kedua dunia kenyamanan dengan kemewahan.</p>
-                            <button className="px-10 py-2 mt-6 bg-gradient-to-r bg-teal-800 text-white font-bold rounded-md transition-transform transform-gpu hover:scale-105 hover:shadow-lg">
+                            <p>Rasakan gaya hidup yang memadukan yang dengan kemewahan.</p>
+                            <p>terbaik dari kedua dunia kenyamanan</p>
+                            <button className="px-10 py-2 mt-2 bg-gradient-to-r bg-teal-800 text-white font-bold rounded-md transition-transform transform-gpu hover:scale-105 hover:shadow-lg">
                                 Contact
                             </button>
                         </div>
@@ -30,12 +31,12 @@ export default function BerandaPage() {
             </main>
             <main>
                 <div className="bg-teal-600 text-white py-12">
-                    <div className="container mx-auto flex flex-col md:flex-row items-center px-6">
+                    <div className="container mx-auto flex flex-col md:flex-row items-center px-14">
                         <div className="w-full md:w-1/2 mb-6 mr-5 md:mb-0">
                             <img src="/images/foto1.jpg" alt="Example" className="w-80 h-96 rounded-lg shadow-lg m-10" />
                         </div>
                         <div className="w-full md:w-1/2 md:pl-8">
-                            <h2 className="text-4xl font-bold mb-4">Mengapa Memilih</h2>
+                            <h2 className="text-4xl font-bold">Mengapa Memilih</h2>
                             <h2 className="text-4xl font-bold mb-4">Bondepart?</h2>
                             <ul className="space-y-4">
                                 <li>
@@ -43,26 +44,20 @@ export default function BerandaPage() {
                                 </li>
                                 <li>
                                     <span className="font-bold text-2xl">Fasilitas Lengkap</span>
-                                    <p>
-                                        Kolam renang,  taman bermain, dan keamanan 24 jam.
+                                    <p className="p-5">
+                                        Kolam renang,  taman bermain, dan keamanan 24 jam.Kolam renang,  taman bermain, dan keamanan 24 jam.
                                     </p>
                                 </li>
                                 <li>
                                     <span className="font-bold text-2xl">Fasilitas Lengkap</span>
-                                    <p>
-                                        Kolam renang,  taman bermain, dan keamanan 24 jam.
+                                    <p className="p-5">
+                                        Kolam renang,  taman bermain, dan keamanan 24 jam.Kolam renang,  taman bermain, dan keamanan 24 jam.
                                     </p>
                                 </li>
                                 <li>
                                     <span className="font-bold text-2xl">Fasilitas Lengkap</span>
-                                    <p>
-                                        Kolam renang,  taman bermain, dan keamanan 24 jam.
-                                    </p>
-                                </li>
-                                <li>
-                                    <span className="font-bold text-2xl">Fasilitas Lengkap</span>
-                                    <p>
-                                        Kolam renang,  taman bermain, dan keamanan 24 jam.
+                                    <p className="p-5">
+                                        Kolam renang,  taman bermain, dan keamanan 24 jam.Kolam renang,  taman bermain, dan keamanan 24 jam.
                                     </p>
                                 </li>
                             </ul>
@@ -106,11 +101,14 @@ export default function BerandaPage() {
                 </a>
             </div>
 
-            <div className="bg-teal-700 text-white py-12 mt-14">
+            <div className="bg-slate-100 text-black py-12 mt-14">
                 <div className="container">
                     <div className="w-full h-40">
                         <h2 className="text-4xl m-10 text-center font-bold mb-4">Nikmati tempat tinggal berkualitas hanya di Bondepart. Hubungi kami hari ini untuk informasi lebih lanjut.</h2>
+                    <div className="text-center">
+                        <button class="px-7 py-2 bg-gradient-to-r bg-teal-700 text-white font-bold rounded-full transition-transform transform-gpu hover:shadow-lg">Contact</button>
                     </div>
+                    </div>  
                 </div>
             </div>
 
