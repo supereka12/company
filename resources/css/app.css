@@ -5,7 +5,13 @@
 :root {
     --primary-color: #006666;
     --secondary-color: #00B8B8;
-    --third-color: #F2F2F2;
+    --third-color: #f7f7f7;
+    --bg-secondary: #00b8b825;
+}
+
+body {
+  background-color: white;
+  color: black;
 }
 
 .poppins-bold {
@@ -24,4 +30,16 @@
     font-family: "Open Sans";
     font-weight: 300;
     font-style: normal;
+  }
+
+  .animation-primary {
+    animation: animation-opacity .6s linear;
+  }
+
+  @keyframes animation-opacity {
+    from{
+      opacity: 0;
+    }to{
+      opacity: 1;
+    }
   }

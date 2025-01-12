@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('Beranda', [
+    return Inertia::render('Home', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
@@ -18,8 +18,12 @@ Route::get('/about', function () {
     return Inertia::render('About');
 });
 
-Route::get('/artikel', function () {
-    return Inertia::render('Artikel');
+Route::get('/blog', function () {
+    return Inertia::render('Blog');
+});
+
+Route::get('/contact', function () {
+    return Inertia::render('Contact');
 });
 
 Route::get('/galery', function () {

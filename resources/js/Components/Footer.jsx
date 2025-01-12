@@ -3,21 +3,21 @@ import { Link } from "@inertiajs/react";
 export default function Footer() {
     return (
         <footer className="shadow bg-gray-900">
-            <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <div className="w-full px-5 py-10 md:p-10 lg:p-20">
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <h1 className="text-3xl text-white opacity-80 poppins-bold">Bondepart</h1>
-                    <ul className="flex flex-wrap items-center mb-6 text-sm font-medium sm:mb-0 text-gray-400">
+                    <ul className="flex flex-wrap gap-3 items-center my-6 text-sm font-medium sm:mb-0 text-gray-400">
                         <li>
-                            <a href="#" className="hover:underline me-4 md:me-6">Home</a>
+                            <a href="#" className="hover:underline">Home</a>
                         </li>
                         <li>
-                            <a href="#" className="hover:underline me-4 md:me-6">About Us</a>
+                            <a href="#" className="hover:underline">About Us</a>
                         </li>
                         <li>
-                            <a href="#" className="hover:underline me-4 md:me-6">Blog</a>
+                            <a href="#" className="hover:underline">Blog</a>
                         </li>
                         <li>
-                            <a href="#" className="hover:underline md:me-6">Galery</a>
+                            <a href="#" className="hover:underline">Galery</a>
                         </li>
                         <li>
                             <a href="#" className="hover:underline">Contact</a>

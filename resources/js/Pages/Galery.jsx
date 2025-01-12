@@ -1,139 +1,85 @@
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
+import { useEffect } from "react";
+import AOS from "aos";
+import 'aos/dist/aos.css';
+import TextHead from "@/Components/TextHead";
 
 
 export default function GaleryPage() {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true,
+        });
+    }, []);
     return (
         <>
             <Navbar />
-            <div className="m-10     mt-24">
-                <h2 className="text-3xl font-bold">Mengapa Memilih</h2>
-                <h2 className="text-2xl text-gray-600">Lihatlah beberapa aktivitas</h2>
-            </div>
-            <div>
-                <div class="flex m-10">
-                    <a class="px-6 py-2 min-w-[120px] bg-slate-500 text-center focus:outline-none">
-                        Semua
-                    </a>
-                    <a class="px-6 py-2 min-w-[120px] text-center focus:outline-none"
-                        href="#">
-                        Meeting
-                    </a>
-                    <a class="px-6 py-2 min-w-[120px] text-center focus:outline-none"
-                        href="#">
-                        Bekerja
-                    </a>
-                    <a class="px-6 py-2 min-w-[120px] text-center focus:outline-none"
-                        href="#">
-                        Interior
-                    </a>
-                    <a class="px-6 py-2 min-w-[120px] text-center focus:outline-none"
-                        href="#">
-                        Ektserior
-                    </a>
-
-                </div>
-            </div>
-            <div class="flex justify-center">
-                <div class="grid grid-cols-3 m-10 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-                    <div class="max-w-xs bg-white border border-gray-200 shadow dark:bg-white rounded-lg">
-                        <a href="#">
-                            <img class="w-full h-40 object-cover rounded-t-lg" src="/images/RuangTamu.jpg" alt="" />
-                        </a>
-                        <div class="p-3">
-                            <a href="#">
-                                <h5 class="mb-2 text-base font-semibold tracking-tight text-red-500">kolam renang</h5>
-                            </a>
-                            <p class="mb-3 text-sm font-normal text-gray-700">Konsep circular design atau desain melingkar juga menjadi tren, di mana setiap elemen interior.....</p>
+            <main>
+                <section className="px-5 py-10 md:p-10 lg:p-20 flex flex-col items-center bg-white text-center">
+                    <TextHead title={"Galery Bondepart"} />
+                    <p className="open-sans mt-2 text-lg md:text-2xl text-black opacity-70" data-aos="zoom-in">
+                        Check out some of the activities
+                    </p>
+                    <ul className="mt-5 flex gap-x-3">
+                        <li>
+                            <button className="px-7 py-3 bg-[--primary-color] border border-[--primary-color] rounded-full">All</button>
+                        </li>
+                        <li>
+                            <button className="px-7 py-3 border border-[--primary-color] rounded-full hover:bg-[--primary-color]">Exterior</button>
+                        </li>
+                        <li>
+                            <button className="px-7 py-3 border border-[--primary-color] rounded-full hover:bg-[--primary-color]">Interior</button>
+                        </li>
+                    </ul>
+                    <div className="mt-5 columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-3">
+                        <div class="overflow-hidden mb-3" data-aos="zoom-in">
+                            <img src="/images/pexels-expect-best-79873-323705.jpg" alt="Item 2" class="object-cover w-full h-auto" />
+                        </div>
+                        <div class="overflow-hidden mb-3" data-aos="zoom-in">
+                            <img src="/images/RuangTamu.jpg" alt="Item 2" class="object-cover w-full h-auto" />
+                        </div>
+                        <div class="overflow-hidden mb-3" data-aos="zoom-in">
+                            <img src="/images/RuangTamu.jpg" alt="Item 2" class="object-cover w-full h-auto" />
+                        </div>
+                        <div class="overflow-hidden mb-3" data-aos="zoom-in">
+                            <img src="/images/foto1.jpg" alt="Item 2" class="object-cover w-full h-auto" />
+                        </div>
+                        <div class="overflow-hidden mb-3" data-aos="zoom-in">
+                            <img src="/images/pexels-expect-best-79873-323705.jpg" alt="Item 2" class="object-cover w-full h-auto" />
+                        </div>
+                        <div class="overflow-hidden mb-3" data-aos="zoom-in">
+                            <img src="/images/6f8596a5-ab60-47b2-8055-0047d9849931.jpg" alt="Item 2" class="object-cover w-full h-auto" />
+                        </div>
+                        <div class="overflow-hidden mb-3" data-aos="zoom-in">
+                            <img src="/images/pexels-pixabay-271618 (1).jpg" alt="Item 2" class="object-cover w-full h-auto" />
+                        </div>
+                        <div class="overflow-hidden mb-3" data-aos="zoom-in">
+                            <img src="/images/foto1.jpg" alt="Item 2" class="object-cover w-full h-auto" />
+                        </div>
+                        <div class="overflow-hidden mb-3" data-aos="zoom-in">
+                            <img src="/images/6f8596a5-ab60-47b2-8055-0047d9849931.jpg" alt="Item 2" class="object-cover w-full h-auto" />
+                        </div>
+                        <div class="overflow-hidden mb-3" data-aos="zoom-in">
+                            <img src="/images/pexels-pixabay-271618 (1).jpg" alt="Item 2" class="object-cover w-full h-auto" />
+                        </div>
+                        <div class="overflow-hidden mb-3" data-aos="zoom-in">
+                            <img src="/images/pexels-expect-best-79873-323705.jpg" alt="Item 2" class="object-cover w-full h-auto" />
+                        </div>
+                        <div class="overflow-hidden mb-3" data-aos="zoom-in">
+                            <img src="/images/RuangTamu.jpg" alt="Item 2" class="object-cover w-full h-auto" />
+                        </div>
+                        <div class="overflow-hidden mb-3" data-aos="zoom-in">
+                            <img src="/images/foto1.jpg" alt="Item 2" class="object-cover w-full h-auto" />
+                        </div>
+                        <div class="overflow-hidden mb-3" data-aos="zoom-in">
+                            <img src="/images/pexels-pixabay-271618 (1).jpg" alt="Item 2" class="object-cover w-full h-auto" />
                         </div>
                     </div>
-                   
-                    <div class="max-w-xs bg-white border border-gray-200 shadow dark:bg-white rounded-lg">
-                        <a href="#">
-                            <img class="w-full h-40 object-cover rounded-t-lg" src="/images/RuangTamu.jpg" alt="" />
-                        </a>
-                        <div class="p-3">
-                            <a href="#">
-                                <h5 class="mb-2 text-base font-semibold tracking-tight text-red-500">kolam renang</h5>
-                            </a>
-                            <p class="mb-3 text-sm font-normal text-gray-700">Konsep circular design atau desain melingkar juga menjadi tren, di mana setiap elemen interior.....</p>
-                        </div>
-                    </div>
-                   
-                    <div class="max-w-xs bg-white border border-gray-200 shadow dark:bg-white rounded-lg">
-                        <a href="#">
-                            <img class="w-full h-40 object-cover rounded-t-lg" src="/images/RuangTamu.jpg" alt="" />
-                        </a>
-                        <div class="p-3">
-                            <a href="#">
-                                <h5 class="mb-2 text-base font-semibold tracking-tight text-red-500">kolam renang</h5>
-                            </a>
-                            <p class="mb-3 text-sm font-normal text-gray-700">Konsep circular design atau desain melingkar juga menjadi tren, di mana setiap elemen interior.....</p>
-                        </div>
-                    </div>
-                   
-                    <div class="max-w-xs bg-white border border-gray-200 shadow dark:bg-white rounded-lg">
-                        <a href="#">
-                            <img class="w-full h-40 object-cover rounded-t-lg" src="/images/RuangTamu.jpg" alt="" />
-                        </a>
-                        <div class="p-3">
-                            <a href="#">
-                                <h5 class="mb-2 text-base font-semibold tracking-tight text-red-500">kolam renang</h5>
-                            </a>
-                            <p class="mb-3 text-sm font-normal text-gray-700">Konsep circular design atau desain melingkar juga menjadi tren, di mana setiap elemen interior.....</p>
-                        </div>
-                    </div>
-                   
-                    <div class="max-w-xs bg-white border border-gray-200 shadow dark:bg-white rounded-lg">
-                        <a href="#">
-                            <img class="w-full h-40 object-cover rounded-t-lg" src="/images/RuangTamu.jpg" alt="" />
-                        </a>
-                        <div class="p-3">
-                            <a href="#">
-                                <h5 class="mb-2 text-base font-semibold tracking-tight text-red-500">kolam renang</h5>
-                            </a>
-                            <p class="mb-3 text-sm font-normal text-gray-700">Konsep circular design atau desain melingkar juga menjadi tren, di mana setiap elemen interior.....</p>
-                        </div>
-                    </div>
-                   
-                    <div class="max-w-xs bg-white border border-gray-200 shadow dark:bg-white rounded-lg">
-                        <a href="#">
-                            <img class="w-full h-40 object-cover rounded-t-lg" src="/images/RuangTamu.jpg" alt="" />
-                        </a>
-                        <div class="p-3">
-                            <a href="#">
-                                <h5 class="mb-2 text-base font-semibold tracking-tight text-red-500">kolam renang</h5>
-                            </a>
-                            <p class="mb-3 text-sm font-normal text-gray-700">Konsep circular design atau desain melingkar juga menjadi tren, di mana setiap elemen interior.....</p>
-                        </div>
-                    </div>
-                   
-                    <div class="max-w-xs bg-white border border-gray-200 shadow dark:bg-white rounded-lg">
-                        <a href="#">
-                            <img class="w-full h-40 object-cover rounded-t-lg" src="/images/RuangTamu.jpg" alt="" />
-                        </a>
-                        <div class="p-3">
-                            <a href="#">
-                                <h5 class="mb-2 text-base font-semibold tracking-tight text-red-500">kolam renang</h5>
-                            </a>
-                            <p class="mb-3 text-sm font-normal text-gray-700">Konsep circular design atau desain melingkar juga menjadi tren, di mana setiap elemen interior.....</p>
-                        </div>
-                    </div>
-                   
-                    <div class="max-w-xs bg-white border border-gray-200 shadow dark:bg-white rounded-lg">
-                        <a href="#">
-                            <img class="w-full h-40 object-cover rounded-t-lg" src="/images/RuangTamu.jpg" alt="" />
-                        </a>
-                        <div class="p-3">
-                            <a href="#">
-                                <h5 class="mb-2 text-base font-semibold tracking-tight text-red-500">kolam renang</h5>
-                            </a>
-                            <p class="mb-3 text-sm font-normal text-gray-700">Konsep circular design atau desain melingkar juga menjadi tren, di mana setiap elemen interior.....</p>
-                        </div>
-                    </div>
-                   
-                </div>
-            </div>
+                </section>
+            </main>
             <Footer />
         </>
     )
