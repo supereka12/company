@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
 import PrimaryButton from "./PrimaryButton";
 import TextHead from "./TextHead";
+import { Link } from "@inertiajs/react";
 
 export default function Hero() {
 
@@ -11,7 +11,9 @@ export default function Hero() {
                     <TextHead title={"Modern Residence with Complete Facilities"} color={"text-black"} />
                     <p className="open-sans mt-2 text-2xl text-black opacity-70" data-aos="zoom-in" data-aos-delay="100">Experience a lifestyle that combines the best of both worlds—comfort with luxury.</p>
                     <div className="mt-5 flex justify-center lg:justify-start" data-aos="zoom-in" data-aos-delay="200">
+                        <Link href="/contact">
                         <PrimaryButton title={"Contact Us"} />
+                        </Link>
                     </div>
                 </div>
                 <div className="lg:w-[40%] h-full flex items-center justify-center lg:justify-end animation-primary">
@@ -21,7 +23,6 @@ export default function Hero() {
                     </figure>
                 </div>
             </div>
-
         </>
     )
 }

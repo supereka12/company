@@ -4,7 +4,7 @@ import TextHead from "@/Components/TextHead";
 import { FaCheck, FaSwimmingPool } from "react-icons/fa";
 import PrimaryButton from "@/Components/PrimaryButton";
 import Footer from "@/Components/Footer";
-import { Head } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 import { useEffect, useRef } from "react";
 import AOS from "aos";
 import 'aos/dist/aos.css';
@@ -110,7 +110,7 @@ export default function HomePage() {
                 {/* Fasilitas Unggulan Section */}
                 <section className="w-full min-h-screen px-5 py-10 md:p-10 lg:p-20 flex flex-col-reverse lg:flex-row gap-x-8 bg-white">
                     <div className="w-full lg:w-[60%] mt-5 lg:mt-0">
-                        <TextHead title="Fasilitas Unggulan" color="text-black" />
+                        <TextHead title="Superior Facilities" color="text-black" />
                         <p className="open-sans mt-2 text-lg md:text-2xl text-black opacity-70" data-aos="zoom-in">
                             Each apartment is equipped with everything you need for an unforgettable stay.                        </p>
                         <ul className="mt-4 space-y-4">
@@ -143,7 +143,9 @@ export default function HomePage() {
                         Don't wait any longer—discover the luxury and comfort of Bondepart Apartments now.
                     </p>
                     <div className="mt-5" data-aos="zoom-in">
-                        <PrimaryButton title="Contact Us" />
+                        <Link href={"/contact"}>
+                            <PrimaryButton title="Contact Us" />
+                        </Link>
                     </div>
                 </section>
             </main>

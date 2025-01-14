@@ -47,7 +47,7 @@ export default function Navbar() {
                         <ul className="mt-8 flex flex-col gap-y-3 text-white">
                             <NavLink link={"/"} title={"Home"} active={false} />
                             <NavLink link={"/about"} title={"About Us"} active={false} />
-                            <NavLink link={"/blogs"} title={"Blog"} active={false} />
+                            <NavLink link={"/blog"} title={"Blog"} active={false} />
                             <NavLink link={"/galery"} title={"Galery"} active={false} />
                         </ul>
                     </div>
@@ -70,9 +70,10 @@ export default function Navbar() {
                 <NavLink link={"/blog"} title={"Blogs"} active={url === "/blog"} />
                 <NavLink link={"/galery"} title={"Galery"} active={url === "/galery"} />
             </ul>
-
             <div className="hidden lg:block">
+                <Link href={"/contact"} >
                 <PrimaryButton title="Contact Us" />
+                </Link>
             </div>
         </nav>
     );

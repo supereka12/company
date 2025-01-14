@@ -5,6 +5,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import AOS from "aos"; 
 import 'aos/dist/aos.css'; 
 import { useEffect } from "react";
+import { Head } from "@inertiajs/react";
 
 export default function AboutPage() {
         useEffect(() => {
@@ -16,6 +17,7 @@ export default function AboutPage() {
         }, []);
     return (
         <>
+        <Head title="About Us" />
             <Navbar />
             <main>
                 <section className="px-5 py-10 md:p-10 lg:p-20 text-center flex flex-col items-center">

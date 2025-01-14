@@ -1,6 +1,6 @@
 import Navbar from "@/Components/Navbar";
 import TextHead from "@/Components/TextHead";
-import { Link } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 import { CiFacebook } from "react-icons/ci";
 import { CiInstagram } from "react-icons/ci";
 import { FaTiktok } from "react-icons/fa";
@@ -8,6 +8,7 @@ import { FaTiktok } from "react-icons/fa";
 export default function ContactPage() {
     return (
         <>
+        <Head title="Contact Us" />
             <Navbar />
             <main>
                 <section className="h-auto px-5 py-10 md:p-10 lg:px-72 lg:py-20 bg-white text-center">
