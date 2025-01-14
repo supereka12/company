@@ -29,6 +29,9 @@ Route::get('/contact', function () {
 Route::get('/admin', function () {
     return Inertia::render('Admin/Beranda');
 });
+Route::get('/admin/dashboard', function () {
+    return Inertia::render('Admin/Dashboard');
+});
 Route::get('/admin/blog', function () {
     return Inertia::render('Admin/Blog');
 });

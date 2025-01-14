@@ -64,13 +64,7 @@ export default function ArtikelPage() {
                             <Link href="/" className="font-bold text-xl poppins-light line-clamp-2 opacity-80 text-black hover:underline">Interior sederhana Populer tahun 2025 di indonesia</Link>
                             <p className="open-sans line-clamp-4 opacity-70 text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, provident! Facere blanditiis quidem itaque consequatur cum soluta nisi vero nostrum hic maiores. Dolor, enim odio quisquam dolorem quam obcaecati consectetur!</p>
                         </div>
-                        <div className="w-full">
-                            <figure className="w-full h-52 md:h-40">
-                                <img className="w-full h-full" src="/images/pexels-quark-studio-1159039-3201921.jpg" alt="" />
-                            </figure>
-                            <Link href="/" className="font-bold text-xl poppins-light line-clamp-2 opacity-80 text-black hover:underline">Interior sederhana Populer tahun 2025 di indonesia</Link>
-                            <p className="open-sans line-clamp-4 opacity-70 text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, provident! Facere blanditiis quidem itaque consequatur cum soluta nisi vero nostrum hic maiores. Dolor, enim odio quisquam dolorem quam obcaecati consectetur!</p>
-                        </div>
+                      
                         
                     </div>
                 </section>

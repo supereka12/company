@@ -61,8 +61,7 @@ export default function HomePage() {
                     <div className="w-full lg:w-[50%] mt-5 lg:mt-0 h-full flex flex-col justify-between">
                         <TextHead title="Why Choose Bondepart?" color="text-white" />
                         <p className="open-sans mt-2 text-lg md:text-2xl text-white opacity-70" data-aos="zoom-in">
-
-                            Experience a lifestyle that combines comfort with luxury.                        </p>
+                            Experience a lifestyle that combines comfort with luxury.</p>
                         <ul className="mt-5 space-y-4">
                             <FeatureItem title="Complete Facilities" description="Swimming pool, playground and 24 hour security." />
                             <FeatureItem title="Strategic Location" description="Close to shopping centers and public transportation." />
