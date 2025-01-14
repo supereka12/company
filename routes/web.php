@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -27,17 +27,17 @@ Route::get('/contact', function () {
     return Inertia::render('Contact');
 });
 Route::get('/admin', function () {
-    return Inertia::render('admin/Beranda');
+    return Inertia::render('Admin/Beranda');
 });
 Route::get('/admin/blog', function () {
-    return Inertia::render('admin/Blog');
+    return Inertia::render('Admin/Blog');
 });
 
 Route::get('/galery', function () {
     return Inertia::render('Galery');
 });
 
-Route::post("/upload", [ArtikelController::class, 'upload']);
+Route::post("/upload", [BlogController::class, 'createBlog']);
 
 
 Route::get('/dashboard', function () {

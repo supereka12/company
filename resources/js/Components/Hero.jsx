@@ -6,8 +6,8 @@ export default function Hero() {
 
     return (
         <>
-            <div className={`w-full h-full flex flex-col-reverse lg:flex-row justify-center px-5 md:p-10 lg:p-20 py-10 bg-[--third-color]`}>
-                <div className="lg:w-[60%] h-full mt-5 md:mt-0 flex flex-col justify-center text-center lg:text-start">
+            <div className={`w-full h-full flex flex-col-reverse lg:flex-row justify-between px-5 md:p-10 lg:p-20 py-10 bg-[--third-color]`}>
+                <div className="lg:w-[50%] h-full mt-5 md:mt-0 flex flex-col justify-center text-center lg:text-start">
                     <TextHead title={"Modern Residence with Complete Facilities"} color={"text-black"} />
                     <p className="open-sans mt-2 text-2xl text-black opacity-70" data-aos="zoom-in" data-aos-delay="100">Experience a lifestyle that combines the best of both worlds—comfort with luxury.</p>
                     <div className="mt-5 flex justify-center lg:justify-start" data-aos="zoom-in" data-aos-delay="200">
