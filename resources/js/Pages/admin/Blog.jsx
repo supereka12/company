@@ -1,8 +1,8 @@
 import Sidebar from "@/Components/Sidebar";
 import Navbar from "@/Components/Navbar1";
 
-export default function BlogAdmin({ artikel }) {
-    console.log(artikel)
+export default function BlogAdmin({ blog }) {
+    console.log(blog)
     return (
         <>
             <Sidebar />
@@ -39,13 +39,13 @@ export default function BlogAdmin({ artikel }) {
                         </tr>
                     </thead>
                     <tbody className="text-gray-700">
-                        {artikel.map((item, index) => (
-                            <tr key={index} classNameName="text-center">
-                                <td className="border border-gray-300 px-4 py-2">{item.id}</td>
-                                <td className="border border-gray-300 px-4 py-2">{item.judul}</td>
-                                <td className="border border-gray-300 px-4 py-2">{item.isi}</td>
-                                <td className="border border-gray-300 px-4 py-2">{new Date(item.created_at).toLocaleDateString()}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">
+                        {blog.map((item, index) => (
+                            <tr key={index} classNameName="">
+                                <td className="border border-gray-300 px-4 py-2 text-center">{item.id}</td>
+                                <td className="border border-gray-300 px-4 py-2">{item.title}</td>
+                                <td className="border border-gray-300 px-4 py-2">{item.content}</td>
+                                <td className="border border-gray-300 px-4 py-2 text-center">{new Date(item.created_at).toLocaleDateString()}</td>
+                                <td className="px-6 py-4 whitespace-nowrap border text-center border-gray-300">
                                     <button className="px-4 py-2 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue active:bg-blue-600 transition duration-150 ease-in-out">Edit</button>
                                     <button className="ml-2 px-4 py-2 font-medium text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:shadow-outline-red active:bg-red-600 transition duration-150 ease-in-out">Delete</button>
                                 </td>

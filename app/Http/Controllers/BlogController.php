@@ -30,4 +30,12 @@ class BlogController extends Controller
 
         return Inertia::render("Admin/Beranda", ['url_image' => $urlImage]);
     }
+
+    public function show ()
+    {
+        $blog = Blog::all();
+        return Inertia::render('Admin/Blog', ['blog' => $blog]);
+    }
+
+    
 }
