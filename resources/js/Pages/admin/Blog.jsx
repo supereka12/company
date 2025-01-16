@@ -1,12 +1,18 @@
 import Sidebar from "@/Components/Sidebar";
 import Navbar from "@/Components/Navbar1";
+import { router } from "@inertiajs/react";
 
 export default function BlogAdmin({ blog }) {
     console.log(blog)
+
+    const handleDelete = (idSekarang) => {
+        console.log(`delete ${idSekarang}`)
+        router.delete(`/admin/blog/${idSekarang}`)
+    }
     return (
         <>
             <Sidebar />
-            <Navbar />
+            <Navbar title={"daftar artikel"} />
             <div className="flex flex-col ml-[25%] mr-[5%] mt-10">
                 <div className="flex items-center justify-between mb-4">
                     <form className="flex gap-3">
@@ -23,36 +29,40 @@ export default function BlogAdmin({ blog }) {
                             <option value="Filter2">Filter 2</option>
                         </select>
                     </form>
-                    <button className="px-4 py-2 font-medium text-white bg-teal-700 rounded-md">
-                        Tambah
-                    </button>
+                    <a href="/admin">
+                        <button className="px-4 py-2 font-medium text-white bg-teal-700 rounded-md">
+                            Tambah
+                        </button>
+                    </a>
                 </div>
 
-                <table className="min-w-full">
-                    <thead className="bg-teal-700 text-white">
-                        <tr>
-                            <th className="px-4 py-2 text-center">NO</th>
-                            <th className="px-4 py-2 text-left">JUDUL</th>
-                            <th className="px-4 py-2 text-left">DESKRIPSI</th>
-                            <th className="px-4 py-2 text-center">TANGGAL PUBLISH</th>
-                            <th className="px-4 py-2 text-center">ACTION</th>
-                        </tr>
-                    </thead>
-                    <tbody className="text-gray-700">
-                        {blog.map((item, index) => (
-                            <tr key={index} classNameName="">
-                                <td className="border border-gray-300 px-4 py-2 text-center">{item.id}</td>
-                                <td className="border border-gray-300 px-4 py-2">{item.title}</td>
-                                <td className="border border-gray-300 px-4 py-2">{item.content}</td>
-                                <td className="border border-gray-300 px-4 py-2 text-center">{new Date(item.created_at).toLocaleDateString()}</td>
-                                <td className="px-6 py-4 whitespace-nowrap border text-center border-gray-300">
-                                    <button className="px-4 py-2 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue active:bg-blue-600 transition duration-150 ease-in-out">Edit</button>
-                                    <button className="ml-2 px-4 py-2 font-medium text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:shadow-outline-red active:bg-red-600 transition duration-150 ease-in-out">Delete</button>
-                                </td>
+                <div className="relative overflow-auto">
+                    <table className="min-w-full">
+                        <thead className="bg-teal-700 text-white">
+                            <tr>
+                                <th className="px-4 py-2 text-center">NO</th>
+                                <th className="px-4 py-2 text-left">JUDUL</th>
+                                <th className="px-4 py-2 text-left">DESKRIPSI</th>
+                                <th className="px-4 py-2 text-center">TANGGAL PUBLISH</th>
+                                <th className="px-4 py-2 text-center">ACTION</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody className="text-gray-700">
+                            {blog.map((item, index) => (
+                                <tr key={index} classNameName="">
+                                    <td className="border border-gray-300 px-4 py-2 text-center">{item.id}</td>
+                                    <td className="border border-gray-300 px-4 py-2">{item.title}</td>
+                                    <td className="border border-gray-300 px-4 py-2 break-words max-w-[300px] whitespace-pre-wrap">{item.content}</td>
+                                    <td className="border border-gray-300 px-4 py-2 text-center">{new Date(item.created_at).toLocaleDateString()}</td>
+                                    <td className="px-6 py-4 whitespace-nowrap border text-center border-gray-300">
+                                        <button className="px-4 py-2 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue active:bg-blue-600 transition duration-150 ease-in-out">Edit</button>
+                                        <button onClick={() => handleDelete(item.id)} className="ml-2 px-4 py-2 font-medium text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:shadow-outline-red active:bg-red-600 transition duration-150 ease-in-out">Delete</button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
         </>

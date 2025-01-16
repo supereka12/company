@@ -23,6 +23,10 @@ Route::get('/blog', function () {
     return Inertia::render('Blog');
 });
 
+Route::get('/admin/fasilitas', function () {
+    return Inertia::render('Admin/Fasilitas');
+});
+
 Route::get('/contact', function () {
     return Inertia::render('Contact');
 });
@@ -33,6 +37,9 @@ Route::get('/admin/dashboard', function () {
     return Inertia::render('Admin/Dashboard');
 });
 Route::get('/admin/blog', [BlogController::class, 'show']);
+Route::delete('/admin/blog/{id}', [BlogController::class, 'destroy']);
+
+Route::get('/barang', [BlogController::class, 'index'])->name('admin/blog');
 
 Route::get('/galery', function () {
     return Inertia::render('Galery');

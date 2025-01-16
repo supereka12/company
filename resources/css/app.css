@@ -7,6 +7,9 @@
     --secondary-color: #00B8B8;
     --third-color: #f7f7f7;
     --bg-secondary: #00b8b825;
+    --four-color: #e2e8f0;
+    --five-color: #188043;
+    
 }
 
 body {
@@ -43,3 +46,4 @@ body {
       opacity: 1;
     }
   }
+

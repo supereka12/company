@@ -1,7 +1,8 @@
 import { router } from "@inertiajs/react";
 import { useState } from "react";
 
-export default function Beranda({url_image}) {
+
+export default function Beranda({ url_image }) {
     const [image, setImage] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
     const [title, setTitle] = useState('')
@@ -21,10 +22,10 @@ export default function Beranda({url_image}) {
 
     return (
         <div className="container mx-auto p-4">
-            <h1 className="text-2xl font-bold mb-4">Upload Image</h1>
             <img src={url_image} alt="" />
 
-            <form onSubmit={handleSubmit}>
+            <form className="max-w-md mx-auto mt-20 p-6 bg-slate-100 border rounded-lg shadow-lg" onSubmit={handleSubmit}>
+            <h2 class="text-2xl text-center font-bold mb-6">isi data blog</h2>
                 <input
                     type="file"
                     name="image"
@@ -32,8 +33,18 @@ export default function Beranda({url_image}) {
                     className="mb-4"
                     required
                 />
-                <input type="text" onChange={(e) => setTitle(e.target.value)} required/>
-                <input type="text" onChange={(e) => setContent(e.target.value)} required/>
+                <div class="mb-4">
+                    <label className="block text-gray-700 font-bold mb-2" for="name">
+                        Judul:
+                    </label>
+                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" onChange={(e) => setTitle(e.target.value)} required />
+                </div>
+                <div class="mb-4">
+                    <label className="block text-gray-700 font-bold mb-2" for="name">
+                        Deskripsi:
+                    </label>
+                    <textarea class="shadow appearance-none border h-36 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" onChange={(e) => setContent(e.target.value)} required> </textarea>
+                </div>
                 <button
                     type="submit"
                     className="bg-blue-500 text-white px-4 py-2 rounded"

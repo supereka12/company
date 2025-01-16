@@ -28,7 +28,7 @@ class BlogController extends Controller
             'published_at' => null,
         ]);
 
-        return Inertia::render("Admin/Beranda", ['url_image' => $urlImage]);
+        return redirect('admin/blog')->with('success', 'Barang berhasil dihapus.');
     }
 
     public function show ()
@@ -37,5 +37,19 @@ class BlogController extends Controller
         return Inertia::render('Admin/Blog', ['blog' => $blog]);
     }
 
-    
+    public function destroy($id)
+    {
+        $blog = Blog::where('id', $id);
+        $blog->delete();
+        return redirect('admin/blog')->with('success', 'Barang berhasil dihapus.');
+    }
+
+    public function index()
+    {
+        // Mengambil 10 barang per halaman
+        $blog = blog::paginate(10);
+        
+        // Menampilkan ke view dengan data barang
+        return view('admin/blog', compact('blog'));
+    }
 }
