@@ -15,18 +15,21 @@ class BlogController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required',
-            // 'status' => 'required|in:draft,published,archived',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Pastikan file gambar valid
         ]);
-        $urlImage = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
-
-        $blog = Blog::create([
-            'title' => $validated['title'],
-            'slug' => Str::slug($validated['title']),
-            'image_url' => $urlImage,
-            'content' => $validated['content'],
-            'status' => 'draft',
-            'published_at' => null,
-        ]);
+    
+            $imagePath = $request->file('image')->getRealPath();
+            $urlImage = Cloudinary::upload($imagePath)->getSecurePath();  // Mendapatkan URL gambar setelah di-upload
+    
+            // Membuat entry blog baru dengan data yang telah di-validasi
+            $blog = Blog::create([
+                'title' => $validated['title'],
+                'slug' => Str::slug($validated['title']),  // Membuat slug dari judul
+                'image_url' => $urlImage,  // Menyimpan URL gambar yang di-upload
+                'content' => $validated['content'],
+                'status' => 'draft',  // Status default
+                'published_at' => null,  // Menandakan blog belum dipublikasikan
+            ]);
 
         return redirect('admin/blog')->with('success', 'Barang berhasil dihapus.');
     }
