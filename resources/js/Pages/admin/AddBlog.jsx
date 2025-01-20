@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { router } from '@inertiajs/react';
 import { Editor } from '@tinymce/tinymce-react';
+import { IoMdImages } from "react-icons/io";
+import { FaPencilAlt } from "react-icons/fa";
 
 export default function BlogForm() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [image, setImage] = useState(null);
+    const [preview, setPreview] = useState(null)
 
     // Fungsi untuk menangani submit form
     const handleSubmit = (event) => {
@@ -23,45 +26,54 @@ export default function BlogForm() {
     return (
         <>
             <form
-                className="w-full mt-20 p-6"
+                className="w-full bg-[--third-color]"
                 onSubmit={handleSubmit}
             >
-                <h2 className="text-2xl text-center font-bold mb-6">Isi Data Blog</h2>
 
-                    {/* Input untuk Gambar */}
-                    <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2" htmlFor="image">
-                        Thumbnail:
-                    </label>
-                    <input
-                        type="file"
-                        id="image"
-                        name="image"
-                        onChange={(e) => setImage(e.target.files[0])}
-                        accept="image/*"
-                        required
-                    />
-                </div>
+                <div className='flex gap-x-10 px-20 py-6' >
+                    <div className="mb-4 w-auto">
+                        {preview
+                            ? <div className='w-auto h-auto relative'>
+                                <img className='h-44 w-auto' src={preview} alt='Thumbnail' />
+                                <label className='p-2 bg-white rounded-full absolute top-2 right-2' htmlFor="image">
+                                    <FaPencilAlt className='text-xl text-black text-opacity-70' />
+                                </label>
+                            </div>
+                            : <label className="w-44 h-44 p-8 border-2 border-gray-500 shadow text-gray-700 bg-white font-bold mb-2 flex flex-col justify-center items-center cursor-pointer" htmlFor="image">
+                                <IoMdImages className="text-6xl" />
+                                <h2 className="text-center block text-gray-700 font-bold mt-2" >Thumbnail</h2>
+                            </label>}
+                        <input
+                            className='hidden'
+                            type="file"
+                            id="image"
+                            name="image"
+                            onChange={(e) => {
+                                const file = e.target.files[0]
+                                setImage(file)
+                                setPreview(URL.createObjectURL(file));
+                            }}
+                            accept="image/*"
+                            required
+                        />
+                    </div>
 
-                {/* Input untuk Judul */}
-                <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2" htmlFor="title">
-                        Title:
-                    </label>
-                    <input
-                        className="w-full md:w-80 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text"
-                        id="title"
-                        onChange={(e) => setTitle(e.target.value)}
-                        required
-                    />
+                    <div className="w-full md:w-2/4 mb-4">
+                        <label className="block text-gray-700 font-bold mb-2" htmlFor="title">
+                            Title:
+                        </label>
+                        <input
+                            className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            type="text"
+                            id="title"
+                            onChange={(e) => setTitle(e.target.value)}
+                            required
+                        />
+                    </div>
                 </div>
 
                 {/* TinyMCE Editor untuk Deskripsi */}
                 <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2" htmlFor="content">
-                        Content
-                    </label>
                     <Editor
                         apiKey="wvukpkufstihiwwknhc7ctc9pyz3itibe86gc4q8igpajwrg"
                         value={content}

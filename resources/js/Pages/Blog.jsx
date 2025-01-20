@@ -56,7 +56,7 @@ export default function BlogPage(props) {
                     <p className="w-full md:w-[420px] open-sans mt-2 text-2xl text-white opacity-70" data-aos="zoom-in">
                         Here you can find the latest company news and business articles.
                     </p>
-                    <div className="w-full md:w-2/4 lg:w-[40%] mt-5" data-aos="zoom-in">
+                    {/* <div className="w-full md:w-2/4 lg:w-[40%] mt-5" data-aos="zoom-in">
                         <div onClick={handleFocus} className="w-full py-2 pl-12 pr-2 flex items-center gap-x-3 bg-white text-black text-opacity-60 outline-none text-xl text-start cursor-pointer hover:ring-2 hover:ring-black">
                             <IoMdSearch className="text-2xl text-black opacity-60 absolute left-4 top-1/2 transform -translate-y-1/2" />
                             <p>Search...</p>
@@ -78,7 +78,7 @@ export default function BlogPage(props) {
                                 })}
                                 </ul>
                             </div>
-                    </div>
+                    </div> */}
                 </section>
                 <section className="w-full min-h-screen h-auto px-5 py-10 md:p-10 lg:p-20 bg-white">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 md:gap-5">

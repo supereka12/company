@@ -101,7 +101,9 @@ export default function HomePage() {
                             </div>
                         </div>
                         <div className="flex justify-center mt-8" data-aos="zoom-in">
-                            <PrimaryButton title={"See More"} />
+                            <Link href="/galery">
+                                <PrimaryButton title={"See More"} />
+                            </Link>
                         </div>
                     </div>
                 </section>
