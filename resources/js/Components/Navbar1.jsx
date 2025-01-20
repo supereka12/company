@@ -4,7 +4,7 @@ import PrimaryButton from "./PrimaryButton";
 
 export default function Navbar1({title}) {
     return (
-        <nav class="bg-white -mt-10 ml-[20%] dark:bg-slate-200 border-y border-green-800">
+        <nav class="bg-white ml-[20%] dark:bg-slate-200 border-b border-[--primary-color]">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <h1 className="text-2xl poppins-bold text-gray-800 ">{title}</h1>
                 <div class="flex items-center md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse">

@@ -15,26 +15,30 @@ class BlogController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Pastikan file gambar valid
+            'image' => 'required|image', // Pastikan file gambar valid
         ]);
     
             $imagePath = $request->file('image')->getRealPath();
-            $urlImage = Cloudinary::upload($imagePath)->getSecurePath();  // Mendapatkan URL gambar setelah di-upload
+            $urlImage = Cloudinary::upload($imagePath)->getSecurePath();
     
-            // Membuat entry blog baru dengan data yang telah di-validasi
             $blog = Blog::create([
                 'title' => $validated['title'],
-                'slug' => Str::slug($validated['title']),  // Membuat slug dari judul
-                'image_url' => $urlImage,  // Menyimpan URL gambar yang di-upload
+                'slug' => Str::slug($validated['title']),
+                'image_url' => $urlImage, 
                 'content' => $validated['content'],
-                'status' => 'draft',  // Status default
-                'published_at' => null,  // Menandakan blog belum dipublikasikan
+                'status' => 'draft',
+                'published_at' => null,
             ]);
 
         return redirect('admin/blog')->with('success', 'Barang berhasil dihapus.');
     }
 
     public function show ()
+    {
+        $blog = Blog::all();
+        return Inertia::render('Blog', ['blog' => $blog]);
+    }
+    public function showAdminBlog ()
     {
         $blog = Blog::all();
         return Inertia::render('Admin/Blog', ['blog' => $blog]);
@@ -54,5 +58,10 @@ class BlogController extends Controller
         
         // Menampilkan ke view dengan data barang
         return view('admin/blog', compact('blog'));
+    }
+    Public function detailBlog($slug) {
+        $blog = Blog::where('slug',  $slug)->first();
+        $other_blog = Blog::inRandomOrder()->limit(5)->get();
+        return Inertia::render('DetailBlog', ['blog' => $blog, 'other_blog' => $other_blog]);
     }
 }

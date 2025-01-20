@@ -47,3 +47,73 @@ body {
     }
   }
 
+  .no-tailwind img {
+    margin-top: 11px;
+    margin-bottom: 11px;
+    width: 100%;
+    height: auto;
+  }
+
+  .no-tailwind p {
+    margin-top: 11px;
+    margin-bottom: 11px;
+  }
+
+/* Menetapkan ukuran font untuk heading agar sesuai urutannya */
+.no-tailwind h1 {
+  font-size: 2rem; /* Ukuran font lebih besar untuk h1 */
+  font-weight: bold;
+}
+
+.no-tailwind h2 {
+  font-size: 1.75rem; /* Ukuran font untuk h2 */
+  font-weight: bold;
+}
+
+.no-tailwind h3 {
+  font-size: 1.5rem; /* Ukuran font untuk h3 */
+  font-weight: bold;
+}
+
+.no-tailwind h4 {
+  font-size: 1.25rem; /* Ukuran font untuk h4 */
+  font-weight: bold;
+}
+
+.no-tailwind h5 {
+  font-size: 1.125rem; /* Ukuran font untuk h5 */
+  font-weight: bold;
+}
+
+.no-tailwind h6 {
+  font-size: 1rem; /* Ukuran font untuk h6 */
+  font-weight: bold;
+}
+
+/* Untuk ul dan ol agar bebas dari gaya default */
+.no-tailwind ul, .no-tailwind ol {
+  margin-top: 11px;
+  margin-bottom: 11px;
+  list-style-type: none;  /* Menonaktifkan list style default */
+}
+.no-tailwind ul li, .no-tailwind ol li {
+  margin-top: 11px;
+  margin-bottom: 11px;
+}
+
+/* Anda bisa menyesuaikan gaya lebih lanjut */
+.no-tailwind ul {
+  padding-left: 1rem; /* Menambahkan padding kiri jika diperlukan */
+  list-style-type: disc; /* Atau bisa menggunakan gaya lain seperti 'decimal' */
+}
+
+.no-tailwind ol {
+  padding-left: 1.25rem; /* Menambahkan padding kiri jika diperlukan */
+  list-style-type: decimal; /* Menambahkan angka pada list */
+}
+.no-tailwind a {
+  margin-top: 11px;
+  margin-bottom: 11px;
+  color: inherit;
+  text-decoration: none;
+}

@@ -52,7 +52,7 @@ export default function BlogAdmin({ blog }) {
                                 <tr key={index} classNameName="">
                                     <td className="border border-gray-300 px-4 py-2 text-center">{item.id}</td>
                                     <td className="border border-gray-300 px-4 py-2">{item.title}</td>
-                                    <td className="border border-gray-300 px-4 py-2 break-words max-w-[300px] whitespace-pre-wrap">{item.content}</td>
+                                    {/* <td className="border border-gray-300 px-4 py-2 break-words max-w-[300px] whitespace-pre-wrap">{item.content}</td> */}
                                     <td className="border border-gray-300 px-4 py-2 text-center">{new Date(item.created_at).toLocaleDateString()}</td>
                                     <td className="px-6 py-4 whitespace-nowrap border text-center border-gray-300">
                                         <button className="px-4 py-2 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue active:bg-blue-600 transition duration-150 ease-in-out">Edit</button>

@@ -23,7 +23,7 @@ export default function BlogForm() {
     return (
         <div className="container mx-auto p-4">
             <form 
-                className="max-w-md mx-auto mt-20 p-6 bg-slate-100 border rounded-lg shadow-lg" 
+                className="w-full mx-auto mt-20 p-6 bg-slate-100 border rounded-lg shadow-lg" 
                 onSubmit={handleSubmit}
             >
                 <h2 className="text-2xl text-center font-bold mb-6">Isi Data Blog</h2>
@@ -45,7 +45,7 @@ export default function BlogForm() {
                 {/* Input untuk Gambar */}
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2" htmlFor="image">
-                        Gambar:
+                        Thumbnail:
                     </label>
                     <input 
                         type="file" 
