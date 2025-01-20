@@ -77,27 +77,30 @@ export default function HomePage() {
                             Browse the photo gallery showing our wide selection of apartment units. Find the unit that fits your family's lifestyle.                        </p>
                     </div>
                     <div className="w-full mt-5 lg:mt-8">
-                        <div class="columns-2 lg:columns-3 xl:columns-4 md:gap-4">
-                            <div class="overflow-hidden mb-4" data-aos="zoom-in">
-                                <img src="/images/pexels-expect-best-79873-323705.jpg" alt="Item 2" class="object-cover w-full h-auto" />
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                            <div class="overflow-hidden mb-4 h-80" data-aos="zoom-in">
+                                <img src="/images/foto1.jpg" alt="Item 4" class="object-cover w-full h-full" />
                             </div>
-                            <div class="overflow-hidden mb-4" data-aos="zoom-in">
-                                <img src="/images/pexels-expect-best-79873-323705.jpg" alt="Item 2" class="object-cover w-full h-auto" />
+                            <div class="overflow-hidden mb-4 h-80" data-aos="zoom-in">
+                                <img src="/images/pexels-expect-best-79873-323705.jpg" alt="Item 2" class="object-cover w-full h-full" />
                             </div>
-                            <div class="overflow-hidden mb-4" data-aos="zoom-in">
-                                <img src="/images/foto1.jpg" alt="Item 3" class="object-cover w-full h-auto" />
+                            <div class="overflow-hidden mb-4 h-80" data-aos="zoom-in">
+                                <img src="/images/pexels-expect-best-79873-323705.jpg" alt="Item 2" class="object-cover w-full h-full" />
                             </div>
-                            <div class="overflow-hidden mb-4" data-aos="zoom-in">
-                                <img src="/images/foto1.jpg" alt="Item 4" class="object-cover w-full h-auto" />
+                            <div class="overflow-hidden mb-4 h-80" data-aos="zoom-in">
+                                <img src="/images/foto1.jpg" alt="Item 3" class="object-cover w-full h-full" />
                             </div>
-                            <div class="overflow-hidden mb-4" data-aos="zoom-in">
-                                <img src="/images/pexels-expect-best-79873-323705.jpg" alt="Item 2" class="object-cover w-full h-auto" />
+                            <div class="overflow-hidden mb-4 h-80" data-aos="zoom-in">
+                                <img src="/images/foto1.jpg" alt="Item 4" class="object-cover w-full h-full" />
                             </div>
-                            <div class="overflow-hidden mb-4" data-aos="zoom-in">
-                                <img src="/images/pexels-quark-studio-1159039-3201921.jpg" alt="Item 5" class="object-cover w-full h-auto" />
+                            <div class="overflow-hidden mb-4 h-80" data-aos="zoom-in">
+                                <img src="/images/pexels-expect-best-79873-323705.jpg" alt="Item 2" class="object-cover w-full h-full" />
                             </div>
-                            <div class="overflow-hidden mb-4" data-aos="zoom-in">
-                                <img src="/images/RuangTamu.jpg" alt="Item 5" class="object-cover w-full h-auto" />
+                            <div class="overflow-hidden mb-4 h-80" data-aos="zoom-in">
+                                <img src="/images/pexels-quark-studio-1159039-3201921.jpg" alt="Item 5" class="object-cover w-full h-full" />
+                            </div>
+                            <div class="overflow-hidden mb-4 h-80" data-aos="zoom-in">
+                                <img src="/images/RuangTamu.jpg" alt="Item 5" class="object-cover w-full h-full" />
                             </div>
                         </div>
                         <div className="flex justify-center mt-8" data-aos="zoom-in">
