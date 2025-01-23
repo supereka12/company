@@ -8,19 +8,19 @@ export default function Footer() {
                     <h1 className="text-3xl text-white opacity-80 poppins-bold">Bondepart</h1>
                     <ul className="flex flex-wrap gap-3 items-center my-6 text-sm font-medium sm:mb-0 text-gray-400">
                         <li>
-                            <a href="#" className="hover:underline">Home</a>
+                            <a href="/home" className="hover:underline">Home</a>
                         </li>
                         <li>
-                            <a href="#" className="hover:underline">About Us</a>
+                            <a href="/about" className="hover:underline">About Us</a>
                         </li>
                         <li>
-                            <a href="#" className="hover:underline">Blog</a>
+                            <a href="/blog" className="hover:underline">Blog</a>
                         </li>
                         <li>
-                            <a href="#" className="hover:underline">Galery</a>
+                            <a href="/galery" className="hover:underline">Galery</a>
                         </li>
                         <li>
-                            <a href="#" className="hover:underline">Contact</a>
+                            <a href="/contact" className="hover:underline">Contact</a>
                         </li>
                     </ul>
                 </div>

@@ -14,7 +14,7 @@ export default function Navbar1({ title }) {
                             <button type="button" class=" relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                 <span class="absolute -inset-1.5"></span>
                                 <span class="sr-only">Open user menu</span>
-                                <img class="size-8 rounded-full" src="" alt="" />
+                                <img class="size-8 rounded-full" src="/images/foto1.jpg" alt="" />
                             </button>
                         </div>
                     </a>

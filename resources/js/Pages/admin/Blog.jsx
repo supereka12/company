@@ -9,6 +9,13 @@ export default function BlogAdmin({ blog }) {
         console.log(`delete ${idSekarang}`)
         router.delete(`/admin/blog/${idSekarang}`)
     }
+
+    const handleEdit = (id) => {
+        console.log(`update ${id}`);
+        router.get(`/admin/blog/${id}/edit`);
+    };
+
+
     return (
         <main className="w-full flex">
             <Sidebar />
@@ -21,8 +28,7 @@ export default function BlogAdmin({ blog }) {
                                 <input class="w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" type="search" placeholder="Search" />
                             </div>
                             <select id="filter" name="filter"
-                                className="w-40 h-10 border border-gray-300 focus:outline-none focus:border-sky-500 text-gray-700 rounded px-2"
-                            >
+                                className="w-40 h-10 border border-gray-300 focus:outline-none focus:border-sky-500 text-gray-700 rounded px-2">
                                 <option value="All" selected>
                                     Semua
                                 </option>
@@ -30,7 +36,7 @@ export default function BlogAdmin({ blog }) {
                                 <option value="Filter2">Filter 2</option>
                             </select>
                         </form>
-                        <a href="/admin">
+                        <a href="/admin/blog/add">
                             <button className="px-4 py-2 font-medium text-white bg-teal-700 rounded-md">
                                 Tambah
                             </button>
@@ -54,7 +60,7 @@ export default function BlogAdmin({ blog }) {
                                         {/* <td className="border border-gray-300 px-4 py-2 break-words max-w-[300px] whitespace-pre-wrap">{item.content}</td> */}
                                         <td className="border border-gray-300 px-4 py-2 text-center">{new Date(item.created_at).toLocaleDateString()}</td>
                                         <td className="px-6 py-4 whitespace-nowrap border text-center border-gray-300">
-                                            <button className="px-4 py-2 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue active:bg-blue-600 transition duration-150 ease-in-out">Edit</button>
+                                            <button onClick={() => handleEdit(item.id)} className="px-4 py-2 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue active:bg-blue-600 transition duration-150 ease-in-out">Edit</button>
                                             <button onClick={() => handleDelete(item.id)} className="ml-2 px-4 py-2 font-medium text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:shadow-outline-red active:bg-red-600 transition duration-150 ease-in-out">Delete</button>
                                         </td>
                                     </tr>
