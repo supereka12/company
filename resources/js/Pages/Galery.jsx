@@ -21,16 +21,18 @@ export default function GaleryPage({title}) {
             <Navbar />
             <main>
                 <section className="min-h-screen h-auto px-5 py-10 md:p-10 lg:p-20 flex flex-col items-center bg-[--third-color] text-center">
-                    <TextHead title={`Galeri ${title}`} />
+                    <div className="w-full md:w-[80%]" >
+                    <TextHead title={`${title}`} />
+                    </div>
                     <ul className="mt-5 flex gap-x-3" data-aos="zoom-in">
                         <li>
-                            <button className="px-7 py-3 bg-[--primary-color] border border-[--primary-color] rounded-full">Semua</button>
+                            <button className="px-7 py-3 bg-[--primary-color] text-white border border-[--primary-color] rounded-full">Semua</button>
                         </li>
                         <li>
-                            <button className="px-7 py-3 border border-[--primary-color] rounded-full hover:bg-[--primary-color]">Eksterior</button>
+                            <button className="px-7 py-3 border border-[--primary-color] rounded-full hover:text-white hover:bg-[--primary-color]">Eksterior</button>
                         </li>
                         <li>
-                            <button className="px-7 py-3 border border-[--primary-color] rounded-full hover:bg-[--primary-color]">Interior</button>
+                            <button className="px-7 py-3 border border-[--primary-color] rounded-full hover:text-white hover:bg-[--primary-color]">Interior</button>
                         </li>
                     </ul>
                     <div className="mt-5 columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-3">

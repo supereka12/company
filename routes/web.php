@@ -20,7 +20,7 @@ Route::get('/about', function () {
     return Inertia::render('About');
 });
 
-Route::get('/blogs', [BlogController::class, 'show']);
+Route::get('/artikel', [BlogController::class, 'show']);
 Route::get('/admin/blog/add', function () {
     return Inertia::render('Admin/AddBlog');
 });

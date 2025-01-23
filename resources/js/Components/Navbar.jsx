@@ -4,7 +4,6 @@ import PrimaryButton from "./PrimaryButton";
 import { CiFacebook } from "react-icons/ci";
 import { CiInstagram } from "react-icons/ci";
 import { FaTiktok } from "react-icons/fa";
-import { RiArrowDropDownLine } from "react-icons/ri";
 
 export default function Navbar() {
     const { url } = usePage();
@@ -68,7 +67,7 @@ export default function Navbar() {
             <ul className="hidden md:flex gap-x-8">
                 <NavLink link={"/"} title={"Beranda"} active={url === "/"} />
                 <NavLink link={"/about"} title={"Tentang Kami"} active={url === "/about"} />
-                <NavLink link={"/blogs"} title={"Artikel"} active={url === "/blogs"} />
+                <NavLink link={"/artikel"} title={"Artikel"} active={url === "/blogs"} />
                 <div className="relative" >
                     <button onMouseOver={() => setDropdownGalery(true)} onMouseOut={() => setDropdownGalery(false)} className={`flex items-center hover:text-[--primary-color] transition duration-100 poppins-light font-medium ${url.includes('galery') ? 'md:text-[--primary-color]' : ''}`} >
                         {/* <span>Galery</span>
@@ -84,7 +83,7 @@ export default function Navbar() {
                                 <Link href="/galery/Gateway-Pasteur-by-Bon.depart" className="px-4 py-2 block hover:bg-[--four-color] font-medium opacity-70" >Gateway Pasteur by Bon.depart</Link>
                             </li>
                             <li>
-                                <Link href="/galery/Apartemen-Grand-Asia-Afrika" className="px-4 py-2 block hover:bg-[--four-color] font-medium opacity-70" >Apartemen Grand Asia Afrika</Link>
+                                <Link href="/galery/Apartemen-Grand-Asia-Afrika-by-Bon.depart" className="px-4 py-2 block hover:bg-[--four-color] font-medium opacity-70" >Apartemen Grand Asia Afrika by Bon.depart</Link>
                             </li>
                         </ul>
                     </nav>
@@ -92,7 +91,7 @@ export default function Navbar() {
             </ul>
             <div className="hidden lg:block">
                 <Link href={"/contact"} >
-                    <PrimaryButton title="Contact Us" />
+                    <PrimaryButton title="Kontak" />
                 </Link>
             </div>
         </nav>

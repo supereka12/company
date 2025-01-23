@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
             $table->string('title'); // Judul foto
+            $table->string('slug'); // Judul foto
             $table->text('description')->nullable(); // Deskripsi foto
-            $table->string('file_path'); // Lokasi file foto di server atau URL
+            $table->string('image_url'); // Lokasi file foto di server atau URL
             $table->timestamps();
         });
     }

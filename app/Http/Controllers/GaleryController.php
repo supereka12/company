@@ -8,6 +8,7 @@ use Inertia\Inertia;
 class GaleryController extends Controller
 {
     public function show($slug) {
-        return Inertia::render('Galery', ['title' => 'Bondepart']);
+        $title = str_replace('-', ' ', $slug);
+        return Inertia::render('Galery', ['title' => $title]);
     }
 }

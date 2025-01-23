@@ -46,7 +46,7 @@ export default function BlogAdmin({ blog }) {
                             <tbody className="text-gray-700">
                                 {blog.map((item, index) => (
                                     <tr key={index} classNameName="">
-                                        <td className="border border-gray-300 px-4 py-2 text-center">{item.id}</td>
+                                        <td className="border border-gray-300 px-4 py-2 text-center">{index + 1}</td>
                                         <td className="border border-gray-300 px-4 py-2">{item.title}</td>
                                         {/* <td className="border border-gray-300 px-4 py-2 break-words max-w-[300px] whitespace-pre-wrap">{item.content}</td> */}
                                         <td className="border border-gray-300 px-4 py-2 text-center">{new Date(item.created_at).toLocaleDateString()}</td>

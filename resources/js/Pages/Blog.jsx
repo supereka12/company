@@ -33,17 +33,17 @@ export default function BlogPage(props) {
         inputSearch.current.focus()
     }
 
-       function getTextWithoutImage(content) {
-            const tempDiv = document.createElement('div')
-            tempDiv.innerHTML = content
-        
-            const images = tempDiv.querySelectorAll('img')
-            images.forEach(img => img.remove())
-        
-            const textOnly = tempDiv.textContent || tempDiv.innerText
-        
-            return textOnly.substring(0, 350) + '...'
-        }
+    function getTextWithoutImage(content) {
+        const tempDiv = document.createElement('div')
+        tempDiv.innerHTML = content
+
+        const images = tempDiv.querySelectorAll('img')
+        images.forEach(img => img.remove())
+
+        const textOnly = tempDiv.textContent || tempDiv.innerText
+
+        return textOnly.substring(0, 350) + '...'
+    }
 
 
     return (
@@ -52,10 +52,9 @@ export default function BlogPage(props) {
             <Navbar />
             <main>
                 <section className="bg-gradient-to-br from-[--secondary-color] to-[--primary-color] h-[70vh] px-5 py-10 md:p-10 lg:p-20 flex flex-col items-center justify-center text-center text-white">
-                    <TextHead title={"Blogs Bondepart"} color={"text-white"} />
+                    <TextHead title={"Artikel Bondepart"} color={"text-white"} />
                     <p className="w-full md:w-[420px] open-sans mt-2 text-2xl text-white opacity-70" data-aos="zoom-in">
-                        Here you can find the latest company news and business articles.
-                    </p>
+                        Di sini Anda dapat menemukan berita perusahaan dan artikel bisnis terkini.                    </p>
                     {/* <div className="w-full md:w-2/4 lg:w-[40%] mt-5" data-aos="zoom-in">
                         <div onClick={handleFocus} className="w-full py-2 pl-12 pr-2 flex items-center gap-x-3 bg-white text-black text-opacity-60 outline-none text-xl text-start cursor-pointer hover:ring-2 hover:ring-black">
                             <IoMdSearch className="text-2xl text-black opacity-60 absolute left-4 top-1/2 transform -translate-y-1/2" />
