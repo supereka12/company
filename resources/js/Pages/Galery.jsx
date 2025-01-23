@@ -7,7 +7,7 @@ import TextHead from "@/Components/TextHead";
 import { Head } from "@inertiajs/react";
 
 
-export default function GaleryPage() {
+export default function GaleryPage({title}) {
     useEffect(() => {
         AOS.init({
             duration: 1000,
@@ -20,11 +20,8 @@ export default function GaleryPage() {
         <Head title="Galery" />
             <Navbar />
             <main>
-                <section className="min-h-screen h-auto px-5 py-10 md:p-10 lg:p-20 flex flex-col items-center bg-white text-center">
-                    <TextHead title={"Galery Bondepart"} />
-                    <p className="open-sans mt-2 text-lg md:text-2xl text-black opacity-70" data-aos="zoom-in" >
-                        Check out some of the activities
-                    </p>
+                <section className="min-h-screen h-auto px-5 py-10 md:p-10 lg:p-20 flex flex-col items-center bg-[--third-color] text-center">
+                    <TextHead title={`Galery ${title}`} />
                     <ul className="mt-5 flex gap-x-3" data-aos="zoom-in">
                         <li>
                             <button className="px-7 py-3 bg-[--primary-color] border border-[--primary-color] rounded-full">All</button>

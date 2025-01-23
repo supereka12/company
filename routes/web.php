@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\GaleryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,7 @@ Route::get('/admin/blog/add', function () {
     return Inertia::render('Admin/AddBlog');
 });
 Route::get('/blog/{slug}', [BlogController::class, 'detailBlog']);
+Route::get('/galery/{slug}', [GaleryController::class, 'show']);
 
 Route::get('/admin/fasilitas', function () {
     return Inertia::render('Admin/Fasilitas');
@@ -34,6 +36,9 @@ Route::get('/contact', function () {
 });
 Route::get('/admin', function () {
     return Inertia::render('Admin/Beranda');
+});
+Route::get('/admin/galery', function () {
+    return Inertia::render('Admin/Galery');
 });
 Route::get('/admin/dashboard', function () {
     return Inertia::render('Admin/Dashboard');

@@ -10,7 +10,6 @@ export default function BlogForm() {
     const [image, setImage] = useState(null);
     const [preview, setPreview] = useState(null)
 
-    // Fungsi untuk menangani submit form
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -19,7 +18,6 @@ export default function BlogForm() {
         formData.append('content', content);
         formData.append('image', image);
 
-        // Kirim data ke backend menggunakan Inertia
         router.post('/upload', formData);
     };
 
@@ -35,11 +33,11 @@ export default function BlogForm() {
                         {preview
                             ? <div className='w-auto h-auto relative'>
                                 <img className='h-44 w-auto' src={preview} alt='Thumbnail' />
-                                <label className='p-2 bg-white rounded-full absolute top-2 right-2' htmlFor="image">
-                                    <FaPencilAlt className='text-xl text-black text-opacity-70' />
+                                <label className='p-2 bg-white rounded-full absolute top-2 right-2 cursor-pointer' htmlFor="image">
+                                    <FaPencilAlt className='text-xl text-black text-opacity-70 hover:text-opacity-50' />
                                 </label>
                             </div>
-                            : <label className="w-44 h-44 p-8 border-2 border-gray-500 shadow text-gray-700 bg-white font-bold mb-2 flex flex-col justify-center items-center cursor-pointer" htmlFor="image">
+                            : <label className="w-72 h-44 p-8 border-2 border-gray-500 shadow text-gray-700 bg-white font-bold mb-2 flex flex-col justify-center items-center cursor-pointer" htmlFor="image">
                                 <IoMdImages className="text-6xl" />
                                 <h2 className="text-center block text-gray-700 font-bold mt-2" >Thumbnail</h2>
                             </label>}

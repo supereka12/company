@@ -25,7 +25,9 @@ export default function DetailBlogPage(props) {
                         </ol>
                     </nav>
                     <div className="w-3/4 flex flex-col items-center" >
-                        <h1 className="text-4xl text-black poppins-bold opacity-80 leading-[47px] tracking-widest">{props.blog.title}</h1>
+                    <div className="w-full">
+                        <h1 className="text-4xl text-start text-black poppins-bold opacity-80 leading-[47px] tracking-widest">{props.blog.title}</h1>
+                    </div>
                         <div className="w-full no-tailwind mt-5" dangerouslySetInnerHTML={{ __html: props.blog.content }} />
                     </div>
                 </section>
