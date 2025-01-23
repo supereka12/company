@@ -30,7 +30,7 @@ class BlogController extends Controller
                 'published_at' => null,
             ]);
 
-        return redirect('admin/blog')->with('success', 'Barang berhasil dihapus.');
+        return redirect('admin/blog')->with('success', 'Barang berhasil disimpan.');
     }
 
     public function show ()
@@ -59,9 +59,46 @@ class BlogController extends Controller
         // Menampilkan ke view dengan data barang
         return view('admin/blog', compact('blog'));
     }
+
     Public function detailBlog($slug) {
         $blog = Blog::where('slug',  $slug)->first();
         $other_blog = Blog::inRandomOrder()->limit(5)->get();
         return Inertia::render('DetailBlog', ['blog' => $blog, 'other_blog' => $other_blog]);
     }
+          
+    public function edit($id)
+    {
+        $blog = Blog::findOrFail($id);
+    
+        return Inertia::render('Admin/EditBlog', [
+            'blog' => $blog,
+        ]);
+    }
+
+    public function editBlog(Request $request, $id)
+    {
+    $validated = $request->validate([
+        'title' => 'required|string|max:255',
+        'content' => 'required',
+        'image' => 'nullable|image',
+    ]);
+
+    $blog = Blog::findOrFail($id);
+
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->getRealPath();
+        $urlImage = Cloudinary::upload($imagePath)->getSecurePath();
+        $blog->image_url = $urlImage; // Perbarui URL gambar
+    }
+
+    $blog->update([
+        'title' => $validated['title'],
+        'slug' => Str::slug($validated['title']),
+        'content' => $validated['content'],
+    ]);
+
+    return redirect('admin/blog')->with('success', 'Blog berhasil diperbarui.');
+}
+
+    
 }

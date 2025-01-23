@@ -52,13 +52,23 @@ Route::get('/galery', function () {
     return Inertia::render('Galery');
 });
 
-Route::post("/upload", [BlogController::class, 'createBlog']);
+Route::get('/admin/blog', [BlogController::class, 'showAdminBlog']);
+Route::delete('/admin/blog/{id}', [BlogController::class, 'destroy']);
+Route::post('admin/blog/{id}', [BlogController::class, 'editBlog'])->name('blog.update');
+Route::get('/admin/blog/{id}/edit', [BlogController::class, 'edit'])->name('admin.blog.edit');
+Route::get('/admin/blog/add', function () {
+    return Inertia::render('Admin/AddBlog');
+});
 
+Route::get('/blogs', [BlogController::class, 'show']);
+Route::get('/blog/{slug}', [BlogController::class, 'detailBlog']);
+Route::post("/upload", [BlogController::class, 'createBlog']);
+Route::get('/barang', [BlogController::class, 'index'])->name('Admin/Blog');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
+})->middleware(['auth', 'verified'])->name('dashboard');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

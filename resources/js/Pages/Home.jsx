@@ -106,7 +106,7 @@ export default function HomePage() {
                         </div>
                         <div className="flex justify-center mt-8" data-aos="zoom-in">
                             <Link href="/galery">
-                                <PrimaryButton title={"See More"} />
+                                <PrimaryButton title={"Lihat lebih lanjut"} />
                             </Link>
                         </div>
                     </div>

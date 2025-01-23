@@ -11,7 +11,7 @@ const Dropdown = ({ children }) => {
         setOpen((previousState) => !previousState);
     };
 
-    return (
+    return (    
         <DropDownContext.Provider value={{ open, setOpen, toggleOpen }}>
             <div className="relative">{children}</div>
         </DropDownContext.Provider>
