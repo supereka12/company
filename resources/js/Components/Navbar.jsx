@@ -66,14 +66,14 @@ export default function Navbar() {
 
             {/* Navbar Desktop */}
             <ul className="hidden md:flex gap-x-8">
-                <NavLink link={"/"} title={"Home"} active={url === "/"} />
-                <NavLink link={"/about"} title={"About Us"} active={url === "/about"} />
-                <NavLink link={"/blogs"} title={"Blogs"} active={url === "/blogs"} />
+                <NavLink link={"/"} title={"Beranda"} active={url === "/"} />
+                <NavLink link={"/about"} title={"Tentang Kami"} active={url === "/about"} />
+                <NavLink link={"/blogs"} title={"Artikel"} active={url === "/blogs"} />
                 <div className="relative" >
                     <button onMouseOver={() => setDropdownGalery(true)} onMouseOut={() => setDropdownGalery(false)} className={`flex items-center hover:text-[--primary-color] transition duration-100 poppins-light font-medium ${url.includes('galery') ? 'md:text-[--primary-color]' : ''}`} >
                         {/* <span>Galery</span>
                         <RiArrowDropDownLine className="text-black scale-150" /> */}
-                        Galery
+                        Galeri
                     </button>
                     <nav onMouseMove={() => setDropdownGalery(true)} onMouseOut={() => setDropdownGalery(false)} className={`w-auto bg-white shadow ${dropdownGalery ? 'block' : 'hidden'} absolute top-full left-0`}>
                         <ul className="flex flex-col poppins-light whitespace-nowrap">
