@@ -3,11 +3,9 @@ import Navbar from "@/Components/Navbar1";
 import { router } from "@inertiajs/react";
 
 export default function BlogAdmin({ blog }) {
-    console.log(blog)
 
-    const handleDelete = (idSekarang) => {
-        console.log(`delete ${idSekarang}`)
-        router.delete(`/admin/blog/${idSekarang}`)
+    const handleDelete = (id) => {
+        router.delete(`/admin/blog/${id}`)
     }
 
     const handleEdit = (id) => {
@@ -32,8 +30,7 @@ export default function BlogAdmin({ blog }) {
                                 <option value="All" selected>
                                     Semua
                                 </option>
-                                <option value="Filter1">Filter 1</option>
-                                <option value="Filter2">Filter 2</option>
+                                <option value="Filter1">Terbaru</option>
                             </select>
                         </form>
                         <a href="/admin/blog/add">

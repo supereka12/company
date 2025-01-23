@@ -4,11 +4,12 @@ import PrimaryButton from "./PrimaryButton";
 import { CiFacebook } from "react-icons/ci";
 import { CiInstagram } from "react-icons/ci";
 import { FaTiktok } from "react-icons/fa";
+import { RiArrowDropDownLine } from "react-icons/ri";
 
 export default function Navbar() {
     const { url } = usePage();
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+    const [dropdownGalery, setDropdownGalery] = useState(false)
     const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
     useEffect(() => {
@@ -65,14 +66,33 @@ export default function Navbar() {
 
             {/* Navbar Desktop */}
             <ul className="hidden md:flex gap-x-8">
-                <NavLink link={"/"} title={"Home"} active={url === "/"} />
-                <NavLink link={"/about"} title={"About Us"} active={url === "/about"} />
-                <NavLink link={"/blogs"} title={"Blogs"} active={url === "/blog"} />
-                <NavLink link={"/galery"} title={"Galery"} active={url === "/galery"} />
+                <NavLink link={"/"} title={"Beranda"} active={url === "/"} />
+                <NavLink link={"/about"} title={"Tentang Kami"} active={url === "/about"} />
+                <NavLink link={"/blogs"} title={"Artikel"} active={url === "/blogs"} />
+                <div className="relative" >
+                    <button onMouseOver={() => setDropdownGalery(true)} onMouseOut={() => setDropdownGalery(false)} className={`flex items-center hover:text-[--primary-color] transition duration-100 poppins-light font-medium ${url.includes('galery') ? 'md:text-[--primary-color]' : ''}`} >
+                        {/* <span>Galery</span>
+                        <RiArrowDropDownLine className="text-black scale-150" /> */}
+                        Galeri
+                    </button>
+                    <nav onMouseMove={() => setDropdownGalery(true)} onMouseOut={() => setDropdownGalery(false)} className={`w-auto bg-white shadow ${dropdownGalery ? 'block' : 'hidden'} absolute top-full left-0`}>
+                        <ul className="flex flex-col poppins-light whitespace-nowrap">
+                            <li>
+                                <Link href="/galery/Jarrdin-Apartemen-by-Bon.depart" className="px-4 py-2 block hover:bg-[--four-color] font-medium opacity-70" >Jarrdin Apartemen by Bon.depart</Link>
+                            </li>
+                            <li>
+                                <Link href="/galery/Gateway-Pasteur-by-Bon.depart" className="px-4 py-2 block hover:bg-[--four-color] font-medium opacity-70" >Gateway Pasteur by Bon.depart</Link>
+                            </li>
+                            <li>
+                                <Link href="/galery/Apartemen-Grand-Asia-Afrika" className="px-4 py-2 block hover:bg-[--four-color] font-medium opacity-70" >Apartemen Grand Asia Afrika</Link>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </ul>
             <div className="hidden lg:block">
                 <Link href={"/contact"} >
-                <PrimaryButton title="Contact Us" />
+                    <PrimaryButton title="Contact Us" />
                 </Link>
             </div>
         </nav>
@@ -84,7 +104,7 @@ const NavLink = ({ link, title, active }) => {
     return (
         <li>
             <Link
-                className={`hover:text-[--primary-color] transition duration-100 poppins-light hover:underline font-medium ${active ? 'md:underline md:text-[--primary-color]' : ''}`}
+                className={`hover:text-[--primary-color] transition duration-100 poppins-light font-medium ${active ? 'md:text-[--primary-color]' : ''}`}
                 href={link}
             >
                 {title}

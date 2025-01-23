@@ -2,6 +2,8 @@ import Hero from "@/Components/Hero";
 import Navbar from "@/Components/Navbar";
 import TextHead from "@/Components/TextHead";
 import { FaCheck, FaSwimmingPool } from "react-icons/fa";
+import { CgGym } from "react-icons/cg";
+import { MdOutlineSecurity } from "react-icons/md";
 import PrimaryButton from "@/Components/PrimaryButton";
 import Footer from "@/Components/Footer";
 import { Head, Link } from "@inertiajs/react";
@@ -45,9 +47,7 @@ export default function HomePage() {
     return (
         <>
             <Head title="Home" />
-            <header className="w-full sticky lg:fixed top-0 left-0 z-20">
-                <Navbar />
-            </header>
+            <Navbar />
             <main>
                 <section className="w-full min-h-screen h-auto md:h-screen relative">
                     <Hero />
@@ -59,22 +59,23 @@ export default function HomePage() {
                         <img src="/images/foto1.jpg" alt="Interior Apartemen Bondepart" data-aos="fade-up-right" className="w-full h-96 md:h-[400px] lg:h-[600px] rounded-lg border-8 border-white object-cover" />
                     </figure>
                     <div className="w-full lg:w-[50%] mt-5 lg:mt-0 h-full flex flex-col justify-between">
-                        <TextHead title="Why Choose Bondepart?" color="text-white" />
-                        <p className="open-sans mt-2 text-lg md:text-2xl text-white opacity-70" data-aos="zoom-in">
-                            Experience a lifestyle that combines comfort with luxury.</p>
+                        <TextHead title="Kenapa harus Bondepart Apartemen?" color="text-white" />
                         <ul className="mt-5 space-y-4">
-                            <FeatureItem title="Complete Facilities" description="Swimming pool, playground and 24 hour security." />
-                            <FeatureItem title="Strategic Location" description="Close to shopping centers and public transportation." />
-                            <FeatureItem title="Modern Design" description="Each unit is designed in a modern and elegant style." />
+                            <FeatureItem title="Fasilitas yang lengkap" description="Kolam renang, Fasilitas olahraga, Area parkir luas dan keamanan 24 jam." />
+                            <FeatureItem title="Lokasi yang strategis" description="Dekat dengan tempat wisata, stasiun dan bandara." />
+                            <FeatureItem title="Unit yang Estetik" description="Memiliki konsep unit yang elegan dan modern." />
+                            <FeatureItem title="Harga yang terjangkau" description="Harga yang terjangkau untuk hunian yang strategis." />
                         </ul>
                     </div>
                 </section>
 
                 <section className="w-full min-h-screen h-auto px-5 py-10 md:p-10 lg:p-20 bg-[--third-color]">
                     <div className="text-center">
-                        <TextHead title={"Explore Our Apartment Photos"} color={"text-black"} />
+                        <TextHead title={"Jelajahi Foto Unit Bondepart Apartemen"} color={"text-black"} />
                         <p className="open-sans mt-2 text-lg md:text-2xl text-black opacity-70" data-aos="zoom-in">
-                            Browse the photo gallery showing our wide selection of apartment units. Find the unit that fits your family's lifestyle.                        </p>
+                            Dengan unit yang memiliki konsep elegan dan modern, Bondepart Apartemen menyajikan hunian yang Estetik dan Nyaman dengan fasilitas didalam unit yang lengkap.
+                            Mari kita jelajahi!
+                        </p>
                     </div>
                     <div className="w-full mt-5 lg:mt-8">
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
@@ -105,7 +106,7 @@ export default function HomePage() {
                         </div>
                         <div className="flex justify-center mt-8" data-aos="zoom-in">
                             <Link href="/galery">
-                                <PrimaryButton title={"See More"} />
+                                <PrimaryButton title={"Lihat lebih lanjut"} />
                             </Link>
                         </div>
                     </div>
@@ -114,24 +115,25 @@ export default function HomePage() {
                 {/* Fasilitas Unggulan Section */}
                 <section className="w-full min-h-screen px-5 py-10 md:p-10 lg:p-20 flex flex-col-reverse lg:flex-row gap-x-8 bg-white">
                     <div className="w-full lg:w-[60%] mt-5 lg:mt-0">
-                        <TextHead title="Superior Facilities" color="text-black" />
+                        <TextHead title="Fasilitas superior" color="text-black" />
                         <p className="open-sans mt-2 text-lg md:text-2xl text-black opacity-70" data-aos="zoom-in">
-                            Each apartment is equipped with everything you need for an unforgettable stay.                        </p>
+                            Fasilitas Apartemen yang dilengkapi dengan apapun yang anda butuhkan.
+                        </p>
                         <ul className="mt-4 space-y-4">
                             <FacilityItem
                                 icon={<FaSwimmingPool className="text-5xl text-[--primary-color]" />}
-                                title="Swimming pool"
-                                description="Enjoy swimming with stunning views."
+                                title="Kolam Renang"
+                                description="Berenang dengan nyaman dan kolam yang luas."
                             />
                             <FacilityItem
-                                icon={<FaSwimmingPool className="text-5xl text-[--primary-color]" />}
-                                title="Playground"
-                                description="Safe and fun children's play area."
+                                icon={<CgGym className="text-5xl text-[--primary-color]" />}
+                                title="Fasilitas Olahraga"
+                                description="Tetap menjaga kesehatan ditengah kesibukan."
                             />
                             <FacilityItem
-                                icon={<FaSwimmingPool className="text-5xl text-[--primary-color]" />}
-                                title="Playground"
-                                description="Safe and fun children's play area."
+                                icon={<MdOutlineSecurity className="text-5xl text-[--primary-color]" />}
+                                title="Keamanan 24 jam"
+                                description="Sistem keamanan 24 jam dengan area parkir yang luas."
                             />
                         </ul>
                     </div>
@@ -142,9 +144,9 @@ export default function HomePage() {
 
                 {/* CTA Section */}
                 <section className="w-full bg-[--third-color] flex flex-col items-center text-center px-5 py-10 md:p-10 lg:p-20">
-                    <TextHead title="Your Dream Apartment Awaits!" color="text-black" />
+                    {/* <TextHead title="" color="text-black" /> */}
                     <p className="w-full md:w-[70%] open-sans mt-2 text-lg md:text-2xl text-black opacity-70" data-aos="zoom-in">
-                        Don't wait any longer—discover the luxury and comfort of Bondepart Apartments now.
+                        Mari jelajahi dunia bersama Bondepart
                     </p>
                     <div className="mt-5" data-aos="zoom-in">
                         <Link href={"/contact"}>

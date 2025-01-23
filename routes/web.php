@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\GaleryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -19,13 +20,33 @@ Route::get('/about', function () {
     return Inertia::render('About');
 });
 
-Route::get('/admin/galery', function () {
-    return Inertia::render('Admin/Galery');
+Route::get('/blogs', [BlogController::class, 'show']);
+Route::get('/admin/blog/add', function () {
+    return Inertia::render('Admin/AddBlog');
+});
+Route::get('/blog/{slug}', [BlogController::class, 'detailBlog']);
+Route::get('/galery/{slug}', [GaleryController::class, 'show']);
+
+Route::get('/admin/fasilitas', function () {
+    return Inertia::render('Admin/Fasilitas');
 });
 
 Route::get('/contact', function () {
     return Inertia::render('Contact');
 });
+Route::get('/admin', function () {
+    return Inertia::render('Admin/Beranda');
+});
+Route::get('/admin/galery', function () {
+    return Inertia::render('Admin/Galery');
+});
+Route::get('/admin/dashboard', function () {
+    return Inertia::render('Admin/Dashboard');
+});
+Route::get('/admin/blog', [BlogController::class, 'showAdminBlog']);
+Route::delete('/admin/blog/{id}', [BlogController::class, 'destroy']);
+
+Route::get('/barang', [BlogController::class, 'index'])->name('admin/blog');
 
 Route::get('/galery', function () {
     return Inertia::render('Galery');
