@@ -56,7 +56,7 @@ export default function GaleryPage({title}) {
                         {photos.map((data, index) => {
                             return (
                                 <div className="mb-3" key={index}>
-                                    <img className="w-full" src={data} alt={`image ${index}`} />
+                                    <img className="w-full object-cover" src={data} alt={`image ${index}`} />
                                 </div>
                             )
                         })}
