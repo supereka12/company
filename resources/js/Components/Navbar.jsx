@@ -67,7 +67,7 @@ export default function Navbar() {
             <ul className="hidden md:flex gap-x-8">
                 <NavLink link={"/"} title={"Beranda"} active={url === "/"} />
                 <NavLink link={"/about"} title={"Tentang Kami"} active={url === "/about"} />
-                <NavLink link={"/artikel"} title={"Artikel"} active={url === "/blogs"} />
+                <NavLink link={"/artikel"} title={"Artikel"} active={url === "/artikel"} />
                 <div className="relative" >
                     <button onMouseOver={() => setDropdownGalery(true)} onMouseOut={() => setDropdownGalery(false)} className={`flex items-center hover:text-[--primary-color] transition duration-100 poppins-light font-medium ${url.includes('galery') ? 'md:text-[--primary-color]' : ''}`} >
                         {/* <span>Galery</span>

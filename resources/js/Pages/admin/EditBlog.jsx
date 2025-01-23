@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Inertia } from "@inertiajs/inertia";
-import { usePage } from "@inertiajs/react";
+import { router, usePage } from "@inertiajs/react";
 import { Editor } from "@tinymce/tinymce-react";
 import { IoMdImages } from "react-icons/io";
 import { FaPencilAlt } from "react-icons/fa";
@@ -21,9 +20,8 @@ export default function EditBlog() {
         formData.append("title", title);
         formData.append("content", content);
         if (image) formData.append("image", image);
-
-        Inertia.post(`/admin/blog/${blog.id}`, formData);
-    };
+                router.post(`/admin/blog/${blog.id}`, formData);
+            };
 
     return (
         <div className="container mx-auto">
