@@ -13,17 +13,14 @@ return new class extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            $table->string('title'); // Judul foto
-            $table->string('slug'); // Judul foto
-            $table->text('description')->nullable(); // Deskripsi foto
-            $table->string('image_url'); // Lokasi file foto di server atau URL
+            $table->foreignId('unit_id')->references('id')->on('units')->onDelete('cascade');
+            $table->text('image_url');
+            $table->string('title');
+            $table->string('category');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('photos');

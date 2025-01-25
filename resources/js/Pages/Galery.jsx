@@ -7,8 +7,8 @@ import TextHead from "@/Components/TextHead";
 import { Head } from "@inertiajs/react";
 
 
-export default function GaleryPage({title}) {
-    const [photos, setPhotos] = useState(["/images/RuangTamu.jpg", "/images/pexels-quark-studio-1159039-3201921.jpg", "/images/pexels-expect-best-79873-323705.jpg", "/images/pexels-apasaric-3323694.jpg", "/images/foto1.jpg", "/images/bondepart.jpg", "/images/6f8596a5-ab60-47b2-8055-0047d9849931.jpg"])
+export default function GaleryPage({ title }) {
+    const [photos, setPhotos] = useState(["/images/B 1118/Bathroom.png", "/images/B 1118/Bedroom 3.png", "/images/B 1118/Facility 3.png"])
     const [active, setActive] = useState("all")
 
     useEffect(() => {
@@ -24,10 +24,10 @@ export default function GaleryPage({title}) {
         setActive("all")
     }
     const handleInterior = () => {
-        setPhotos(["/images/RuangTamu.jpg", "/images/pexels-quark-studio-1159039-3201921.jpg", "/images/foto1.jpg", "/images/6f8596a5-ab60-47b2-8055-0047d9849931.jpg"])
+        setPhotos(["/images/B 1118/Bathroom.png", "/images/B 1118/Bedroom 2.png", "/images/B 1118/Bedroom 3.png", "/images/B 1118/Facility 3.png", "/images/B 1118/Facility 10.png", "/images/B 1118/Facility 11.png", "/images/B 1118/Facility 12.png", "/images/B 1118/Kitchen Set 2.png", "/images/B 1118/Kitchen Set.png"])
         setActive("interior")
     }
-    
+
     const handleExterior = () => {
         setPhotos(["/images/pexels-expect-best-79873-323705.jpg", "/images/pexels-apasaric-3323694.jpg", "/images/bondepart.jpg"])
         setActive("exterior")
@@ -39,12 +39,12 @@ export default function GaleryPage({title}) {
             <main>
                 <section className="min-h-screen h-auto px-5 py-10 md:p-10 lg:p-20 flex flex-col items-center bg-[--third-color] text-center">
                     <div className="w-full md:w-[80%]" >
-                    <TextHead title={`${title}`} />
+                        <TextHead title={`${title}`} />
                     </div>
                     <ul className="mt-5 flex gap-x-3" data-aos="zoom-in">
                         <li>
-"                            <button onClick={handleAllPhotos} className={`px-7 py-3 ${active == "all" ? "bg-[--primary-color] text-white" : "hover:text-white hover:bg-[--primary-color]"} border border-[--primary-color] rounded-full`}>Semua</button>
-"                        </li>
+                            <button onClick={handleAllPhotos} className={`px-7 py-3 ${active == "all" ? "bg-[--primary-color] text-white" : "hover:text-white hover:bg-[--primary-color]"} border border-[--primary-color] rounded-full`}>Semua</button>
+                        </li>
                         <li>
                             <button onClick={handleExterior} className={`px-7 py-3 border border-[--primary-color] rounded-full ${active == "exterior" ? "bg-[--primary-color] text-white" : "hover:text-white hover:bg-[--primary-color]"}`}>Eksterior</button>
                         </li>
