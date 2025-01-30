@@ -56,7 +56,7 @@ export default function HomePage() {
                 {/* Mengapa Memilih Bondepart Section */}
                 <section className="w-full min-h-screen h-auto px-5 py-10 md:p-10 lg:p-20 flex flex-col lg:flex-row gap-x-20 bg-gradient-to-br from-[--secondary-color] to-[--primary-color]">
                     <figure className="lg:w-[50%] h-full">
-                        <img src="/images/foto1.jpg" alt="Interior Apartemen Bondepart" data-aos="fade-up-right" className="w-full h-96 md:h-[400px] lg:h-[600px] rounded-lg border-8 border-white object-cover" />
+                        <img src="/images/IMG_7140.jpg" alt="Interior Apartemen Bondepart" data-aos="fade-up-right" className="w-full h-96 md:h-[400px] lg:h-[600px] rounded-lg border-8 border-white object-cover" />
                     </figure>
                     <div className="w-full lg:w-[50%] mt-5 lg:mt-0 h-full flex flex-col justify-between">
                         <TextHead title="Kenapa harus Bondepart Apartemen?" color="text-white" />
@@ -68,50 +68,7 @@ export default function HomePage() {
                         </ul>
                     </div>
                 </section>
-
-                <section className="w-full min-h-screen h-auto px-5 py-10 md:p-10 lg:p-20 bg-[--third-color]">
-                    <div className="text-center">
-                        <TextHead title={"Jelajahi Foto Unit Bondepart Apartemen"} color={"text-black"} />
-                        <p className="open-sans mt-2 text-lg md:text-2xl text-black opacity-70" data-aos="zoom-in">
-                            Dengan unit yang memiliki konsep elegan dan modern, Bondepart Apartemen menyajikan hunian yang Estetik dan Nyaman dengan fasilitas didalam unit yang lengkap.
-                            Mari kita jelajahi!
-                        </p>
-                    </div>
-                    <div className="w-full mt-5 lg:mt-8">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-                            <div class="overflow-hidden mb-4 h-80" data-aos="zoom-in">
-                                <img src="/images/foto1.jpg" alt="Item 4" class="object-cover w-full h-full" />
-                            </div>
-                            <div class="overflow-hidden mb-4 h-80" data-aos="zoom-in">
-                                <img src="/images/pexels-expect-best-79873-323705.jpg" alt="Item 2" class="object-cover w-full h-full" />
-                            </div>
-                            <div class="overflow-hidden mb-4 h-80" data-aos="zoom-in">
-                                <img src="/images/pexels-expect-best-79873-323705.jpg" alt="Item 2" class="object-cover w-full h-full" />
-                            </div>
-                            <div class="overflow-hidden mb-4 h-80" data-aos="zoom-in">
-                                <img src="/images/foto1.jpg" alt="Item 3" class="object-cover w-full h-full" />
-                            </div>
-                            <div class="overflow-hidden mb-4 h-80" data-aos="zoom-in">
-                                <img src="/images/foto1.jpg" alt="Item 4" class="object-cover w-full h-full" />
-                            </div>
-                            <div class="overflow-hidden mb-4 h-80" data-aos="zoom-in">
-                                <img src="/images/pexels-expect-best-79873-323705.jpg" alt="Item 2" class="object-cover w-full h-full" />
-                            </div>
-                            <div class="overflow-hidden mb-4 h-80" data-aos="zoom-in">
-                                <img src="/images/pexels-quark-studio-1159039-3201921.jpg" alt="Item 5" class="object-cover w-full h-full" />
-                            </div>
-                            <div class="overflow-hidden mb-4 h-80" data-aos="zoom-in">
-                                <img src="/images/RuangTamu.jpg" alt="Item 5" class="object-cover w-full h-full" />
-                            </div>
-                        </div>
-                        <div className="flex justify-center mt-8" data-aos="zoom-in">
-                            <Link href="/galery">
-                                <PrimaryButton title={"Lihat lebih lanjut"} />
-                            </Link>
-                        </div>
-                    </div>
-                </section>
-
+                
                 {/* Fasilitas Unggulan Section */}
                 <section className="w-full min-h-screen px-5 py-10 md:p-10 lg:p-20 flex flex-col-reverse lg:flex-row gap-x-8 bg-white">
                     <div className="w-full lg:w-[60%] mt-5 lg:mt-0">
@@ -138,7 +95,7 @@ export default function HomePage() {
                         </ul>
                     </div>
                     <figure className="lg:w-[40%] flex justify-end">
-                        <img src="/images/foto1.jpg" alt="Interior Apartemen Bondepart" data-aos="fade-up-right" className="w-full h-96 md:h-[400px] lg:h-[600px] rounded-lg border-8 border-[--primary-color] object-cover" />
+                        <img src="/images/IMG_8093.jpg" alt="Interior Apartemen Bondepart" data-aos="fade-up-right" className="w-full h-96 md:h-[400px] lg:h-[600px] rounded-lg border-8 border-[--primary-color] object-cover" />
                     </figure>
                 </section>
 

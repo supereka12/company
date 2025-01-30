@@ -8,45 +8,45 @@ export default function Footer() {
             <div className="w-full py-10">
                 <div className="sm:flex sm:items-center sm:justify-between lg:px-20">
                     <h1 className="text-3xl text-black opacity-80 poppins-bold">Bondepart</h1>
-                    <nav aria-label="breadcrumb" class="w-3/4">
-                        <ol class="flex flex-wrap justify-center rounded-md py-2">
-                            <li class="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
+                    <nav aria-label="breadcrumb" className="w-3/4">
+                        <ol className="flex flex-wrap justify-center rounded-md py-2">
+                            <li className="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
                                 <Link href="/">Home</Link>
-                                <span class="pointer-events-none mx-2 text-slate-800">
+                                <span className="pointer-events-none mx-2 text-slate-800">
                                     |
                                 </span>
                             </li>
-                            <li class="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
+                            <li className="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
                                 <Link href="/">About Us</Link>
-                                <span class="pointer-events-none mx-2 text-slate-800">
+                                <span className="pointer-events-none mx-2 text-slate-800">
                                     |
                                 </span>
                             </li>
-                            <li class="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
+                            <li className="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
                                 <Link href="/">Blogs</Link>
-                                <span class="pointer-events-none mx-2 text-slate-800">
+                                <span className="pointer-events-none mx-2 text-slate-800">
                                     |
                                 </span>
                             </li>
-                            <li class="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
+                            <li className="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
                                 <Link href="/">Galery</Link>
-                                <span class="pointer-events-none mx-2 text-slate-800">
+                                <span className="pointer-events-none mx-2 text-slate-800">
                                     |
                                 </span>
                             </li>
-                            <li class="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
+                            <li className="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
                                 <Link href="/">Contact</Link>
-                                <span class="pointer-events-none mx-2 text-slate-800">
+                                <span className="pointer-events-none mx-2 text-slate-800">
                                     |
                                 </span>
                             </li>
-                            <li class="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
+                            <li className="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
                                 <Link href="/">Terms & Conditions</Link>
-                                <span class="pointer-events-none mx-2 text-slate-800">
+                                <span className="pointer-events-none mx-2 text-slate-800">
                                     |
                                 </span>
                             </li>
-                            <li class="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
+                            <li className="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
                                 <Link href="/">FAQ</Link>
                             </li>
                         </ol>

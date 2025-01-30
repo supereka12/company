@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\GaleryController;
+use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UnitController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -16,23 +18,22 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/about', function () {
-    return Inertia::render('About');
+//this is API
+Route::resource('/api/v1/units', UnitController::class);
+Route::prefix('api/v1')->group(function () {
+    Route::controller(PhotoController::class)->group(function () {
+        Route::get('/photos', 'index');  // Mengambil data dengan slug opsional
+        Route::post('/photos', 'store');        // Menambahkan data
+    });
 });
 
-Route::get('/artikel', [BlogController::class, 'show']);
-Route::get('/admin/blog/add', function () {
+// this is route for admin
+Route::get('/admin/articels', [BlogController::class, 'showAdminBlog']);
+Route::delete('/admin/articles/{id}', [BlogController::class, 'destroy']);
+Route::post('admin/articels/{id}', [BlogController::class, 'editBlog'])->name('blog.update');
+Route::get('/admin/articels/{id}/edit', [BlogController::class, 'edit'])->name('admin.blog.edit');
+Route::get('/admin/articels/add', function () {
     return Inertia::render('Admin/AddBlog');
-});
-Route::get('/blog/{slug}', [BlogController::class, 'detailBlog']);
-Route::get('/galery/{slug}', [GaleryController::class, 'show']);
-
-Route::get('/admin/fasilitas', function () {
-    return Inertia::render('Admin/Fasilitas');
-});
-
-Route::get('/contact', function () {
-    return Inertia::render('Contact');
 });
 Route::get('/admin', function () {
     return Inertia::render('Admin/Beranda');
@@ -40,30 +41,59 @@ Route::get('/admin', function () {
 Route::get('/admin/galery', function () {
     return Inertia::render('Admin/Galery');
 });
+Route::get('/admin/photos/create', function () {
+    return Inertia::render('Admin/AddPhotos');
+});
+Route::get('/admin/articles/add', function () {
+    return Inertia::render('Admin/AddBlog');
+});
 Route::get('/admin/dashboard', function () {
     return Inertia::render('Admin/Dashboard');
 });
-Route::get('/admin/blog', [BlogController::class, 'showAdminBlog']);
-Route::delete('/admin/blog/{id}', [BlogController::class, 'destroy']);
+Route::get('/admin/apartments', function() {
+    return Inertia::render('Admin/Apartments');
+});
+Route::get('/admin/apartments/create', function() {
+    return Inertia::render('Admin/Apartments');
+});
 
+
+
+//this is route for user
 Route::get('/barang', [BlogController::class, 'index'])->name('admin/blog');
-
 Route::get('/galery', function () {
     return Inertia::render('Galery');
 });
-
-Route::get('/admin/blog', [BlogController::class, 'showAdminBlog']);
-Route::delete('/admin/blog/{id}', [BlogController::class, 'destroy']);
-Route::post('admin/blog/{id}', [BlogController::class, 'editBlog'])->name('blog.update');
-Route::get('/admin/blog/{id}/edit', [BlogController::class, 'edit'])->name('admin.blog.edit');
-Route::get('/admin/blog/add', function () {
-    return Inertia::render('Admin/AddBlog');
-});
-
-Route::get('/blogs', [BlogController::class, 'show']);
-Route::get('/blog/{slug}', [BlogController::class, 'detailBlog']);
+Route::get('/articles', [BlogController::class, 'show']);
+Route::get('/articles/{slug}', [BlogController::class, 'detailBlog']);
 Route::post("/upload", [BlogController::class, 'createBlog']);
 Route::get('/barang', [BlogController::class, 'index'])->name('Admin/Blog');
+Route::get('/about', function () {
+    return Inertia::render('About');
+});
+Route::get('/articels', [BlogController::class, 'show']);
+Route::get('/articles/{slug}', [BlogController::class, 'detailBlog']);
+Route::get('/galery/{slug}', [GaleryController::class, 'show']);
+Route::get('/contact', function () {
+    return Inertia::render('Contact');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -75,4 +105,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

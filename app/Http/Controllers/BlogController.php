@@ -19,7 +19,11 @@ class BlogController extends Controller
         ]);
 
         $imagePath = $request->file('image')->getRealPath();
-        $urlImage = Cloudinary::upload($imagePath)->getSecurePath();
+
+        // Upload gambar ke Cloudinary dengan folder 'bondepart'
+        $urlImage = Cloudinary::upload($imagePath, [
+            'folder' => 'bondepart'  // Menentukan folder tujuan di Cloudinary
+        ])->getSecurePath();
 
         $blog = Blog::create([
             'title' => $validated['title'],

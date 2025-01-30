@@ -64,7 +64,7 @@ export default function AboutPage() {
                 </section>
                 <section className="w-full min-h-screen h-auto px-5 py-10 md:p-10 lg:p-20 flex flex-col lg:flex-row gap-x-5 bg-[--third-color]">
                     <figure className="lg:w-2/4 h-full relative" data-aos="zoom-in">
-                        <img src="/images/foto1.jpg" alt="Example" className="w-full md:w-[478px] h-96 md:h-[400px] lg:h-[600px] rounded-lg shadow-lg" />
+                        <img src="/images/IMG_2163.JPG" alt="Example" className="w-full md:w-[478px] h-96 md:h-[400px] lg:h-[600px] rounded-lg shadow-lg" />
                     </figure>
                     <div className="lg:w-2/4 mt-5 lg:mt-0">
                         <TextHead title={"Pelayanan Kami"} color={"text-black"} />

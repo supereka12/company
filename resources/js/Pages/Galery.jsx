@@ -1,69 +1,157 @@
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import AOS from "aos";
 import 'aos/dist/aos.css';
 import TextHead from "@/Components/TextHead";
 import { Head } from "@inertiajs/react";
-
+import axios from "axios";
+import { IoMdClose } from "react-icons/io";
 
 export default function GaleryPage({ title }) {
-    const [photos, setPhotos] = useState(["/images/B 1118/Bathroom.png", "/images/B 1118/Bedroom 3.png", "/images/B 1118/Facility 3.png"])
-    const [active, setActive] = useState("all")
+    const [paginate, setPaginate] = useState({
+        current_page: 1,
+        last_page: 1,
+    });
+
+    const [photos, setPhotos] = useState([]);
+    const [filter, setFilter] = useState("all");
+    const [loading, setLoading] = useState(false);
+    const [active, setActive] = useState("all");
+    const [PreviewPhoto, setPreviewPhoto] = useState(null)
+
+    // Load photos with filter and pagination
+    const loadPhotos = async (page = 2, filter = "all") => {
+        setLoading(true);
+        try {
+            const response = await axios.get("/api/v1/photos", {
+                params: {
+                    page: page,
+                    filter: filter,
+                    slug: title.split(" ").join("-"),
+                },
+            });
+            console.log(response.data)
+
+            const newPhotos = response.data.unit_photos.data;
+            setPaginate({
+                current_page: response.data.unit_photos.pagination.current_page,
+                last_page: response.data.unit_photos.pagination.last_page,
+            });
+
+            setPhotos((prevPhotos) =>
+                page === 1 ? newPhotos : [...prevPhotos, ...newPhotos]
+            );
+        } catch (error) {
+            console.error("Error fetching photos:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    // Update the filter when a button is clicked
+    const handleFilterChange = (filter) => {
+
+        if (active !== filter) {
+            setActive(filter);
+            setFilter(filter);
+            setPaginate({
+                current_page: 1,
+                last_page: 1,
+            });
+            setPhotos([]);
+            loadPhotos(1, filter);
+        }
+    };
+
+    // Infinite scroll logic
+    const handleScroll = useCallback(() => {
+        const bottom =
+            document.documentElement.scrollHeight ===
+            document.documentElement.scrollTop + window.innerHeight;
+        const parseCurrentPage = parseInt(paginate.current_page)
+        const parseLastPage = parseInt(paginate.last_page)
+        if (bottom && !loading && parseCurrentPage < parseLastPage) {
+            loadPhotos(parseCurrentPage + 1, filter);
+        }
+    }, [loading, paginate.current_page, paginate.last_page, filter]);
 
     useEffect(() => {
         AOS.init({
             duration: 1000,
-            easing: 'ease-in-out',
+            easing: "ease-in-out",
             once: true,
-        })
-    }, [])
+        });
+    }, []);
 
-    const handleAllPhotos = () => {
-        setPhotos(["/images/RuangTamu.jpg", "/images/pexels-quark-studio-1159039-3201921.jpg", "/images/pexels-expect-best-79873-323705.jpg", "/images/pexels-apasaric-3323694.jpg", "/images/foto1.jpg", "/images/bondepart.jpg", "/images/6f8596a5-ab60-47b2-8055-0047d9849931.jpg"])
-        setActive("all")
-    }
-    const handleInterior = () => {
-        setPhotos(["/images/B 1118/Bathroom.png", "/images/B 1118/Bedroom 2.png", "/images/B 1118/Bedroom 3.png", "/images/B 1118/Facility 3.png", "/images/B 1118/Facility 10.png", "/images/B 1118/Facility 11.png", "/images/B 1118/Facility 12.png", "/images/B 1118/Kitchen Set 2.png", "/images/B 1118/Kitchen Set.png"])
-        setActive("interior")
-    }
+    useEffect(() => {
+        loadPhotos(1, filter);
+    }, [filter]);
 
-    const handleExterior = () => {
-        setPhotos(["/images/pexels-expect-best-79873-323705.jpg", "/images/pexels-apasaric-3323694.jpg", "/images/bondepart.jpg"])
-        setActive("exterior")
-    }
+    // Attach scroll event listener
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [handleScroll]);
+
     return (
         <>
             <Head title="Galery" />
             <Navbar />
             <main>
                 <section className="min-h-screen h-auto px-5 py-10 md:p-10 lg:p-20 flex flex-col items-center bg-[--third-color] text-center">
-                    <div className="w-full md:w-[80%]" >
+                    <div className="w-full md:w-[80%]">
                         <TextHead title={`${title}`} />
                     </div>
                     <ul className="mt-5 flex gap-x-3" data-aos="zoom-in">
-                        <li>
-                            <button onClick={handleAllPhotos} className={`px-7 py-3 ${active == "all" ? "bg-[--primary-color] text-white" : "hover:text-white hover:bg-[--primary-color]"} border border-[--primary-color] rounded-full`}>Semua</button>
-                        </li>
-                        <li>
-                            <button onClick={handleExterior} className={`px-7 py-3 border border-[--primary-color] rounded-full ${active == "exterior" ? "bg-[--primary-color] text-white" : "hover:text-white hover:bg-[--primary-color]"}`}>Eksterior</button>
-                        </li>
-                        <li>
-                            <button onClick={handleInterior} className={`px-7 py-3 border border-[--primary-color] rounded-full hover:text-white hover:bg-[--primary-color] ${active == "interior" ? "bg-[--primary-color] text-white" : "hover:text-white hover:bg-[--primary-color]"}`}>Interior</button>
-                        </li>
+                        {["all", "exterior", "interior", "view"].map((category) => (
+                            <li key={category}>
+                                <button
+                                    onClick={() => handleFilterChange(category)}
+                                    className={`px-7 py-3 border border-[--primary-color] rounded-full ${active === category
+                                        ? "bg-[--primary-color] text-white"
+                                        : "hover:text-white hover:bg-[--primary-color]"
+                                        }`}
+                                >
+                                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                                </button>
+                            </li>
+                        ))}
                     </ul>
-                    <div class="mt-5 columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-x-3">
-                        {photos.map((data, index) => {
-                            return (
-                                <div className="mb-3" key={index}>
-                                    <img className="w-full object-cover" src={data} alt={`image ${index}`} />
+                    {PreviewPhoto
+                        ? <div className="w-full h-full bg-black/50 flex justify-center items-center fixed top-0 left-0 z-10">
+                            <div className="w-96 h-auto relative">
+                                <img className="w-full h-auto" src={PreviewPhoto.image_url} alt="photo" />
+                                <div onClick={() => {
+                                      document.body.style.overflow = "auto";
+                                    setPreviewPhoto(null)
+                                }} className="absolute top-1 right-1 cursor-pointer">
+                                    <IoMdClose className="text-3xl text-[--primary-color] text-opacity-80" />
                                 </div>
-                            )
-                        })}
-                    </div>
+                            </div>
+                        </div>
+                        : null}
+
+                    {photos.length === 0 ? null : (
+                        <div className="mt-5 grid lg:grid-cols-5 gap-3">
+                            {photos.map((data, index) => (
+                                <div onClick={() => {
+                                    document.body.style.overflow = "hidden";
+                                    setPreviewPhoto(data)
+                                }} className="shadow cursor-pointer relative" key={index}>
+                                    <img
+                                        className="w-full object-cover hover:brightness-50"
+                                        src={data.image_url}
+                                        alt={`image ${index}`}
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                    {loading && <h1 className="my-3">loading...</h1>}
                 </section>
             </main>
             <Footer />
         </>
-    )
+    );
 }

@@ -2,15 +2,15 @@ import Sidebar from "@/Components/Sidebar";
 import Navbar from "@/Components/Navbar1";
 import { router } from "@inertiajs/react";
 
-export default function BlogAdmin({ blog }) {
+export default function ApartmentsAdminPage({ apartments }) {
 
     const handleDelete = (id) => {
-        router.delete(`/admin/blog/${id}`)
+        router.delete(`/admin/apartments/${id}`)
     }
 
     const handleEdit = (id) => {
         console.log(`update ${id}`);
-        router.get(`/admin/blog/${id}/edit`);
+        router.get(`/admin/apartments/${id}/edit`);
     };
 
 
@@ -50,7 +50,7 @@ export default function BlogAdmin({ blog }) {
                                 </tr>
                             </thead>
                             <tbody className="text-gray-700">
-                                {blog.map((item, index) => (
+                                {apartments.map((item, index) => (
                                     <tr key={index} classNameName="">
                                         <td className="border border-gray-300 px-4 py-2 text-center">{index + 1}</td>
                                         <td className="border border-gray-300 px-4 py-2">{item.title}</td>

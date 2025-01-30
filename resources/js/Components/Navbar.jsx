@@ -45,10 +45,10 @@ export default function Navbar() {
                     <div>
                         <h1 className="text-3xl text-white opacity-80 poppins-bold">Bondepart</h1>
                         <ul className="mt-8 flex flex-col gap-y-3 text-white">
-                            <NavLink link={"/"} title={"Home"} active={false} />
-                            <NavLink link={"/about"} title={"About Us"} active={false} />
-                            <NavLink link={"/blogs"} title={"Blogs"} active={false} />
-                            <NavLink link={"/galery"} title={"Galery"} active={false} />
+                            <NavLink link={"/"} title={"Beranda"} active={false} />
+                            <NavLink link={"/about"} title={"Tentang Kami"} active={false} />
+                            <NavLink link={"/articles"} title={"Artikel"} active={false} />
+                            <NavLink link={"/galery"} title={"Galeri"} active={false} />
                         </ul>
                     </div>
                     <div className="text-white opacity-80 mt-8">
@@ -67,23 +67,21 @@ export default function Navbar() {
             <ul className="hidden md:flex gap-x-8">
                 <NavLink link={"/"} title={"Beranda"} active={url === "/"} />
                 <NavLink link={"/about"} title={"Tentang Kami"} active={url === "/about"} />
-                <NavLink link={"/artikel"} title={"Artikel"} active={url === "/artikel"} />
+                <NavLink link={"/articles"} title={"Artikel"} active={url === "/articles"} />
                 <div className="relative" >
                     <button onMouseOver={() => setDropdownGalery(true)} onMouseOut={() => setDropdownGalery(false)} className={`flex items-center hover:text-[--primary-color] transition duration-100 poppins-light font-medium ${url.includes('galery') ? 'md:text-[--primary-color]' : ''}`} >
-                        {/* <span>Galery</span>
-                        <RiArrowDropDownLine className="text-black scale-150" /> */}
                         Galeri
                     </button>
                     <nav onMouseMove={() => setDropdownGalery(true)} onMouseOut={() => setDropdownGalery(false)} className={`w-auto bg-white shadow ${dropdownGalery ? 'block' : 'hidden'} absolute top-full left-0`}>
                         <ul className="flex flex-col poppins-light whitespace-nowrap">
                             <li>
-                                <Link href="/galery/Jarrdin-Apartemen-by-Bon.depart" className="px-4 py-2 block hover:bg-[--four-color] font-medium opacity-70" >Jarrdin Apartemen by Bon.depart</Link>
+                                <Link href="/galery/Jarrdin-Apartemen-by-Bondepart" className="px-4 py-2 block hover:bg-[--four-color] font-medium opacity-70" >Jarrdin Apartemen by Bondepart</Link>
                             </li>
                             <li>
-                                <Link href="/galery/Gateway-Pasteur-by-Bon.depart" className="px-4 py-2 block hover:bg-[--four-color] font-medium opacity-70" >Gateway Pasteur by Bon.depart</Link>
+                                <Link href="/galery/Gateway-Pasteur-by-Bondepart" className="px-4 py-2 block hover:bg-[--four-color] font-medium opacity-70" >Gateway Pasteur by Bondepart</Link>
                             </li>
                             <li>
-                                <Link href="/galery/Apartemen-Grand-Asia-Afrika-by-Bon.depart" className="px-4 py-2 block hover:bg-[--four-color] font-medium opacity-70" >Apartemen Grand Asia Afrika by Bon.depart</Link>
+                                <Link href="/galery/Apartemen-Grand-Asia-Afrika-by-Bondepart" className="px-4 py-2 block hover:bg-[--four-color] font-medium opacity-70" >Apartemen Grand Asia Afrika by Bondepart</Link>
                             </li>
                         </ul>
                     </nav>
