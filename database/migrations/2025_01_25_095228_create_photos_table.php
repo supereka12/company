@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('unit_id')->references('id')->on('units')->onDelete('cascade');
+            $table->foreignId('apartement_id')->references('id')->on('apartements')->onDelete('cascade');
             $table->text('image_url');
-            $table->string('title');
-            $table->string('category');
             $table->timestamps();
         });
     }

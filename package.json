@@ -25,7 +25,9 @@
         "@inertiajs/inertia-react": "^0.8.1",
         "@tinymce/tinymce-react": "^5.1.1",
         "aos": "^2.3.4",
+        "framer-motion": "^12.0.6",
         "react-icons": "^5.4.0",
-        "react-stack-grid": "^0.7.1"
+        "react-stack-grid": "^0.7.1",
+        "sweetalert2": "^11.15.10"
     }
 }

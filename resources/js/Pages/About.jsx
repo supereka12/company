@@ -6,6 +6,7 @@ import AOS from "aos";
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
 import { Head } from "@inertiajs/react";
+import { FaClock } from "react-icons/fa";
 
 export default function AboutPage() {
     useEffect(() => {
@@ -20,7 +21,7 @@ export default function AboutPage() {
             <Head title="About Us" />
             <Navbar />
             <main>
-                <section className="px-5 py-10 md:p-10 lg:p-20 text-center flex flex-col items-center">
+                <section className="px-5 py-10 md:p-10 lg:p-20">
                     <TextHead title={"Tentang Kami"} />
                     <p className="open-sans mt-2 text-2xl text-black opacity-70" data-aos="zoom-in" data-aos-delay="100">
                         Bondepart Apartemen merupakan agen penyewaan hunian Apartemen dengan sistem Harian, Bulanan dan Tahunan dengan fasilitas unit dan fasilitas umum yang sangat lengkap, memudahkan mobilisasi perjalanan anda di tengah kota bandung.
@@ -64,7 +65,7 @@ export default function AboutPage() {
                 </section>
                 <section className="w-full min-h-screen h-auto px-5 py-10 md:p-10 lg:p-20 flex flex-col lg:flex-row gap-x-5 bg-[--third-color]">
                     <figure className="lg:w-2/4 h-full relative" data-aos="zoom-in">
-                        <img src="/images/IMG_2163.JPG" alt="Example" className="w-full md:w-[478px] h-96 md:h-[400px] lg:h-[600px] rounded-lg shadow-lg" />
+                        <img src="/images/Site Office Jarrdin Cihampelas 2.png" alt="Example" className="w-full md:w-[478px] h-96 md:h-[400px] lg:h-[600px] rounded-lg shadow-lg" />
                     </figure>
                     <div className="lg:w-2/4 mt-5 lg:mt-0">
                         <TextHead title={"Pelayanan Kami"} color={"text-black"} />
@@ -72,20 +73,20 @@ export default function AboutPage() {
                             Kami berkomitmen untuk memberikan pengalaman terbaik dengan menciptakan hunian yang aman dan nyaman.
                         </p>
                         <ul className="w-full mt-2">
-                            <li className="w-full mt-3 flex gap-x-3" data-aos="zoom-in">
-                                <FaTrashAlt className="text-3xl mt-3 opacity-80 text-[--primary-color]" />
+                            <li className="w-full mt-6 flex gap-x-3" data-aos="zoom-in">
+                                <FaTrashAlt className="text-3xl mt-3 opacity-80" />
                                 <div className="w-[80%] mt-3">
-                                    <h2 className="text-2xl poppins-bold opacity-80 text-[--primary-color]">Kami melakukan pembersihan rutin dengan detail pada unit apartemen sehingga memberikan kenyamanan untuk konsumen kami.</h2>
-                                    <p className="open-sans mt-2 text-2xl text-blalck opacity-70">
+                                    <p className="open-sans text-2xl text-black opacity-70" data-aos="zoom-in">
+                                        Kami melakukan pembersihan rutin dengan detail pada unit apartemen sehingga memberikan kenyamanan untuk konsumen kami.
                                     </p>
                                 </div>
                             </li>
-                            <li className="w-full mt-3 flex gap-x-3" data-aos="zoom-in">
-                                <FaTrashAlt className="text-3xl mt-3 opacity-80 text-[--primary-color]" />
+                            <li className="w-full mt-6 flex gap-x-3" data-aos="zoom-in">
+                                <FaClock className="text-3xl mt-3 opacity-80" />
                                 <div className="w-[80%] mt-3">
-                                    <h2 className="text-2xl poppins-bold opacity-80 text-[--primary-color]">
+                                    <p className="open-sans text-2xl text-black opacity-70" data-aos="zoom-in">
                                         kami memberikan pelayanan nonstop 24 jam dengan keramahtamahan dari staf kami yang profesional.
-                                    </h2>
+                                    </p>
                                 </div>
                             </li>
                         </ul>

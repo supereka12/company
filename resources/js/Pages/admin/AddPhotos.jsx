@@ -1,166 +1,142 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
-export default function CreatePhoto() {
-    const [unitId, setUnitId] = useState('');
-    const [image, setImage] = useState(null);
-    const [title, setTitle] = useState('');
-    const [category, setCategory] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [errors, setErrors] = useState({});
-    const [progress, setProgress] = useState(0);
-    const [units, setUnits] = useState([]);
-    const [loadingUnits, setLoadingUnits] = useState(true);
+const categoriesList = ['All', 'Exterior', 'Interior', 'View'];
 
-    // Ambil data units dari API
-    useEffect(() => {
-        const fetchUnits = async () => {
-            setLoadingUnits(true);
-            try {
-                const response = await axios.get('/api/v1/units');
-                setUnits(response.data);
-            } catch (error) {
-                console.error('Error fetching units:', error);
-            } finally {
-                setLoadingUnits(false);
-            }
-        };
-        fetchUnits();
-    }, []);
+const AddPhoto = () => {
+  const [apartmentId, setApartmentId] = useState('');
+  const [image, setImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null); // Menyimpan URL preview gambar
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [apartments, setApartments] = useState([{name: 'Jarrdin Apartemen', id: 2}, {name: 'Gateway Pasteur', id: 3}, {name: 'Grand Asia Afrika', id: 4}])
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setLoading(true);
-        setProgress(0);
+  // Handle pemilihan kategori
+  const handleCategoryClick = (category) => {
+    if (selectedCategories.includes(category)) {
+      setSelectedCategories(selectedCategories.filter((c) => c !== category));
+    } else {
+      setSelectedCategories([...selectedCategories, category]);
+    }
+  };
 
-        const formData = new FormData();
-        formData.append('unit_id', unitId);
-        formData.append('image_url', image);
-        formData.append('title', title);
-        formData.append('category', category);
+  // Handle perubahan input file
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
 
-        try {
-            await axios.post('/api/v1/photos', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                }
-            });
-        } catch (error) {
-            setErrors(error.response?.data?.errors || {});
-        } finally {
-            setLoading(false);
-        }
-    };
+    // Tampilkan preview gambar
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            setImage(file);
-        }
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const renderImagePreview = () => {
-        if (image) {
-            return (
-                <img
-                    src={URL.createObjectURL(image)}
-                    alt="Preview"
-                    className="w-full h-auto object-cover rounded-md border-2 border-gray-300"
-                />
-            );
-        }
-        return <div className="text-gray-400 text-center">No image selected</div>;
-    };
+    const formData = new FormData();
+    formData.append('apartment_id', apartmentId);
+    formData.append('image_url', image);
 
-    return (
-        <div className="container mx-auto p-5 max-w-lg">
-            <h2 className="text-2xl font-semibold mb-6 text-center text-gray-700">Add Photo</h2>
+    selectedCategories.forEach((category, index) => {
+      formData.append(`categories[${index}]`, category);
+    });
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Unit */}
-                <div>
-                    <label htmlFor="unit_id" className="block text-gray-700">Unit</label>
-                    {loadingUnits ? (
-                        <p className="text-center text-gray-500">Loading units...</p>
-                    ) : (
-                        <select
-                            id="unit_id"
-                            name="unit_id"
-                            value={unitId}
-                            onChange={(e) => setUnitId(e.target.value)}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
-                        >
-                            <option value="">Select Unit</option>
-                            {units.data.map((unit) => (
-                                <option key={unit.id} value={unit.id}>
-                                    {unit.unit_number} ({unit.unit_type})
-                                </option>
-                            ))}
-                        </select>
-                    )}
-                    {errors.unit_id && <p className="text-red-500 text-sm mt-1">{errors.unit_id}</p>}
-                </div>
+    try {
+      const response = await axios.post('/api/v1/photos', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
 
-                {/* Image Upload */}
-                <div>
-                    <label htmlFor="image_url" className="block text-gray-700">Image</label>
-                    <input
-                        type="file"
-                        name="image_url"
-                        id="image_url"
-                        onChange={handleImageChange}
-                        className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
-                    />
-                    <div className="mt-2">
-                        {renderImagePreview()}
-                    </div>
-                    {errors.image_url && <p className="text-red-500 text-sm mt-1">{errors.image_url}</p>}
-                </div>
+      Swal.fire({
+        icon: 'success',
+        title: 'Photo uploaded successfully!',
+        text: 'The photo and categories were added.',
+      });
 
-                {/* Title */}
-                <div>
-                    <label htmlFor="title" className="block text-gray-700">Title</label>
-                    <input
-                        type="text"
-                        name="title"
-                        id="title"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
-                        placeholder="Enter title"
-                    />
-                    {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
-                </div>
+      setApartmentId('');
+      setImage(null);
+      setImagePreview(null);
+      setSelectedCategories([]);
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.response?.data?.message || 'Something went wrong!',
+      });
+      console.error(error.response?.data);
+    }
+  };
 
-                {/* Category */}
-                <div>
-                    <label htmlFor="category" className="block text-gray-700">Category</label>
-                    <select
-                        id="category"
-                        name="category"
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600"
-                    >
-                        <option value="">Select Category</option>
-                        <option value="Interior">Interior</option>
-                        <option value="Exterior">Exterior</option>
-                        <option value="View">View</option>
-                    </select>
-                    {errors.category && <p className="text-red-500 text-sm mt-1">{errors.category}</p>}
-                </div>
-
-                {/* Submit Button */}
-                <div className="flex justify-center">
-                <button
-                        type="submit"
-                        className={`bg-teal-600 text-white px-6 py-3 rounded-md text-lg ${loading || progress > 100 ? 'opacity-50 cursor-not-allowed' : ''}`}
-                        disabled={loading || progress > 100}
-                    >
-                        {loading || progress > 100 ? 'Uploading...' : 'Save Photo'}
-                    </button>
-                </div>
-            </form>
+  return (
+    <div className="p-4">
+      <h2 className="text-xl font-semibold mb-4">Add Photo and Categories</h2>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
+      <div className="mb-4">
+          <label htmlFor="apartment_id" className="block mb-2">Select Apartment:</label>
+          <select
+            id="apartment_id"
+            name="apartment_id"
+            value={apartmentId}
+            onChange={(e) => setApartmentId(e.target.value)}
+            required
+            className="border p-2 w-full"
+          >
+            <option value="" disabled>Select an apartment</option>
+            {apartments.map((apartment) => (
+              <option key={apartment.id} value={apartment.id}>
+                {apartment.name}
+              </option>
+            ))}
+          </select>
         </div>
-    );
-}
+        <div className="mb-4">
+          <label htmlFor="image_url" className="block mb-2">Image:</label>
+          <input
+            type="file"
+            id="image_url"
+            name="image_url"
+            onChange={handleImageChange}
+            required
+            className="block w-full"
+          />
+        </div>
+
+        {/* Preview Gambar */}
+        {imagePreview && (
+          <div className="mb-4">
+            <h3 className="font-medium mb-2">Image Preview:</h3>
+            <img src={imagePreview} alt="Preview" className="w-96 h-auto rounded-md" />
+          </div>
+        )}
+
+        <div className="mb-4">
+          <h3 className="font-medium mb-2">Select Categories:</h3>
+          <div className="flex gap-2">
+            {categoriesList.map((category) => (
+              <button
+                key={category}
+                type="button"
+                onClick={() => handleCategoryClick(category)}
+                className={`px-4 py-2 rounded ${
+                  selectedCategories.includes(category) ? 'bg-[--primary-color] text-white' : 'bg-gray-300'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <button type="submit" className="bg-[--primary-color] text-white px-4 py-2">Add Photo</button>
+      </form>
+    </div>
+  );
+};
+
+export default AddPhoto;

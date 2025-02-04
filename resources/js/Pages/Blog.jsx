@@ -85,9 +85,9 @@ export default function BlogPage(props) {
                             return (
                                 <div key={index} className="w-full">
                                     <figure className="w-full h-52 md:h-40">
-                                        <img className="w-full h-full" src={data.image_url} alt={data.title} />
+                                        <img className="w-full h-full object-cover" src={data.image_url} alt={data.title} />
                                     </figure>
-                                    <Link href={`/blog/${data.slug}`} className="font-bold text-xl poppins-light line-clamp-2 opacity-80 text-black hover:underline">{data.title}</Link>
+                                    <Link href={`/articles/${data.slug}`} className="font-bold text-xl poppins-light line-clamp-2 opacity-80 text-black hover:underline">{data.title}</Link>
                                     <p className="open-sans line-clamp-3 opacity-70 text-black">{getTextWithoutImage(data.content)}</p>
                                 </div>
                             )

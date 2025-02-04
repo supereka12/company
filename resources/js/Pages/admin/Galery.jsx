@@ -134,7 +134,7 @@ export default function GaleryAdminPage() {
                                                 {photo.category}
                                             </td>
                                             <td className="px-4 py-2">
-                                                {new Date(photo.created_at).toLocaleDateString()}
+                                                {new Date().toLocaleDateString()}
                                             </td>
                                             <td className="px-4 py-2">
                                                 <button

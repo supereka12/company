@@ -15,12 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('slug'); 
-            $table->text('image_url'); 
-            $table->integer('total_unit'); 
-            $table->text('location'); 
-            $table->text('address'); 
-            $table->json('facilities')->nullable();
-            $table->text('description'); 
             $table->timestamps();
         });
     }

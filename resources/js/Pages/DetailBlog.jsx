@@ -20,7 +20,7 @@ export default function DetailBlogPage(props) {
                                 </span>
                             </li>
                             <li class="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
-                                <Link href="/blogs">Blogs</Link>
+                                <Link href="/articles">Artikel</Link>
                             </li>
                         </ol>
                     </nav>

@@ -9,9 +9,9 @@ class Apartement extends Model
     protected $fillable = ['name', 'image_url', 'total_unit', 'location', 'address', 'facilities', 'description'];
 
  // Apartement.php
- public function units()
+ public function photos()
  {
-     return $this->hasMany(Unit::class, 'apartement_id');
+     return $this->hasMany(Photo::class, 'apartement_id');
  }
  
 }

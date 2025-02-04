@@ -72,7 +72,7 @@ export default function Navbar() {
                     <button onMouseOver={() => setDropdownGalery(true)} onMouseOut={() => setDropdownGalery(false)} className={`flex items-center hover:text-[--primary-color] transition duration-100 poppins-light font-medium ${url.includes('galery') ? 'md:text-[--primary-color]' : ''}`} >
                         Galeri
                     </button>
-                    <nav onMouseMove={() => setDropdownGalery(true)} onMouseOut={() => setDropdownGalery(false)} className={`w-auto bg-white shadow ${dropdownGalery ? 'block' : 'hidden'} absolute top-full left-0`}>
+                    <nav onMouseMove={() => setDropdownGalery(true)} onMouseOut={() => setDropdownGalery(false)} className={`w-auto bg-white shadow ${dropdownGalery ? 'block' : 'hidden'} absolute top-full left-0 z-10`}>
                         <ul className="flex flex-col poppins-light whitespace-nowrap">
                             <li>
                                 <Link href="/galery/Jarrdin-Apartemen-by-Bondepart" className="px-4 py-2 block hover:bg-[--four-color] font-medium opacity-70" >Jarrdin Apartemen by Bondepart</Link>
@@ -81,7 +81,7 @@ export default function Navbar() {
                                 <Link href="/galery/Gateway-Pasteur-by-Bondepart" className="px-4 py-2 block hover:bg-[--four-color] font-medium opacity-70" >Gateway Pasteur by Bondepart</Link>
                             </li>
                             <li>
-                                <Link href="/galery/Apartemen-Grand-Asia-Afrika-by-Bondepart" className="px-4 py-2 block hover:bg-[--four-color] font-medium opacity-70" >Apartemen Grand Asia Afrika by Bondepart</Link>
+                                <Link href="/galery/Grand-Asia-Afrika-by-Bondepart" className="px-4 py-2 block hover:bg-[--four-color] font-medium opacity-70" >Grand Asia Afrika by Bondepart</Link>
                             </li>
                         </ul>
                     </nav>

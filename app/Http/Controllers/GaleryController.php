@@ -11,6 +11,6 @@ class GaleryController extends Controller
         $title = str_replace('-', ' ', $slug);
         return Inertia::render('Galery', ['title' => $title]);
     }
-
+    
     
 }

@@ -34,7 +34,7 @@ class BlogController extends Controller
             'published_at' => null,
         ]);
 
-        return redirect('admin/blog')->with('success', 'Barang berhasil disimpan.');
+        return redirect('admin/articles')->with('success', 'Barang berhasil disimpan.');
     }
 
     public function show()
@@ -102,7 +102,7 @@ class BlogController extends Controller
             'content' => $validated['content'],
         ]);
 
-        return redirect('admin/blog')->with('success', 'Blog berhasil diperbarui.');
+        return redirect('admin/articles')->with('success', 'Blog berhasil diperbarui.');
     }
 
 

@@ -10,7 +10,7 @@ export default function BlogAdmin({ blog }) {
 
     const handleEdit = (id) => {
         console.log(`update ${id}`);
-        router.get(`/admin/blog/${id}/edit`);
+        router.get(`/admin/articles/${id}/edit`);
     };
 
 

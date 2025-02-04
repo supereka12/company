@@ -4,7 +4,6 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\GaleryController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UnitController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -19,11 +18,12 @@ Route::get('/', function () {
 });
 
 //this is API
-Route::resource('/api/v1/units', UnitController::class);
 Route::prefix('api/v1')->group(function () {
     Route::controller(PhotoController::class)->group(function () {
         Route::get('/photos', 'index');  // Mengambil data dengan slug opsional
-        Route::post('/photos', 'store');        // Menambahkan data
+        Route::post('/photos', 'store');  
+        Route::get('/photos/{slug}', 'getPhotosByApartmentAndCategory');
+
     });
 });
 
@@ -31,7 +31,7 @@ Route::prefix('api/v1')->group(function () {
 Route::get('/admin/articels', [BlogController::class, 'showAdminBlog']);
 Route::delete('/admin/articles/{id}', [BlogController::class, 'destroy']);
 Route::post('admin/articels/{id}', [BlogController::class, 'editBlog'])->name('blog.update');
-Route::get('/admin/articels/{id}/edit', [BlogController::class, 'edit'])->name('admin.blog.edit');
+Route::get('/admin/articles/{id}/edit', [BlogController::class, 'edit'])->name('admin.blog.edit');
 Route::get('/admin/articels/add', function () {
     return Inertia::render('Admin/AddBlog');
 });

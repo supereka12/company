@@ -8,7 +8,7 @@ import { Head } from "@inertiajs/react";
 import axios from "axios";
 import { IoMdClose } from "react-icons/io";
 
-export default function GaleryPage({ title }) {
+export default function GaleryPage({ title, apartmentId }) {
     const [paginate, setPaginate] = useState({
         current_page: 1,
         last_page: 1,
@@ -18,25 +18,25 @@ export default function GaleryPage({ title }) {
     const [filter, setFilter] = useState("all");
     const [loading, setLoading] = useState(false);
     const [active, setActive] = useState("all");
-    const [PreviewPhoto, setPreviewPhoto] = useState(null)
+    const [PreviewPhoto, setPreviewPhoto] = useState(null);
 
     // Load photos with filter and pagination
-    const loadPhotos = async (page = 2, filter = "all") => {
+    const loadPhotos = async (page = 1, filter = "all") => {
         setLoading(true);
         try {
-            const response = await axios.get("/api/v1/photos", {
+            const response = await axios.get(`/api/v1/photos/${title.split(" ").join("-")}`, {
                 params: {
                     page: page,
-                    filter: filter,
-                    slug: title.split(" ").join("-"),
+                    category: filter,
                 },
             });
+
             console.log(response.data)
 
-            const newPhotos = response.data.unit_photos.data;
+            const newPhotos = response.data.data;
             setPaginate({
-                current_page: response.data.unit_photos.pagination.current_page,
-                last_page: response.data.unit_photos.pagination.last_page,
+                current_page: response.data.current_page,
+                last_page: response.data.last_page,
             });
 
             setPhotos((prevPhotos) =>
@@ -51,7 +51,6 @@ export default function GaleryPage({ title }) {
 
     // Update the filter when a button is clicked
     const handleFilterChange = (filter) => {
-
         if (active !== filter) {
             setActive(filter);
             setFilter(filter);
@@ -69,8 +68,9 @@ export default function GaleryPage({ title }) {
         const bottom =
             document.documentElement.scrollHeight ===
             document.documentElement.scrollTop + window.innerHeight;
-        const parseCurrentPage = parseInt(paginate.current_page)
-        const parseLastPage = parseInt(paginate.last_page)
+        const parseCurrentPage = parseInt(paginate.current_page);
+        const parseLastPage = parseInt(paginate.last_page);
+
         if (bottom && !loading && parseCurrentPage < parseLastPage) {
             loadPhotos(parseCurrentPage + 1, filter);
         }
@@ -103,52 +103,67 @@ export default function GaleryPage({ title }) {
                     <div className="w-full md:w-[80%]">
                         <TextHead title={`${title}`} />
                     </div>
+
                     <ul className="mt-5 flex gap-x-3" data-aos="zoom-in">
-                        {["all", "exterior", "interior", "view"].map((category) => (
+                        {[{key: "Semua", value: "all"}, {key: "Eksterior", value: "exterior"}, {key: "Interior", value: "interior"}, {key: "View", value: "view"}].map((category) => (
                             <li key={category}>
                                 <button
-                                    onClick={() => handleFilterChange(category)}
-                                    className={`px-7 py-3 border border-[--primary-color] rounded-full ${active === category
+                                    onClick={() => handleFilterChange(category.value)}
+                                    className={`px-7 py-3 border border-[--primary-color] rounded-full ${active === category.value
                                         ? "bg-[--primary-color] text-white"
                                         : "hover:text-white hover:bg-[--primary-color]"
                                         }`}
                                 >
-                                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                                    {category.key.charAt(0).toUpperCase() + category.key.slice(1)}
                                 </button>
                             </li>
                         ))}
                     </ul>
-                    {PreviewPhoto
-                        ? <div className="w-full h-full bg-black/50 flex justify-center items-center fixed top-0 left-0 z-10">
+
+                    {PreviewPhoto ? (
+                        <div className="w-full h-full bg-black/50 flex justify-center items-center fixed top-0 left-0 z-10">
                             <div className="w-96 h-auto relative">
                                 <img className="w-full h-auto" src={PreviewPhoto.image_url} alt="photo" />
-                                <div onClick={() => {
-                                      document.body.style.overflow = "auto";
-                                    setPreviewPhoto(null)
-                                }} className="absolute top-1 right-1 cursor-pointer">
+                                <div
+                                    onClick={() => {
+                                        document.body.style.overflow = "auto";
+                                        setPreviewPhoto(null);
+                                    }}
+                                    className="absolute top-1 right-1 cursor-pointer"
+                                >
                                     <IoMdClose className="text-3xl text-[--primary-color] text-opacity-80" />
                                 </div>
                             </div>
                         </div>
-                        : null}
+                    ) : null}
 
-                    {photos.length === 0 ? null : (
-                        <div className="mt-5 grid lg:grid-cols-5 gap-3">
+                    {photos.length === 0 ? (
+                        null
+                    ) : (
+                        <div className="mt-5 grid grid-cols-2 lg:grid-cols-4 gap-3">
                             {photos.map((data, index) => (
-                                <div onClick={() => {
-                                    document.body.style.overflow = "hidden";
-                                    setPreviewPhoto(data)
-                                }} className="shadow cursor-pointer relative" key={index}>
+                                <div
+                                    onClick={() => {
+                                        document.body.style.overflow = "hidden";
+                                        setPreviewPhoto(data);
+                                    }}
+                                    className="shadow h-80 cursor-pointer relative bg-gray-200"
+                                    key={index}
+                                >
                                     <img
-                                        className="w-full object-cover hover:brightness-50"
+                                        className="w-full h-full object-cover hover:brightness-50"
                                         src={data.image_url}
                                         alt={`image ${index}`}
+                                        loading="lazy"
+                                        onLoad={(e) => e.currentTarget.classList.remove("hidden")}
+                                        onError={(e) => e.currentTarget.classList.add("hidden")}
                                     />
                                 </div>
                             ))}
                         </div>
                     )}
-                    {loading && <h1 className="my-3">loading...</h1>}
+
+                    {loading && <h1 className="my-3">Loading...</h1>}
                 </section>
             </main>
             <Footer />

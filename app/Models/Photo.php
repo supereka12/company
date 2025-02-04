@@ -9,10 +9,15 @@ class Photo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['unit_id', 'image_url', 'category', 'title'];
+    protected $fillable = ['apartement_id', 'image_url'];
 
-    public function unit()
+    public function apartement()
     {
-        return $this->belongsTo(Unit::class, 'unit_id');
+        return $this->belongsTo(Apartement::class, 'apartement_id');
+    }
+
+    public function categoryPhotos()
+    {
+        return $this->hasMany(CategoryPhoto::class, 'photo_id');
     }
 }

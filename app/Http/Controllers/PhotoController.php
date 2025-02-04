@@ -3,173 +3,127 @@
 namespace App\Http\Controllers;
 
 use App\Models\Apartement;
+use App\Models\CategoryPhoto;
 use App\Models\Photo;
-use App\Models\Unit;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
 class PhotoController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $filter = $request->input('filter', 'all');
-        $slug = $request->input('slug', '');
-    
-        // Jika slug tidak ditemukan, ambil semua foto tanpa filter slug
-        if (!$slug) {
-            // Ambil semua foto dari semua unit yang ada
-            $photos = Photo::with('unit') // Pastikan untuk memuat relasi unit
-                ->when($filter != 'all', function ($query) use ($filter) {
-                    return $query->where('category', $filter);  // Filter berdasarkan kategori
-                })
-                ->paginate(10);
-    
-            // Format data foto dan unit yang terkait
-            $formattedPhotos = $photos->map(function ($photo) {
-                return [
-                    'title' => $photo->title,
-                    'image_url' => $photo->image_url,
-                    'category' => $photo->category,
-                    'unit' => [
-                        'unit_number' => $photo->unit->unit_number,
-                        'unit_type' => $photo->unit->unit_type,
-                        'floor' => $photo->unit->floor,
-                        'facilities' => $photo->unit->facilities,
-                    ]
-                ];
-            });
-    
-            // Kembalikan respons dengan data foto dan pagination
-            return response()->json([
-                'unit_photos' => [
-                    'data' => $formattedPhotos,
-                    'pagination' => [
-                        'total' => $photos->total(),
-                        'per_page' => $photos->perPage(),
-                        'current_page' => $photos->currentPage(),
-                        'last_page' => $photos->lastPage(),
-                    ]
-                ]
-            ]);
-        }
-    
-        // Jika slug ditemukan, ambil data berdasarkan slug
-        $apartment = Apartement::where('slug', $slug)->first();
-    
-        if ($apartment) {
-            $photosQuery = Photo::whereHas('unit', function ($query) use ($apartment) {
-                $query->where('units.apartement_id', $apartment->id); // Pastikan nama kolom sesuai dengan skema database Anda
-            })
-            ->when($filter != 'all', function ($query) use ($filter) {
-                return $query->where('category', $filter);
-            })
-            ->with('unit');
-        
-            // Gunakan paginate bawaan Laravel
-            $photos = $photosQuery->paginate(10);
-        
-            // Format data foto dengan unit terkait
-            $formattedPhotos = $photos->map(function ($photo) {
-                return [
-                    'title' => $photo->title,
-                    'image_url' => $photo->image_url,
-                    'category' => $photo->category,
-                    'unit' => $photo->unit ? [
-                        'unit_number' => $photo->unit->unit_number,
-                        'unit_type' => $photo->unit->unit_type,
-                        'floor' => $photo->unit->floor,
-                        'facilities' => $photo->unit->facilities,
-                    ] : null
-                ];
-            });
-        
-            return response()->json([
-                'unit_photos' => [
-                    'data' => $formattedPhotos,
-                    'pagination' => [
-                        'total' => $photos->total(),
-                        'per_page' => $photos->perPage(),
-                        'current_page' => $photos->currentPage(),
-                        'last_page' => $photos->lastPage(),
-                    ]
-                ]
-            ]);
-        } else {
-            // Jika apartment tidak ditemukan berdasarkan slug, kembalikan data kosong
-            return response()->json([
-                'unit_photos' => [
-                    'data' => [],
-                    'pagination' => [
-                        'total' => 0,
-                        'per_page' => 10,
-                        'current_page' => 1,
-                        'last_page' => 1
-                    ]
-                ]
-            ]);
-        }
+        $photos = Photo::with('categoryPhotos')->get();
+        return response()->json($photos);
     }
-    
-    
+
+    // Menambahkan foto baru
+    public function compressAndUploadToCloudinary($imagePath)
+    {
+        // Upload gambar ke Cloudinary dengan folder 'bondepart' dan kompresi otomatis
+        $uploadedFile = Cloudinary::upload($imagePath, [
+            'folder' => 'bondepart', // Menentukan folder tujuan di Cloudinary
+            'quality' => 'auto',     // Kompresi otomatis dengan kualitas terbaik
+            'fetch_format' => 'auto' // Menggunakan format gambar terbaik (misalnya WebP)
+        ]);
+
+        return $uploadedFile->getSecurePath(); // Mengembalikan URL gambar yang sudah dikompres dan diupload
+    }
+
+    // Fungsi untuk menyimpan foto dan kategori
     public function store(Request $request)
     {
+        // Validasi input
         $request->validate([
-            'unit_id' => 'required',
-            'image_url' => 'required|image',
-            'title' => 'required|string',
-            'category' => 'required|string',
+            'apartment_id' => 'required|exists:apartements,id',
+            'image_url' => 'required|image', // Validasi format gambar
+            'categories' => 'array',
         ]);
 
+        
         $imagePath = $request->file('image_url')->getRealPath();
 
-        // Upload gambar ke Cloudinary dengan folder 'bondepart'
-        $urlImage = Cloudinary::upload($imagePath, [
-            'folder' => 'bondepart'  // Menentukan folder tujuan di Cloudinary
-        ])->getSecurePath();
+        if (empty($imagePath)) {
+            return response()->json(['error' => 'File path cannot be empty', 'path' => $imagePath], 400);
+        }
+        
+        $cloudinaryResponse = $this->compressAndUploadToCloudinary($imagePath);
+        
 
-        Photo::create([
-            'unit_id' =>$request->unit_id,
-            'image_url' => $urlImage,
-            'title' => $request->title,
-            'category' => $request->category,
+        // Menyimpan foto ke database
+        $photo = Photo::create([
+            'apartement_id' => $request->apartment_id,
+            'image_url' => $cloudinaryResponse,
         ]);
 
-        return redirect()->route('/admin/galery');
-    }
+        // Simpan kategori yang dipilih
+        $categories = $request->input('categories', []);
 
-    // Menampilkan form edit foto
-    public function edit(Photo $photo)
-    {
-        return Inertia::render('Photos/Edit', [
+        foreach ($categories as $categoryName) {
+            // Pastikan kategori ada di database atau buat baru
+            $category = CategoryPhoto::firstOrCreate([
+                'name' => $categoryName,
+                'photo_id' => $photo->id // Pastikan kategori terkait dengan photo_id
+            ]);
+        }
+        // Mengembalikan response dengan data foto dan kategori
+        return response()->json([
             'photo' => $photo,
-        ]);
+            'category' => $category,
+        ], 201); // Status 201 Created
     }
+    // Menampilkan detail foto berdasarkan ID
+    public function show($id)
+    {
+        $photo = Photo::with('categoryPhotos')->findOrFail($id);
+        return response()->json($photo);
+    }
+
+    public function getPhotosByApartmentAndCategory(Request $request, $apartmentSlug)
+    {
+        // Mengambil kategori dari request (query parameter atau form data)
+        $categoryName = $request->input('category', 'all');
+    
+        if (!$categoryName) {
+            return response()->json(['message' => 'Category is required'], 400);
+        }
+    
+        // Cari apartment berdasarkan slug
+        $apartment = Apartement::where('slug', $apartmentSlug)->first();
+    
+        if (!$apartment) {
+            return response()->json(['message' => 'Apartment not found'], 404);
+        }
+    
+        // Ambil foto berdasarkan apartment_id dan kategori di category_photo
+        $photos = Photo::where('apartement_id', $apartment->id)
+            ->whereHas('categoryPhotos', function ($query) use ($categoryName) {
+                $query->where('name', $categoryName); // Menyaring berdasarkan kategori
+            })
+            ->paginate(12); // Pagination 10 foto per halaman
+    
+        return response()->json($photos);
+    }
+    
 
     // Mengupdate foto
-    public function update(Request $request, Photo $photo)
+    public function update(Request $request, $id)
     {
+        $photo = Photo::findOrFail($id);
+
         $request->validate([
-            'unit_id' => 'required|exists:units,id',
-            'image_url' => 'required|string',
-            'title' => 'required|string',
-            'category' => 'required|string',
+            'apartment_id' => 'required|exists:apartments,id',
+            'image_url' => 'required|url',
         ]);
 
-        $photo->update([
-            'unit_id' => $request->unit_id,
-            'image_url' => $request->image_url,
-            'title' => $request->title,
-            'category' => $request->category,
-        ]);
-
-        return redirect()->route('photos.index');
+        $photo->update($request->all());
+        return response()->json($photo);
     }
 
     // Menghapus foto
-    public function destroy(Photo $photo)
+    public function destroy($id)
     {
+        $photo = Photo::findOrFail($id);
         $photo->delete();
-        return redirect()->route('photos.index');
+        return response()->json(['message' => 'Photo deleted successfully']);
     }
 }
