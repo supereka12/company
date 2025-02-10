@@ -22,7 +22,7 @@ export default function Navbar() {
     }, []);
 
     return (
-        <nav className="w-full px-5 md:px-10 lg:px-20 py-3 bg-white flex items-center justify-between sticky top-0 z-10 shadow-md">
+        <nav className="w-full px-5 md:px-10 lg:px-20 py-3 bg-white flex items-center justify-between shadow-md">
             <h1 className="text-3xl text-[--primary-color] poppins-bold">Bondepart</h1>
 
             <button

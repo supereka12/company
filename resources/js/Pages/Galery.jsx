@@ -66,8 +66,8 @@ export default function GaleryPage({ title, apartmentId }) {
     // Infinite scroll logic
     const handleScroll = useCallback(() => {
         const bottom =
-            document.documentElement.scrollHeight ===
-            document.documentElement.scrollTop + window.innerHeight;
+            document.documentElement.scrollHeight <
+            document.documentElement.scrollTop + window.innerHeight + 80;
         const parseCurrentPage = parseInt(paginate.current_page);
         const parseLastPage = parseInt(paginate.last_page);
 
@@ -105,8 +105,8 @@ export default function GaleryPage({ title, apartmentId }) {
                     </div>
 
                     <ul className="mt-5 flex gap-x-3" data-aos="zoom-in">
-                        {[{key: "Semua", value: "all"}, {key: "Eksterior", value: "exterior"}, {key: "Interior", value: "interior"}, {key: "View", value: "view"}].map((category) => (
-                            <li key={category}>
+                        {[{key: "Semua", value: "all"}, {key: "Eksterior", value: "exterior"}, {key: "Interior", value: "interior"}, {key: "View", value: "view"}].map((category, index) => (
+                            <li key={index}>
                                 <button
                                     onClick={() => handleFilterChange(category.value)}
                                     className={`px-7 py-3 border border-[--primary-color] rounded-full ${active === category.value
