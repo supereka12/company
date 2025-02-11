@@ -14,6 +14,10 @@ import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
+import { GrSwim } from "react-icons/gr";
+import { IoLocation } from "react-icons/io5";
+import { IoBed } from "react-icons/io5";
+import { MdOutlineAttachMoney } from "react-icons/md";
 
 const images = ['https://res.cloudinary.com/dqnqorsvp/image/upload/v1738546501/bondepart/z95hzvhsag3czpmsxdge.jpg', 'https://res.cloudinary.com/dqnqorsvp/image/upload/v1738546911/bondepart/yooc4mvipknzuwtjd5dy.jpg', 'https://res.cloudinary.com/dqnqorsvp/image/upload/v1738550956/bondepart/f3key99zzenewvfiqljj.jpg']
 
@@ -23,27 +27,34 @@ const sliderVariants = {
     exit: { opacity: 0.1 }, // Gambar menghilang dengan opacity 0
 }
 
-const FeatureItem = ({ title, description }) => (
-    <li className="w-full flex gap-x-3" data-aos="zoom-in">
-        <div className="w-7 h-7 flex justify-center items-center rounded-full bg-white">
-            <FaCheck className="text-black opacity-80 font-bold" />
-        </div>
-        <div className="w-[80%]">
-            <h2 className="text-2xl poppins-bold text-white opacity-80">{title}</h2>
-            <p className="open-sans mt-2 text-lg md:text-2xl text-white opacity-70">{description}</p>
-        </div>
-    </li>
-);
+const FeatureIconItem = ({ Icon, style, scrollY, from, to, x, y }) => {
+    const translateX = useTransform(scrollY, [from, to], ['50%', x])
+    const translateY = useTransform(scrollY, [from, to], ['100%', y])
+    const opacity = useTransform(scrollY, [from, to], [0, 1])
+    return (
+        <motion.div style={{ x: translateX, y: translateY, opacity }}>
+            <Icon className={style} />
+        </motion.div>
+    )
+}
 
-const FacilityItem = ({ icon, title, description }) => (
-    <li className="w-full mt-3 flex gap-x-3" data-aos="zoom-in">
-        {icon}
-        <div className="w-[80%] mt-3">
-            <h2 className="text-2xl poppins-bold opacity-80 text-[--primary-color]">{title}</h2>
-            <p className="open-sans mt-2 text-lg md:text-2xl text-black opacity-70">{description}</p>
-        </div>
-    </li>
-);
+
+const FeatureItem = ({ title, description, scrollY, from, to }) => {
+    const opacity = useTransform(scrollY, [from, to], [0, 1])
+    const translateX = useTransform(scrollY, [from, to], [100, 0])
+
+    return (
+        <motion.li style={{ opacity, x: translateX }} className={`w-full flex gap-x-3`}>
+            <div className="w-7 h-7 flex justify-center items-center rounded-full bg-white">
+                <FaCheck className="text-black opacity-80 font-bold" />
+            </div>
+            <div className="w-[80%]">
+                <h2 className="text-2xl poppins-bold text-white opacity-80">{title}</h2>
+                <p className="open-sans mt-2 text-lg md:text-2xl text-white opacity-70">{description}</p>
+            </div>
+        </motion.li>
+    )
+}
 
 export default function HomePage() {
     const [index, setIndex] = useState(0);
@@ -85,53 +96,7 @@ export default function HomePage() {
 
 
                 {/* Fasilitas Unggulan Section */}
-                <section className="w-full min-h-screen px-5 py-10 md:p-10 lg:p-20 flex flex-col-reverse lg:flex-row gap-x-8 relative z-10 bg-white">
-                    <div className="w-full lg:w-[60%] mt-5 lg:mt-0">
-                        <TextHead title="Fasilitas superior" color="text-black" />
-                        <p className="open-sans mt-2 text-lg md:text-2xl text-black opacity-70" data-aos="zoom-in">
-                            Fasilitas Apartemen yang dilengkapi dengan apapun yang anda butuhkan.
-                        </p>
-                        <ul className="mt-4 space-y-4">
-                            <FacilityItem
-                                icon={<FaSwimmingPool className="text-5xl text-[--primary-color]" />}
-                                title="Kolam Renang"
-                                description="Berenang dengan nyaman dan kolam yang luas."
-                            />
-                            <FacilityItem
-                                icon={<CgGym className="text-5xl text-[--primary-color]" />}
-                                title="Fasilitas Olahraga"
-                                description="Tetap menjaga kesehatan ditengah kesibukan."
-                            />
-                            <FacilityItem
-                                icon={<MdOutlineSecurity className="text-5xl text-[--primary-color]" />}
-                                title="Keamanan 24 jam"
-                                description="Sistem keamanan 24 jam dengan area parkir yang luas."
-                            />
-                        </ul>
-                    </div>
-                    <div className="lg:w-[40%] relative flex items-center justify-center overflow-hidden">
-                        <div className="w-auto relative" >
-                            <motion.img
-                                key={index}
-                                src={images[index]}
-                                variants={sliderVariants}
-                                initial="enter"
-                                animate="center"
-                                exit="exit"
-                                transition={{ opacity: { duration: 0.4 } }}
-                                className=" h-full w-auto max-h-[600px] rounded-2xl shadow-lg object-cover"
-                            />
-                            <div className="w-full flex justify-center gap-x-5 absolute bottom-2">
-                                {images.map((data, no) => {
-                                    return (
-                                        <button key={no} onClick={() => setIndex(no)} className={`w-3 h-3 ${index == no ? 'bg-white' : 'bg-white/50'} rounded-full`} ></button>
-                                    )
-                                })}
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
+                <FacilitySuperior />
                 {/* CTA Section */}
                 <section className="w-full bg-[--third-color] flex flex-col items-center text-center px-5 py-10 md:p-10 lg:p-20">
                     {/* <TextHead title="" color="text-black" /> */}
@@ -165,9 +130,6 @@ const Hero = () => {
         return () => clearInterval(timer);
     }, [index]);
     const nextSlide = () => setIndex((prevIndex) => (prevIndex + 1) % data.length);
-
-
-
 
     return (
         <section ref={section} className="w-full min-h-screen h-auto md:h-screen relative">
@@ -236,98 +198,99 @@ const Hero = () => {
     )
 }
 
-
-const HeadLine = () => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { triggerOnce: true, threshold: 0.2 });
-    return (
-        <section className="w-full min-h-screen h-auto md:h-screen relative">
-            <button onClick={() => console.log(isInView)}>click</button>
-            <TypewriterOnScroll text={"Terinspirasi dari kota Bandung sebagai kota wisata, Bondepart Apartemen menawarkan Hunian yang nyaman, kamar-kamar yang elegan, dan keramahtamahan yang baik yang diwujudkan dengan Pelayanan 24 jam. Terletak di Jl. Cihampelas, Jalan Karapitan dan Jl. Pasteur kota bandung dengan lokasi yang sangat strategis untuk berlibur di kota Bandung"} />
-        </section>
-    )
-}
-const TypewriterOnScroll = ({ text }) => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { triggerOnce: true, threshold: 0.8 });
-    const [typedText, setTypedText] = useState("");
-
-    useEffect(() => {
-        if (isInView) {
-            let index = 0;
-            const interval = setInterval(() => {
-                setTypedText((prev) => prev + text[index]);
-                index++;
-                if (index >= text.length) clearInterval(interval);
-            }, 100); // Kecepatan mengetik per huruf
-            return () => clearInterval(interval);
-        }
-    }, [isInView, text]);
-
-    return (
-        <motion.div ref={ref} className="text-2xl font-mono">
-            {typedText}
-        </motion.div>
-    );
-};
-
-const wordAnimation = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (index) => ({
-        opacity: 1,
-        y: 0,
-        transition: {
-            delay: index * 0.3, // jeda antar kata
-            type: "spring",
-            stiffness: 50,
-        },
-    }),
-};
-
 const WhyChoose = () => {
     const title = "Kenapa harus Bondepart Apartemen?"
     const words = title.split(" ");
     const section = useRef(null)
-    const { scrollYProgress } = useScroll({ target: section, offset: ['start start', 'end end'] })
-    const clipPath = useTransform(scrollYProgress, [0, 0.5, 1], ['circle(0% at 50% 50%)', 'circle(100% at 50% 50%)', 'circle(0% at 50% 50%)'])
+    const { scrollYProgress } = useScroll({ target: section, offset: ['start end', 'end end'] })
 
-    useEffect(() => {
-        const scroll = scrollYProgress.onChange((latest) => {
-            console.log(scrollYProgress)
-        })
-        return () => scroll()
-    }, [])
+    // Define opacity for each word based on scrollYProgress
+    const wordOpacity = useTransform(scrollYProgress, [0.1, 0.2], [0, 1]);
 
     return (
-        <section ref={section} className="w-full min-h-screen h-auto px-5 py-10 md:p-10 lg:p-20 flex flex-col lg:flex-row gap-x-20 bg-gradient-to-br from-[--secondary-color] to-[--primary-color]">
-            <motion.figure className={`lg:w-[50%] h-auto relative overflow-hidden`}>
-                <img src='/images/IMG_7140.jpg' alt="Interior Apartemen Bondepart" className="w-full h-96 md:h-[400px] lg:h-[600px] rounded-lg border-8 border-white object-cover" />
-            </motion.figure>
-            <div className="w-full lg:w-[50%] mt-5 lg:mt-0 h-full">
-                <motion.div
-                    // style={{translateY}}
-                    className={`text-3xl' md:text-5xl poppins-bold text-balck leading-[45px] md:leading-[70px] text-white text-shadow opacity-80`}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                >
-                    {words.map((word, index) => (
-                        <motion.span
-                            key={index}
-                            className="inline-block mr-2"
-                            custom={index}
-                            variants={wordAnimation}
-                        >
-                            {word}
-                        </motion.span>
-                    ))}
-                </motion.div>
-                <ul className="mt-5 space-y-8">
-                    <FeatureItem title="Fasilitas yang lengkap" description="Kolam renang, Fasilitas olahraga, Area parkir luas dan keamanan 24 jam." />
-                    <FeatureItem title="Lokasi yang strategis" description="Dekat dengan tempat wisata, stasiun dan bandara." />
-                    <FeatureItem title="Unit yang Estetik" description="Memiliki konsep unit yang elegan dan modern." />
-                    <FeatureItem title="Harga yang terjangkau" description="Harga yang terjangkau untuk hunian yang strategis." />
-                </ul>
+        <section ref={section} className="w-full h-[250vh] px-5 py-10 md:p-10 lg:p-20 bg-gradient-to-br from-[--secondary-color] to-[--primary-color] relative">
+            <div className="w-full h-screen pt-10 flex flex-col lg:flex-row gap-x-20 sticky top-0 overflow-hidden">
+                <div className="lg:w-[40%] h-full relative">
+                    <FeatureIconItem Icon={GrSwim} style={"text-9xl scale-150 text-white"} scrollY={scrollYProgress} from={0.2} to={0.28} x={'25%'} y={'35%'} />
+                    <FeatureIconItem Icon={IoLocation} style={"text-9xl scale-150 text-white"} scrollY={scrollYProgress} from={0.43} to={0.51} x={'75%'} y={'-60%'} />
+                    <FeatureIconItem Icon={IoBed} style={"text-9xl scale-150 text-white"} scrollY={scrollYProgress} from={0.56} to={0.64} x={'25%'} y={'35%'} index={2} />
+                    <FeatureIconItem Icon={MdOutlineAttachMoney} style={"text-9xl scale-150 text-white"} scrollY={scrollYProgress} from={0.79} to={0.87} x={'75%'} y={'-60%'} />
+                </div>
+                <div className="w-full lg:w-[60%] mt-5 lg:mt-0 h-full">
+                    <motion.div
+                        className={`text-3xl md:text-5xl poppins-bold text-balck leading-[45px] md:leading-[70px] text-white text-shadow opacity-80`}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        {words.map((word, index) => {
+                            const wordDelay = index * 0.2; // Delay each word by 0.2 seconds
+                            return (
+                                <motion.span
+                                    key={index}
+                                    className="inline-block mr-2"
+                                    custom={index}
+                                    variants={{
+                                        hidden: { opacity: 0 },
+                                        visible: {
+                                            opacity: 1,
+                                            transition: { delay: wordDelay }
+                                        }
+                                    }}
+                                    style={{
+                                        opacity: wordOpacity // Apply opacity based on scroll progress
+                                    }}
+                                >
+                                    {word}
+                                </motion.span>
+                            );
+                        })}
+                    </motion.div>
+                    <ul className="h-full mt-5 space-y-8">
+                        <FeatureItem title="Fasilitas yang lengkap" description="Kolam renang, Fasilitas olahraga, Area parkir luas dan keamanan 24 jam." scrollY={scrollYProgress} from={0.2} to={0.28} />
+                        <FeatureItem title="Lokasi yang strategis" description="Dekat dengan tempat wisata, stasiun dan bandara." scrollY={scrollYProgress} from={0.43} to={0.51} />
+                        <FeatureItem title="Unit yang Estetik" description="Memiliki konsep unit yang elegan dan modern." scrollY={scrollYProgress} from={0.56} to={0.64} />
+                        <FeatureItem title="Harga yang terjangkau" description="Harga yang terjangkau untuk hunian yang strategis." scrollY={scrollYProgress} from={0.79} to={0.87} />
+                    </ul>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+const FacilityItem = ({image, title, scrollY, from, to}) => {
+    const translateX = useTransform(scrollY, [from, to], ["300%", "0%"])
+    const opacity = useTransform(scrollY, [from, to], [0, 1])
+    return (
+        <motion.figure style={{ x: translateX, opacity }} className="w-full h-[29rem] relative overflow-hidden group">
+            <img className="w-full h-full" src={image} alt="" />
+            <div className="w-full h-full flex items-center justify-center absolute top-0 left-0 bg-black/60 group-hover:translate-y-full transition duration-500">
+                <h1 className="text-2xl text-white popins-bold opacity-90">{title}</h1>
+            </div>
+        </motion.figure>
+    )
+}
+
+
+const FacilitySuperior = () => {
+    const section = useRef(null)
+    const { scrollYProgress } = useScroll({ target: section, offset: ['start end', 'end end'] })
+    const opacity = useTransform(scrollYProgress, [0.1, 0.2], [0, 1])
+
+    return (
+        <section ref={section} className="w-full h-[250vh] lg:py-20 relative bg-white">
+            <div className="w-full h-screen pt-10 sticky top-0" >
+                <div className="text-center" >
+                    <motion.h1 style={{ opacity }} className={`text-3xl md:text-5xl poppins-bold text-balck tracking-wider leading-[45px] md:leading-[70px] text-shadow opacity-80`}>Fasilitas Unggulan</motion.h1>
+                    <motion.p style={{ opacity }} className="open-sans mt-2 text-lg md:text-2xl text-black opacity-70">
+                        Fasilitas Apartemen yang dilengkapi dengan apapun yang anda butuhkan.
+                    </motion.p>
+                </div>
+                <div className="w-full mt-10 px-20 flex justify-center gap-x-32 relative overflow-hidden">
+                    <FacilityItem image={images[0]} title={"Kolam Renang"} scrollY={scrollYProgress} from={0.2} to={0.4} />
+                    <FacilityItem image={images[1]} title={"Ruang Gym"} scrollY={scrollYProgress} from={0.4} to={0.6} />
+                    <FacilityItem image={images[2]} title={"Area Parkir"} scrollY={scrollYProgress} from={0.6} to={0.8} />
+                </div>
             </div>
         </section>
     )
