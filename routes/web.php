@@ -26,41 +26,41 @@ Route::prefix('api/v1')->group(function () {
 
     });
 });
-
-// this is route for admin
-Route::get('/admin/articels', [BlogController::class, 'showAdminBlog']);
-Route::delete('/admin/articles/{id}', [BlogController::class, 'destroy']);
-Route::post('admin/articels/{id}', [BlogController::class, 'editBlog'])->name('blog.update');
-Route::get('/admin/articles/{id}/edit', [BlogController::class, 'edit'])->name('admin.blog.edit');
-Route::get('/admin/articels/add', function () {
-    return Inertia::render('Admin/AddBlog');
+//this is route for admin
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/articels', [BlogController::class, 'showAdminBlog']);
+    Route::delete('/admin/articles/{id}', [BlogController::class, 'destroy']);
+    Route::post('admin/articels/{id}', [BlogController::class, 'editBlog'])->name('blog.update');
+    Route::get('/admin/articles/{id}/edit', [BlogController::class, 'edit'])->name('admin.blog.edit');
+    Route::get('/admin/articels/add', function () {
+        return Inertia::render('Admin/AddBlog');
+    });
+    Route::get('/admin', function () {
+        return Inertia::render('Admin/Beranda');
+    });
+    Route::get('/admin/galery', function () {
+        return Inertia::render('Admin/Galery');
+    });
+    Route::get('/admin/photos/create', function () {
+        return Inertia::render('Admin/AddPhotos');
+    });
+    Route::get('/admin/articles/add', function () {
+        return Inertia::render('Admin/AddBlog');
+    });
+    Route::get('/admin/dashboard', function () {
+        return Inertia::render('Admin/Dashboard');
+    });
+    Route::get('/admin/apartments', function() {
+        return Inertia::render('Admin/Apartments');
+    });
+    Route::get('/admin/apartments/create', function() {
+        return Inertia::render('Admin/Apartments');
+    });
 });
-Route::get('/admin', function () {
-    return Inertia::render('Admin/Beranda');
-});
-Route::get('/admin/galery', function () {
-    return Inertia::render('Admin/Galery');
-});
-Route::get('/admin/photos/create', function () {
-    return Inertia::render('Admin/AddPhotos');
-});
-Route::get('/admin/articles/add', function () {
-    return Inertia::render('Admin/AddBlog');
-});
-Route::get('/admin/dashboard', function () {
-    return Inertia::render('Admin/Dashboard');
-});
-Route::get('/admin/apartments', function() {
-    return Inertia::render('Admin/Apartments');
-});
-Route::get('/admin/apartments/create', function() {
-    return Inertia::render('Admin/Apartments');
-});
-
 
 
 //this is route for user
-Route::get('/barang', [BlogController::class, 'index'])->name('admin/blog');
+// Route::get('/barang', [BlogController::class, 'index'])->name('admin/blog');
 Route::get('/galery', function () {
     return Inertia::render('Galery');
 });

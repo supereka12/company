@@ -22,11 +22,11 @@ export default function Navbar() {
     }, []);
 
     return (
-        <nav className="w-full px-5 md:px-10 lg:px-20 py-3 bg-white flex items-center justify-between shadow-md">
-            <h1 className="text-3xl text-[--primary-color] poppins-bold">Bondepart</h1>
+        <nav className="w-full px-5 md:px-10 lg:px-20 py-3 md:bg-white flex items-center justify-between md:shadow-md">
+            <h1 className="text-3xl text-[--primary-color] poppins-bold" style={{ textShadow: '.5px .5px 0 white' }} >Bondepart</h1>
 
             <button
-                className="md:hidden text-3xl text-[--primary-color] focus:outline-none"
+                className="md:hidden text-3xl text-[--primary-color] focus:outline-none cursor-pointer"
                 onClick={toggleSidebar}
             >
                 &#9776;
@@ -48,12 +48,24 @@ export default function Navbar() {
                             <NavLink link={"/"} title={"Beranda"} active={false} />
                             <NavLink link={"/about"} title={"Tentang Kami"} active={false} />
                             <NavLink link={"/articles"} title={"Artikel"} active={false} />
-                            <NavLink link={"/galery"} title={"Galeri"} active={false} />
+                            <div>
+                                <button className="hover:text-[--primary-color] transition duration-100 poppins-light font-medium">Galeri</button>
+                                <ul className="mt-3 flex flex-col gap-y-3 text-white">
+                                    <li className="pl-2">
+                                        <NavLink link={"/galery/Jarrdin-Apartemen-by-Bondepart"} title={"Jarrdin Apartemen by Bondepart"} active={false} />
+                                    </li>
+                                    <li className="pl-2">
+                                        <NavLink link={"/galery/Gateway-Pasteur-by-Bondepart"} title={"Gateway Pasteur by Bondepart"} active={false} />
+                                    </li>
+                                    <li className="pl-2">
+                                        <NavLink link={"/galery/Grand-Asia-Afrika-by-Bondepart"} title={"Grand Asia Afrika by Bondepart"} active={false} />
+                                    </li>
+                                </ul>
+                            </div>
                         </ul>
                     </div>
                     <div className="text-white opacity-80 mt-8">
-                        <p>bondepart@gmail.com</p>
-                        <p>xxx-xxxx-xxxx</p>
+                        <p>bondepart.co@gmail.com</p>
                         <div className="flex gap-x-3 mt-3">
                             <CiFacebook className="text-white text-2xl opacity-80" />
                             <FaTiktok className="text-white text-2xl opacity-80" />

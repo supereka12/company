@@ -105,7 +105,7 @@ export default function GaleryPage({ title, apartmentId }) {
                     </div>
 
                     <ul className="mt-5 flex gap-x-3" data-aos="zoom-in">
-                        {[{key: "Semua", value: "all"}, {key: "Eksterior", value: "exterior"}, {key: "Interior", value: "interior"}, {key: "View", value: "view"}].map((category, index) => (
+                        {[{ key: "Semua", value: "all" }, { key: "Eksterior", value: "exterior" }, { key: "Interior", value: "interior" }, { key: "View", value: "view" }].map((category, index) => (
                             <li key={index}>
                                 <button
                                     onClick={() => handleFilterChange(category.value)}
@@ -140,14 +140,14 @@ export default function GaleryPage({ title, apartmentId }) {
                     {photos.length === 0 ? (
                         null
                     ) : (
-                        <div className="mt-5 grid grid-cols-2 lg:grid-cols-4 gap-3">
+                        <div className="w-full mt-5 grid grid-cols-2 lg:grid-cols-4 gap-3">
                             {photos.map((data, index) => (
                                 <div
                                     onClick={() => {
                                         document.body.style.overflow = "hidden";
                                         setPreviewPhoto(data);
                                     }}
-                                    className="shadow h-80 cursor-pointer relative bg-gray-200"
+                                    className="shadow h-[24rem] md:h-[30rem] cursor-pointer relative bg-gray-200"
                                     key={index}
                                 >
                                     <img
@@ -163,7 +163,11 @@ export default function GaleryPage({ title, apartmentId }) {
                         </div>
                     )}
 
-                    {loading && <h1 className="my-3">Loading...</h1>}
+                    <div className="w-full mt-5 grid grid-cols-2 lg:grid-cols-4 gap-3" >
+                        {loading && Array.from({ length: 12 }).map((_, index) => (
+                            <div key={index} className="w-full shadow h-[24rem] md:h-[30rem] cursor-pointer relative bg-gray-200"></div>
+                        ))}
+                    </div>
                 </section>
             </main>
             <Footer />
