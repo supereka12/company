@@ -24,25 +24,25 @@ export default function Sidebar() {
                     <h2 className="poppins-bold mt-11 text-xl text-black/80">Menu</h2>
                     <ul className="space-y-2 mt-2">
                         <li>
-                            <Link href="/admin/articels" className="flex gap-x-2 px-2 py-1 hover:bg-[--primary-color] hover:text-white/70 group" >
+                            <Link href="/manage/articles" className="flex gap-x-2 px-2 py-1 hover:bg-[--primary-color] hover:text-white/70 group" >
                                 <RiArticleLine className="text-2xl text-black/80 group-hover:text-white/80" />
                                 <p>Artikel</p>
                             </Link>
                         </li>
-                        <li>
-                            <Link href="/admin/apartments" className="flex gap-x-2 px-2 py-1 hover:bg-[--primary-color] hover:text-white/70 group" >
+                        {/* <li>
+                            <Link href="/manage/apartments" className="flex gap-x-2 px-2 py-1 hover:bg-[--primary-color] hover:text-white/70 group" >
                                 <PiBuildingApartment className="text-2xl text-black/80 group-hover:text-white/80" />
                                 <p>Apartemen</p>
                             </Link>
-                        </li>
-                        <li>
-                            <Link href="/admin/units" className="flex gap-x-2 px-2 py-1 hover:bg-[--primary-color] hover:text-white/70 group" >
+                        </li> */}
+                        {/* <li>
+                            <Link href="/manage/units" className="flex gap-x-2 px-2 py-1 hover:bg-[--primary-color] hover:text-white/70 group" >
                                 <TbHome className="text-2xl text-black/80 group-hover:text-white/80" />
                                 <p>Unit</p>
                             </Link>
-                        </li>
+                        </li> */}
                         <li>
-                            <Link href="/admin/galery" className="flex gap-x-2 px-2 py-1 hover:bg-[--primary-color] hover:text-white/70 group" >
+                            <Link href="/manage/galery" className="flex gap-x-2 px-2 py-1 hover:bg-[--primary-color] hover:text-white/70 group" >
                                 <IoMdImages className="text-2xl text-black/80 group-hover:text-white/80" />
                                 <p>Galery</p>
                             </Link>

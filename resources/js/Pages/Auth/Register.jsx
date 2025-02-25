@@ -17,6 +17,9 @@ export default function Register() {
         e.preventDefault();
 
         post(route('register'), {
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+            },
             onFinish: () => reset('password', 'password_confirmation'),
         });
     };

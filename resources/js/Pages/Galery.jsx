@@ -24,14 +24,13 @@ export default function GaleryPage({ title, apartmentId }) {
     const loadPhotos = async (page = 1, filter = "all") => {
         setLoading(true);
         try {
-            const response = await axios.get(`/api/v1/photos/${title.split(" ").join("-")}`, {
+            const response = await axios.get(`/unit/photos/${title.split(" ").join("-")}`, {
                 params: {
                     page: page,
                     category: filter,
                 },
             });
 
-            console.log(response.data)
 
             const newPhotos = response.data.data;
             setPaginate({
@@ -104,7 +103,7 @@ export default function GaleryPage({ title, apartmentId }) {
                         <TextHead title={`${title}`} />
                     </div>
 
-                    <ul className="mt-5 flex gap-x-3" data-aos="zoom-in">
+                    <ul className="mt-5 flex justify-center flex-wrap gap-3" >
                         {[{ key: "Semua", value: "all" }, { key: "Eksterior", value: "exterior" }, { key: "Interior", value: "interior" }, { key: "View", value: "view" }].map((category, index) => (
                             <li key={index}>
                                 <button
@@ -147,7 +146,7 @@ export default function GaleryPage({ title, apartmentId }) {
                                         document.body.style.overflow = "hidden";
                                         setPreviewPhoto(data);
                                     }}
-                                    className="shadow h-[24rem] md:h-[30rem] cursor-pointer relative bg-gray-200"
+                                    className="shadow h-[18rem] md:h-[30rem] cursor-pointer relative bg-gray-200"
                                     key={index}
                                 >
                                     <img
@@ -165,7 +164,7 @@ export default function GaleryPage({ title, apartmentId }) {
 
                     <div className="w-full mt-5 grid grid-cols-2 lg:grid-cols-4 gap-3" >
                         {loading && Array.from({ length: 12 }).map((_, index) => (
-                            <div key={index} className="w-full shadow h-[24rem] md:h-[30rem] cursor-pointer relative bg-gray-200"></div>
+                            <div key={index} className="w-full shadow h-[18rem] md:h-[30rem] cursor-pointer relative bg-gray-200"></div>
                         ))}
                     </div>
                 </section>

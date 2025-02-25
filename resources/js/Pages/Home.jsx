@@ -1,4 +1,4 @@
-import Navbar from "@/Components/Navbar";
+ import Navbar from "@/Components/Navbar";
 import TextHead from "@/Components/TextHead";
 import { FaCheck, FaSwimmingPool } from "react-icons/fa";
 import { CgGym } from "react-icons/cg";
@@ -69,6 +69,9 @@ export default function HomePage() {
             </div>
             <main>
                 <Hero isWindow={windowWidth} />
+                {/* <section className="w-full p-20" >  
+                    <h1 className="text-5xl poppins-bold text-balck tracking-wider leading-[45px] md:leading-[70px] text-shadow text-white md:text-black opacity-80">Terinspirasi dari kota Bandung sebagai kota wisata, Bondepart Apartemen menawarkan Hunian yang nyaman, kamar-kamar yang elegan, dan keramahtamahan yang baik yang diwujudkan dengan Pelayanan 24 jam</h1>
+                </section> */}
                 <WhyChoose isWindow={windowWidth} />
                 <FacilitySuperior isWindow={windowWidth} />
                 
@@ -92,14 +95,13 @@ export default function HomePage() {
 
 
 const Hero = ({isWindow}) => {
-    const data = [{ name: "Jarrdin Apartemen by", image: "/images/hero_jarrdin.JPG", address: "Jl. Cihampelas Dalam No.10, Cipaganti, Kecamatan Coblong, Kota Bandung, Jawa Barat 40131", location: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126751.53216200261!2d107.46096234335937!3d-6.892351599999987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7362211001d%3A0xc52813d6dd53e769!2sJarrdin%20Apartemen%20by%20Bon.depart!5e0!3m2!1sid!2sid!4v1736494087305!5m2!1sid!2sid" }, { name: "Gateway Pasteur by", image: "/images/hero_gateway.jpg", address: "Jln. Gunung Batu No 203, Gateway Pasteur Apartment, Diamond A BS29, Kota Bandung, Jawa Barat 40175", location: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.0012870880732!2d107.5657234!3d-6.8904478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e514475c499b%3A0x14f7ec6eedd81781!2sGateway%20Pasteur%20by%20Bon.depart!5e0!3m2!1sen!2sid!4v1737451622578!5m2!1sen!2sid" }, { name: "Grand Asia Afrika by", image: "/images/hero_grand_asia_afrika.jpg", address: "Jl. Karapitan No.01, Burangrang, Kec. Lengkong, Kota Bandung, Jawa Barat 40261", location: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7213581738074!2d107.61559477499652!3d-6.923874443075854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e62b9c22d201%3A0xc0903468e1f49fc7!2sApartemen%20Grand%20Asia%20Afrika%2C%20Jl.%20Karapitan%20No.1%2C%20Paledang%2C%20Lengkong%2C%20Bandung%20City%2C%20West%20Java%2040261!5e0!3m2!1sen!2sid!4v1737451812170!5m2!1sen!2sid" },]
+    const data = [{ name: "Jarrdin Apartemen by", image: "https://res.cloudinary.com/dqnqorsvp/image/upload/v1739767752/hero_jarrdin_igvgko.jpg", address: "Jl. Cihampelas Dalam No.10, Cipaganti, Kecamatan Coblong, Kota Bandung, Jawa Barat 40131", location: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126751.53216200261!2d107.46096234335937!3d-6.892351599999987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7362211001d%3A0xc52813d6dd53e769!2sJarrdin%20Apartemen%20by%20Bon.depart!5e0!3m2!1sid!2sid!4v1736494087305!5m2!1sid!2sid" }, { name: "Gateway Pasteur by", image: "https://res.cloudinary.com/dqnqorsvp/image/upload/v1739767947/hero_gateway_uz5ubt.jpg", address: "Jln. Gunung Batu No 203, Gateway Pasteur Apartment, Diamond A BS29, Kota Bandung, Jawa Barat 40175", location: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.0012870880732!2d107.5657234!3d-6.8904478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e514475c499b%3A0x14f7ec6eedd81781!2sGateway%20Pasteur%20by%20Bon.depart!5e0!3m2!1sen!2sid!4v1737451622578!5m2!1sen!2sid" }, { name: "Grand Asia Afrika by", image: "https://res.cloudinary.com/dqnqorsvp/image/upload/v1739768001/hero_grand_asia_afrika_xfhrgr.jpg", address: "Jl. Karapitan No.01, Burangrang, Kec. Lengkong, Kota Bandung, Jawa Barat 40261", location: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7213581738074!2d107.61559477499652!3d-6.923874443075854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e62b9c22d201%3A0xc0903468e1f49fc7!2sApartemen%20Grand%20Asia%20Afrika%2C%20Jl.%20Karapitan%20No.1%2C%20Paledang%2C%20Lengkong%2C%20Bandung%20City%2C%20West%20Java%2040261!5e0!3m2!1sen!2sid!4v1737451812170!5m2!1sen!2sid" },]
     const [index, setIndex] = useState(0)
     const [location, setLocation] = useState({ status: false, data: {} })
     const section = useRef(null)
     const { scrollYProgress } = useScroll({ target: section, offset: ['start end', 'end start'] })
 
     useEffect(() => {
-        console.log({a: isWindow})
         const timer = setInterval(() => {
             nextSlide();
         }, 15000 );
@@ -135,8 +137,8 @@ const Hero = ({isWindow}) => {
         <section ref={section} className="w-full h-screen relative">
             <AnimatePresence mode="wait" >
                 {location.status && (
-                    <motion.div initial={{ clipPath: 'polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)' }} animate={{ opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }} exit={{ clipPath: 'polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)' }} transition={{ duration: 0.5 }} className={`w-full h-screen fixed top-0 left-0 z-20 bg-black/50 flex justify-center items-center`}>
-                        <motion.div initial={{ clipPath: 'polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)' }} animate={{ opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }} exit={{ clipPath: 'polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)' }} transition={{ duration: 0.5, delay: 0.5 }} className="w-2/4 h-96 flex gap-x-2 bg-white shadow rounded-lg relative overflow-hidden">
+                    <motion.div initial={{ clipPath: 'polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)' }} animate={{ opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }} exit={{ clipPath: 'polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)' }} transition={{ duration: 0.5 }} className={`w-full h-screen px-5 fixed top-0 left-0 z-20 bg-black/50 flex justify-center items-center`}>
+                        <motion.div initial={{ clipPath: 'polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)' }} animate={{ opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }} exit={{ clipPath: 'polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)' }} transition={{ duration: 0.5, delay: 0.5 }} className="w-full md:w-2/4 h-96 flex gap-x-2 bg-white shadow rounded-lg relative overflow-hidden">
                             <iframe src={location.data.location} className="w-full h-full" loading="lazy"></iframe>
                             <div onClick={() => setLocation(prev => ({ ...prev, status: false }))} className="p-2 bg-white absolute top-0 right-0 cursor-pointer group">
                                 <IoMdClose className="text-xl group-hover:opacity-60 opacity-90" />
@@ -146,33 +148,15 @@ const Hero = ({isWindow}) => {
                 )}
             </AnimatePresence>
             <div className={`w-full h-full md:flex md:flex-row md:justify-between md:pl-10 lg:pl-20 lg:pr-0 bg-[--third-color] relative overflow-hidden`}>
-                {/* <div className="lg:w-[50%] h-full mt-5 md:mt-0 flex flex-col text-center lg:text-start">
-                    <TextHead title={"Hunian Apartemen di tengah Kota Bandung"} color={"text-black"} />
-                    <p className="open-sans mt-2 text-lg md:text-xl text-black opacity-70" data-aos="zoom-in">
-                        Terinspirasi dari kota Bandung sebagai kota wisata, Bondepart Apartemen menawarkan Hunian yang nyaman, kamar-kamar yang elegan, dan keramahtamahan yang baik yang diwujudkan dengan Pelayanan 24 jam. Terletak di Jl. Cihampelas, Jalan Karapitan dan Jl. Pasteur kota bandung dengan lokasi yang sangat strategis untuk berlibur di kota Bandung
-                    </p>
-                    <motion.p key={index} initial={{opacity: 0}} animate={{ opacity: 1 }} >{title[index]}</motion.p>
-                    <div className="mt-5 flex justify-center lg:justify-start" data-aos="zoom-in" data-aos-delay="200">
-                        <Link href="/contact">
-                            <PrimaryButton title={"Kontak"} />
-                        </Link>
-                    </div>
-                </div>
-                <div className="lg:w-[40%] h-full flex justify-center lg:justify-end animation-primary">
-                    <figure className="w-full md:w-96 h-72 md:h-[450px] relative">
-                        <img className="w-60 h-72 hidden lg:block rounded-t-full border-8 border-[--primary-color] absolute top-10 -left-0 -translate-x-24 -rotate-12 bg-[--primary-color] hover:-translate-x-32 hover:rotate-0 transition duration-100 cursor-pointer" src="/images/IMG_3690.JPG" alt="Piority Image" />
-                        <img className="w-full h-full rounded-t-full border-8 border-[--primary-color] relative bg-[--primary-color] lg:hover:translate-x-3 lg:hover:rotate-12 transition duration-100 cursor-pointer" src="/images/IMG_6532 2.JPG" alt="Piority Image" />
-                    </figure>
-                </div> */}
                 <div className="md:w-[50%] h-full px-5 md:px-0 flex flex-col items-center md:items-start justify-center relative z-10 text-center md:text-start" >
                     <AnimatePresence mode="wait" >
                         <motion.h1 key={index} initial="hidden" animate="visible" exit="exit" variants={isWindow ? variantsContent : variantsContentIsMobile} transition={{ duration: isWindow ? 1.7 : 0.2, ease: 'easeInOut', delay: isWindow ? 0 : 2.7 }} className={`text-5xl poppins-bold text-balck tracking-wider leading-[45px] md:leading-[70px] text-shadow text-white md:text-black opacity-80`} style={{textShadow: '.5px .5px 0 white'}} >{data[index].name} <span className="text-[--primary-color]">Bondepart</span></motion.h1>
                     </AnimatePresence>
                     <AnimatePresence mode="wait" >
-                        <motion.p key={index} initial="hidden" animate="visible" exit="exit" variants={isWindow ? variantsContent : variantsContentIsMobile} transition={{ duration: isWindow ? 1.7 : 0.2, ease: 'easeInOut', delay: isWindow ? 0.5 : 3 }} className="open-sans mt-2 text-xl md:text-xl text-white font-medium md:text-black opacity-70">{data[index].address}</motion.p>
+                        <motion.p key={index} initial="hidden" animate="visible" exit="exit" variants={isWindow ? variantsContent : variantsContentIsMobile} transition={{ duration: isWindow ? 1.7 : 0.2, ease: 'easeInOut', delay: isWindow ? 0.5 : 3 }} className="open-sans mt-2 text-xl md:text-xl xl:text-2xl text-white font-medium md:text-black opacity-70">{data[index].address}</motion.p>
                     </AnimatePresence>
                     <AnimatePresence mode="wait" >
-                        <motion.button onClick={() => setLocation({ status: true, data: data[index] })} whileHover={{ scale: 1.2 }} key={index} initial="hidden" animate="visible" exit="exit" variants={isWindow ? variantsContent : variantsContentIsMobile} transition={{ duration: isWindow ? 1.7 : 0.2, ease: 'easeInOut', delay: isWindow ? 0.8 : 3.3 }} className="w-40 py-2 mt-5 flex gap-x-2 justify-center items-center text-white poppins-bold bg-[--primary-color]">
+                        <motion.button onClick={() => setLocation({ status: true, data: data[index] })} key={index} initial="hidden" animate="visible" exit="exit" variants={isWindow ? variantsContent : variantsContentIsMobile} transition={{ duration: isWindow ? 1.7 : 0.2, ease: 'easeInOut', delay: isWindow ? 0.8 : 3.3 }} className="w-40 py-2 mt-5 flex gap-x-2 justify-center items-center text-white poppins-bold bg-[--primary-color] hover:shadow-lg hover:bg-gradient-to-br hover:from-[--secondary-color] hover:to-[--primary-color]">
                             <FaLocationDot />
                             <span>Cari Lokasi</span></motion.button>
                     </AnimatePresence>
@@ -274,7 +258,7 @@ const WhyChoose = ({isWindow}) => {
                         <FeatureItem title="Fasilitas yang lengkap" description="Kolam renang, Fasilitas olahraga, Area parkir luas dan keamanan 24 jam." scrollY={scrollYProgress} from={0.2} to={0.28} fromTeks={0.51} toTeks={0.64} yTeks={0} />
                         <FeatureItem title="Lokasi yang strategis" description="Dekat dengan tempat wisata, stasiun dan bandara." scrollY={scrollYProgress} from={0.43} to={0.51} index={1} fromTeks={0.64} toTeks={0.73} yTeks={-60} />
                         <FeatureItem title="Unit yang Estetik" description="Memiliki konsep unit yang elegan dan modern." scrollY={scrollYProgress} from={0.64} to={0.73} fromTeks={0.88} toTeks={0.90} yTeks={-120} />
-                        <FeatureItem title="Harga yang terjangkau" description="Harga yang terjangkau untuk hunian yang strategis." scrollY={scrollYProgress} from={0.88} to={0.90} yTeks={isWindow ? -150 : -180} />
+                        <FeatureItem title="Harga yang terjangkau" description="Harga yang terjangkau untuk penginapan yang strategis." scrollY={scrollYProgress} from={0.88} to={0.90} yTeks={isWindow ? -150 : -180} />
                     </ul>
                 </div>
             </div>
@@ -303,8 +287,8 @@ const FacilitySuperior = ({isWindow}) => {
 
     return (
         <section ref={section} className="w-full h-auto md:h-[250vh] relative bg-white">
-            <div className="w-full h-auto md:h-screen py-10 sticky top-0" >
-                <div className="text-center" >
+            <div className="w-full h-auto md:h-screen pt-10 md:py-10 sticky top-0" >
+                <div className="text-center px-5" >
                     <motion.h1 style={{ opacity }} className={`text-4xl md:text-5xl poppins-bold text-balck tracking-wider leading-[45px] md:leading-[70px] text-shadow opacity-80`}>Fasilitas Unggulan</motion.h1>
                     <motion.p style={{ opacity }} className="open-sans mt-2 text-lg md:text-2xl text-black opacity-70">
                         Fasilitas Apartemen yang dilengkapi dengan apapun yang anda butuhkan.

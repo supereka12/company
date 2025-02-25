@@ -10,8 +10,8 @@ export default function Navbar1({ title }) {
         const [showingNavigationDropdown, setShowingNavigationDropdown] =
             useState(false);
     return (
-        <nav class="p-5 bg-[--four-color] border-b-2 border-[--primary-color]">
-            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
+        <nav className="p-5 bg-[--four-color] border-b-2 border-[--primary-color]">
+            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
                 <h1 className="text-3xl poppins-bold opacity-80">{title}</h1>
                 <Dropdown>
                     <Dropdown.Trigger>

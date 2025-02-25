@@ -17,13 +17,13 @@ export default function GaleryAdminPage() {
     const loadPhotos = async (page = 1, filter = "all") => {
         setLoading(true);
         try {
-            const response = await axios.get("/api/v1/photos", {
+            const response = await axios.get("/unit/photos", {
                 params: {
                     page: page,
                     filter: filter,
                 },
             });
-            console.log(response.data)
+            console.log(response)
 
             setPaginate({
                 current_page: response.data.unit_photos.pagination.current_page,
@@ -85,7 +85,7 @@ export default function GaleryAdminPage() {
                                 <option value="View">View</option>
                             </select>
                         </form>
-                        <a href="/admin/photos/create">
+                        <a href="/manage/photos/create">
                             <button className="px-4 py-2 font-medium text-white bg-teal-700 rounded-md">
                                 Tambah
                             </button>

@@ -4,43 +4,40 @@ import { FaTiktok } from "react-icons/fa";
 
 export default function Footer() {
     return (
-        <footer className="shadow px-5 bg-white border-t">
+        <footer className="shadow px-5 lg:px-20 bg-white border-t">
             <div className="w-full py-10">
-                <div className="sm:flex sm:items-center sm:justify-between lg:px-20">
-                    <h1 className="text-3xl text-black opacity-80 poppins-bold">Bondepart</h1>
-                    <nav aria-label="breadcrumb" className="w-full">
+                <div className="sm:flex sm:items-center sm:justify-between">
+                    <Link href="/" className="text-3xl text-[--primary-color] opacity-80 poppins-bold">Bondepart</Link>
+                     <nav aria-label="breadcrumb" className="w-full">
                         <ol className="flex flex-wrap md:justify-center rounded-md py-4 md:py-2">
                             <li className="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
-                                <Link href="/">Home</Link>
+                                <Link href="/">Beranda</Link>
                                 <span className="pointer-events-none mx-2 text-slate-800">
                                     |
                                 </span>
                             </li>
                             <li className="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
-                                <Link href="/">About Us</Link>
+                                <Link href="/about">Tentang Kami</Link>
                                 <span className="pointer-events-none mx-2 text-slate-800">
                                     |
                                 </span>
                             </li>
                             <li className="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
-                                <Link href="/">Blogs</Link>
+                                <Link href="/articles">Artikel</Link>
                                 <span className="pointer-events-none mx-2 text-slate-800">
                                     |
                                 </span>
                             </li>
                             <li className="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
-                                <Link href="/">Galery</Link>
+                                <Link href="/galery/Jarrdin-Apartemen-by-Bondepart">Galeri</Link>
                                 <span className="pointer-events-none mx-2 text-slate-800">
                                     |
                                 </span>
                             </li>
                             <li className="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
-                                <Link href="/">Contact</Link>
-                                <span className="pointer-events-none mx-2 text-slate-800">
-                                    |
-                                </span>
+                                <Link href="/contact">Kontak</Link>
                             </li>
-                            <li className="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
+                            {/* <li className="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
                                 <Link href="/">Terms & Conditions</Link>
                                 <span className="pointer-events-none mx-2 text-slate-800">
                                     |
@@ -48,19 +45,16 @@ export default function Footer() {
                             </li>
                             <li className="flex cursor-pointer items-center text-sm text-slate-500 transition-colors duration-300 hover:text-slate-800">
                                 <Link href="/">FAQ</Link>
-                            </li>
+                            </li> */}
                         </ol>
                     </nav>
                     <div className="flex md:justify-center text-center gap-x-7">
-                        <Link href="/">
-                            <CiFacebook className="text-black text-2xl opacity-80 hover:opacity-100" />
-                        </Link>
-                        <Link href="/">
+                        <a href="https://www.tiktok.com/@bondepart.apartment?is_from_webapp=1&sender_device=pc">
                             <FaTiktok className="text-black text-2xl opacity-80 hover:opacity-100" />
-                        </Link>
-                        <Link href="/">
+                        </a>
+                        <a href="https://www.instagram.com/bondepart.apartment?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
                             <CiInstagram className="text-black text-2xl opacity-80 hover:opacity-100" />
-                        </Link>
+                        </a>
                     </div>
                 </div>
                 <span className="block mt-5 text-sm sm:text-center text-gray-400">© 2025 Bondepart. All Rights Reserved.</span>

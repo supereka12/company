@@ -12,7 +12,7 @@ class PhotoController extends Controller
 {
     public function index()
     {
-        $photos = Photo::with('categoryPhotos')->get();
+        $photos = Photo::all();
         return response()->json($photos);
     }
 

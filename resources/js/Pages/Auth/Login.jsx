@@ -4,7 +4,8 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import GuestLayout from '@/Layouts/GuestLayout';
-import { Head, Link, useForm } from '@inertiajs/react';
+import { Head, Link, useForm, usePage } from '@inertiajs/react';
+import { useEffect } from 'react';
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -12,13 +13,15 @@ export default function Login({ status, canResetPassword }) {
         password: '',
         remember: false,
     });
-
     const submit = (e) => {
         e.preventDefault();
-
+    
         post(route('login'), {
+            onBefore: () => console.log("Submitting..."),
+            onSuccess: () => console.log("Login successful!"),
+            onError: (err) => console.error("Login error:", err),
             onFinish: () => reset('password'),
-        });
+        });    
     };
 
     return (

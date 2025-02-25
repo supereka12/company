@@ -52,7 +52,7 @@ class BlogController extends Controller
     {
         $blog = Blog::where('id', $id);
         $blog->delete();
-        return redirect('admin/blog')->with('success', 'Barang berhasil dihapus.');
+        return redirect('admin/articles')->with('success', 'Barang berhasil dihapus.');
     }
 
     public function index()

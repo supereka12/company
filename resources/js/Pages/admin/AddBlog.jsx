@@ -73,7 +73,7 @@ export default function BlogForm() {
                 {/* TinyMCE Editor untuk Deskripsi */}
                 <div className="mb-4">
                     <Editor
-                        apiKey="y4ngmv9wvgdzjlx5pynl36rw5uyji3sridg6uhivna9c1y0i"
+                        apiKey="wvukpkufstihiwwknhc7ctc9pyz3itibe86gc4q8igpajwrg"
                         value={content}
                         onEditorChange={(newValue) => setContent(newValue)}
                         init={{

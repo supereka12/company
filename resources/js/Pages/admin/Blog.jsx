@@ -5,12 +5,11 @@ import { router } from "@inertiajs/react";
 export default function BlogAdmin({ blog }) {
 
     const handleDelete = (id) => {
-        router.delete(`/admin/blog/${id}`)
+        router.delete(`/manage/articles/${id}`)
     }
 
     const handleEdit = (id) => {
-        console.log(`update ${id}`);
-        router.get(`/admin/articles/${id}/edit`);
+        router.get(`/manage/articles/${id}/edit`);
     };
 
 
@@ -23,7 +22,7 @@ export default function BlogAdmin({ blog }) {
                     <div className="flex items-center justify-between mb-4">
                         <form className="flex gap-3">
                             <div className="flex">
-                                <input class="w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" type="search" placeholder="Search" />
+                                <input className="w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" type="search" placeholder="Search" />
                             </div>
                             <select id="filter" name="filter"
                                 className="w-40 h-10 border border-gray-300 focus:outline-none focus:border-sky-500 text-gray-700 rounded px-2">
@@ -33,7 +32,7 @@ export default function BlogAdmin({ blog }) {
                                 <option value="Filter1">Terbaru</option>
                             </select>
                         </form>
-                        <a href="/admin/articles/add">
+                        <a href="/manage/articles/add">
                             <button className="px-4 py-2 font-medium text-white bg-teal-700 rounded-md">
                                 Tambah
                             </button>

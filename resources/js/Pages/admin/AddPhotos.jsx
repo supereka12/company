@@ -47,7 +47,7 @@ const AddPhoto = () => {
     });
 
     try {
-      const response = await axios.post('/api/v1/photos', formData, {
+      const response = await axios.post('/unit/photos', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

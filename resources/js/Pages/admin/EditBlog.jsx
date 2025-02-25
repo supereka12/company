@@ -20,7 +20,7 @@ export default function EditBlog() {
         formData.append("title", title);
         formData.append("content", content);
         if (image) formData.append("image", image);
-                router.post(`/admin/blog/${blog.id}`, formData);
+                router.post(`/manage/articles/${blog.id}`, formData);
             };
 
     return (
@@ -75,7 +75,7 @@ export default function EditBlog() {
 
                 <div className="mb-4">
                     <Editor
-                        apiKey="y4ngmv9wvgdzjlx5pynl36rw5uyji3sridg6uhivna9c1y0i"
+                        apiKey="wvukpkufstihiwwknhc7ctc9pyz3itibe86gc4q8igpajwrg"
                         value={content}
                         onEditorChange={(newValue) => setContent(newValue)}
                         init={{
