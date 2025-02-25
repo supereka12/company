@@ -45,7 +45,7 @@ class BlogController extends Controller
     public function showAdminBlog()
     {
         $blog = Blog::all();
-        return Inertia::render('Admin/Blog', ['blog' => $blog]);
+        return Inertia::render('Blog', ['blog' => $blog]);
     }
 
     public function destroy($id)
